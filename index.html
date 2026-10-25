@@ -2,24 +2,24 @@
 <html lang="fr">
 <head>
 <meta charset="utf-8"/>
-<title>Mathématiques — Seconde | M. Brahim</title>
+<title>Mathématiques — Terminale complémentaire | M. Brahim</title>
 <link rel="icon" type="image/png" href="images/logo.png"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <style>
 
 /* ============================================================
-   VARIABLES — palette Seconde
+   VARIABLES — palette Terminale complémentaire
    ============================================================ */
 :root{
-  --bg:        #0B0F17;
-  --bg-panel:  #091428;
-  --bg-panel-2:#0E1A33;
-  --accent:    #00A3FF;
-  --accent-dim:#00A3FF33;
-  --white:     #F5F8FC;
-  --grey:      #93A0B8;
-  --grey-dim:  #5B6479;
-  --line:      #1B2740;
+  --bg:        #0F0C08;
+  --bg-panel:  #16110A;
+  --bg-panel-2:#1D160C;
+  --accent:    #F2B705;
+  --accent-dim:#F2B70533;
+  --white:     #FAF6EC;
+  --grey:      #AFA793;
+  --grey-dim:  #70675A;
+  --line:      #2E2413;
   --radius-lg: 28px;
   --radius-md: 16px;
 }
@@ -29,8 +29,6 @@
 html{ scroll-behavior:smooth; }
 
 #section-progression,
-#section-transversale,
-#section-annexes,
 #section-ressources{
   scroll-margin-top:64px;
 }
@@ -56,8 +54,8 @@ body::before{
   width:1400px; height:1000px;
   transform:translateX(-50%);
   background:
-    radial-gradient(circle at 30% 20%, rgba(0,163,255,0.16), transparent 60%),
-    radial-gradient(circle at 75% 10%, rgba(0,163,255,0.10), transparent 55%);
+    radial-gradient(circle at 30% 20%, rgba(242,183,5,0.16), transparent 60%),
+    radial-gradient(circle at 75% 10%, rgba(242,183,5,0.10), transparent 55%);
   pointer-events:none;
   z-index:0;
 }
@@ -70,7 +68,7 @@ body::before{
   top:0; left:0; right:0;
   z-index:1000;
   height:64px;
-  background:rgba(11,15,23,0.72);
+  background:rgba(15,12,8,0.72);
   backdrop-filter:blur(16px) saturate(160%);
   -webkit-backdrop-filter:blur(16px) saturate(160%);
   border-bottom:1px solid var(--line);
@@ -146,7 +144,7 @@ body::before{
 
 .nav-side{ display:flex; align-items:center; gap:4px; margin-left:auto; }
 .nav-grades{
-  background:rgba(0,163,255,0.08);
+  background:rgba(242,183,5,0.08);
   border:1px solid var(--line);
   border-radius:12px;
   padding:4px;
@@ -159,10 +157,10 @@ body::before{
   color:var(--grey);
   transition:background 0.25s, color 0.25s;
 }
-.nav-link:hover{ background:rgba(0,163,255,0.14); color:var(--white); }
+.nav-link:hover{ background:rgba(242,183,5,0.14); color:var(--white); }
 .nav-link-active{
   background:var(--accent);
-  color:#04101f;
+  color:#1a1200;
 }
 .nav-link-active:hover{ background:var(--accent); }
 
@@ -189,7 +187,7 @@ body::before{
   left:auto;
   transform:translateY(-6px);
   min-width:128px;
-  background:#0b1524;
+  background:#16110A;
   border:1px solid var(--line);
   border-radius:10px;
   padding:6px;
@@ -226,11 +224,11 @@ body::before{
   transition:background 0.2s, color 0.2s;
 }
 .nav-grade-menu a:hover{
-  background:rgba(0,163,255,0.14);
+  background:rgba(242,183,5,0.14);
   color:var(--white);
 }
 .nav-grade-menu a.is-active{
-  background:rgba(0,163,255,0.18);
+  background:rgba(242,183,5,0.18);
   color:var(--accent);
 }
 
@@ -259,7 +257,7 @@ body::before{
   display:flex; flex-direction:column; gap:8px;
   padding:6px;
   border-radius:14px;
-  background:rgba(9,20,40,0.85);
+  background:rgba(22,17,10,0.85);
   backdrop-filter:blur(14px);
   border:1px solid var(--line);
   box-shadow:0 10px 30px rgba(0,0,0,0.45);
@@ -267,7 +265,7 @@ body::before{
 #floating-toolbar .nav-btn{
   width:34px; height:34px;
   border-radius:9px;
-  background:rgba(0,163,255,0.10);
+  background:rgba(242,183,5,0.10);
   border:1px solid transparent;
   color:var(--white);
   font-size:0.9rem;
@@ -276,7 +274,7 @@ body::before{
   transition:background 0.25s, border-color 0.25s;
 }
 #floating-toolbar .nav-btn:hover{
-  background:rgba(0,163,255,0.22);
+  background:rgba(242,183,5,0.22);
   border-color:var(--accent);
 }
 @media (max-width:600px){
@@ -284,72 +282,6 @@ body::before{
   #floating-toolbar .nav-btn{ width:30px; height:30px; font-size:0.8rem; }
 }
 
-/* ============================================================
-   PANNEAU DE PROGRESSION DES DOCUMENTS
-   ============================================================ */
-#docs-progress-overlay{
-  position:fixed; inset:0;
-  z-index:2000;
-  display:none;
-  align-items:center; justify-content:center;
-  background:rgba(4,8,16,0.6);
-  backdrop-filter:blur(6px);
-  padding:20px;
-}
-#docs-progress-overlay.is-open{ display:flex; }
-#docs-progress-panel{
-  width:100%; max-width:440px;
-  max-height:80vh;
-  overflow:hidden;
-  display:flex; flex-direction:column;
-  background:var(--bg-panel);
-  border:1px solid var(--line);
-  border-radius:var(--radius-md);
-  box-shadow:0 20px 60px rgba(0,0,0,0.5);
-}
-.docs-progress-head{
-  display:flex; align-items:center; justify-content:space-between;
-  padding:16px 18px;
-  border-bottom:1px solid var(--line);
-  flex-shrink:0;
-}
-.docs-progress-head h3{ margin:0; font-size:0.98rem; font-weight:800; color:var(--white); }
-#docs-progress-close{
-  width:28px; height:28px; border-radius:8px;
-  background:rgba(0,163,255,0.10); border:1px solid transparent;
-  color:var(--white); cursor:pointer; font-size:0.8rem;
-  display:flex; align-items:center; justify-content:center;
-  transition:background 0.2s, border-color 0.2s;
-}
-#docs-progress-close:hover{ background:rgba(0,163,255,0.22); border-color:var(--accent); }
-.docs-progress-body{ padding:16px 18px 18px; overflow-y:auto; }
-.docs-progress-loading{ font-size:0.82rem; color:var(--grey); padding:10px 2px; }
-.docs-progress-list{ display:flex; flex-direction:column; gap:14px; }
-.docs-progress-row{ display:flex; flex-direction:column; gap:6px; }
-.docs-progress-row-top{
-  display:flex; align-items:baseline; justify-content:space-between;
-  gap:10px;
-}
-.docs-progress-row-label{ font-size:0.85rem; font-weight:700; color:var(--white); }
-.docs-progress-row-count{ font-size:0.72rem; color:var(--grey-dim); font-weight:600; white-space:nowrap; }
-.docs-progress-row-pct{ font-size:0.78rem; font-weight:800; color:var(--accent); }
-.docs-progress-bar{
-  width:100%; height:8px; border-radius:5px;
-  background:rgba(255,255,255,0.06);
-  overflow:hidden;
-}
-.docs-progress-bar-fill{
-  height:100%; border-radius:5px;
-  background:linear-gradient(90deg, var(--accent), #6FE3FF);
-  width:0%;
-  transition:width 0.6s cubic-bezier(0.4,0,0.2,1);
-}
-.docs-progress-total{
-  margin-top:6px;
-  padding-top:14px;
-  border-top:1px solid var(--line);
-}
-.docs-progress-total .docs-progress-row-label{ color:var(--accent); }
 
 /* Bouton contact + panneau d'icônes */
 #contact-wrap{
@@ -365,7 +297,7 @@ body::before{
   gap:8px;
   padding:6px;
   border-radius:14px;
-  background:rgba(9,20,40,0.85);
+  background:rgba(22,17,10,0.85);
   backdrop-filter:blur(14px);
   border:1px solid var(--line);
   box-shadow:0 10px 30px rgba(0,0,0,0.45);
@@ -384,7 +316,7 @@ body::before{
 #contact-panel a{
   width:34px; height:34px;
   border-radius:9px;
-  background:rgba(0,163,255,0.10);
+  background:rgba(242,183,5,0.10);
   border:1px solid transparent;
   color:var(--white);
   display:flex; align-items:center; justify-content:center;
@@ -392,12 +324,12 @@ body::before{
   flex-shrink:0;
 }
 #contact-panel a:hover{
-  background:rgba(0,163,255,0.22);
+  background:rgba(242,183,5,0.22);
   border-color:var(--accent);
 }
 #contact-panel svg{ width:17px; height:17px; }
 #contact-button.is-active{
-  background:rgba(0,163,255,0.22);
+  background:rgba(242,183,5,0.22);
   border-color:var(--accent);
 }
 
@@ -426,7 +358,7 @@ main{
   text-align:center;
   flex-direction:column;
   background:
-    linear-gradient(180deg, rgba(6,10,20,0.35) 0%, rgba(6,10,20,0.55) 55%, var(--bg) 100%),
+    linear-gradient(180deg, rgba(12,9,5,0.35) 0%, rgba(12,9,5,0.55) 55%, var(--bg) 100%),
     url('images/hero-bg.jpg') center 30% / cover no-repeat;
 }
 #hero .hero-inner{
@@ -461,8 +393,8 @@ h1.hero-title{
   position:absolute; left:0; top:0; bottom:0;
   width:0%;
   border-radius:999px;
-  background:linear-gradient(90deg, var(--accent), #7FD8FF);
-  box-shadow:0 0 12px 1px rgba(0,163,255,0.55);
+  background:linear-gradient(90deg, var(--accent), #FFD866);
+  box-shadow:0 0 12px 1px rgba(242,183,5,0.55);
   transition:width 1s ease;
 }
 .year-progress-label{
@@ -479,9 +411,7 @@ h1.hero-title{
   #hero .hero-inner{ padding:120px 22px 60px; }
 }
 
-/* ============================================================
-   GALERIE DE SÉQUENCES — défilement horizontal, style vitrine
-   ============================================================ */
+
 /* ============================================================
    GALERIE DE SÉQUENCES — bandeau plein écran, fond différencié
    ============================================================ */
@@ -510,47 +440,7 @@ h1.hero-title{
 .gallery-head p{
   margin:6px 0 0; color:var(--grey-dim); font-size:0.86rem;
 }
-.gallery-nav{ display:none; }
-.gallery-nav button{
-  width:44px; height:44px;
-  border-radius:50%;
-  border:1px solid rgba(255,255,255,0.14);
-  background:rgba(18,22,30,0.6);
-  backdrop-filter:blur(6px);
-  -webkit-backdrop-filter:blur(6px);
-  color:var(--white);
-  cursor:pointer;
-  display:flex; align-items:center; justify-content:center;
-  transition:border-color 0.2s, background 0.2s, transform 0.2s;
-}
-.gallery-nav button svg{ width:22px; height:22px; }
-.gallery-nav button:hover{ border-color:var(--accent); background:rgba(0,163,255,0.18); transform:scale(1.06); }
-
 .seq-track-wrap{ position:relative; }
-.seq-track-wrap .gallery-nav{
-  display:flex;
-  position:absolute;
-  top:50%;
-  left:0;
-  right:0;
-  transform:translateY(-50%);
-  justify-content:space-between;
-  pointer-events:none;
-  gap:0;
-  z-index:5;
-}
-.seq-track-wrap .gallery-nav button{
-  pointer-events:auto;
-  box-shadow:0 4px 16px rgba(0,0,0,0.35);
-  margin:0 -6px;
-}
-@media (min-width:1600px){
-  .seq-track-wrap .gallery-nav{ left:-56px; right:-56px; }
-}
-@media (max-width:700px){
-  .seq-track-wrap .gallery-nav{ display:none; }
-}
-
 .seq-track{
   display:flex;
   gap:20px;
@@ -561,39 +451,6 @@ h1.hero-title{
   scrollbar-width:none;
 }
 .seq-track::-webkit-scrollbar{ display:none; }
-
-.seq-scrollbar{
-  position:relative;
-  height:6px;
-  border-radius:3px;
-  background:rgba(255,255,255,0.08);
-  margin:0 6px 4px;
-  cursor:pointer;
-}
-.seq-scrollbar-thumb{
-  position:absolute;
-  top:0; left:0;
-  height:100%;
-  border-radius:3px;
-  background:var(--accent);
-  cursor:grab;
-  transition:background 0.2s;
-}
-.seq-scrollbar-thumb:hover,
-.seq-scrollbar-thumb.dragging{ background:#3DB4FF; }
-.seq-scrollbar-thumb.dragging{ cursor:grabbing; }
-
-/* Variante "pleine largeur" pour la section Transversale : grille sur grand écran, carrousel sinon */
-@media (min-width:901px){
-  .seq-track.full-width{
-    display:grid;
-    grid-template-columns:repeat(3, 1fr);
-    overflow-x:visible;
-  }
-  .seq-track.full-width .seq-card{
-    width:100%;
-  }
-}
 
 .seq-card{
   scroll-snap-align:start;
@@ -614,7 +471,7 @@ h1.hero-title{
 }
 .seq-card:hover{
   transform:translateY(-6px);
-  border-color:rgba(0,163,255,0.5);
+  border-color:rgba(242,183,5,0.5);
 }
 
 .seq-tag{
@@ -636,7 +493,7 @@ h1.hero-title{
   border:1px solid currentColor;
 }
 .seq-card h3{ display:flex; align-items:center; }
-.seq-card{ --nc:#00A3FF; }
+.seq-card{ --nc:#F2B705; }
 .seq-card:has(.cat-red){ --nc:#FF5C5C; }
 .seq-card:has(.cat-purple){ --nc:#B183FF; }
 .seq-card:has(.cat-green){ --nc:#4ADE80; }
@@ -735,9 +592,9 @@ h1.hero-title{
 }
 
 /* variantes de teinte par carte, sans casser la charte */
-.seq-card.v2 .seq-visual{ background:radial-gradient(circle, rgba(0,163,255,0.28), transparent 70%); }
-.seq-card.v3 .seq-visual{ background:radial-gradient(circle, rgba(127,216,255,0.22), transparent 70%); }
-.seq-card.v1 .seq-visual{ background:radial-gradient(circle, rgba(0,87,184,0.30), transparent 70%); }
+.seq-card.v2 .seq-visual{ background:radial-gradient(circle, rgba(242,183,5,0.28), transparent 70%); }
+.seq-card.v3 .seq-visual{ background:radial-gradient(circle, rgba(255,216,102,0.22), transparent 70%); }
+.seq-card.v1 .seq-visual{ background:radial-gradient(circle, rgba(176,120,0,0.30), transparent 70%); }
 
 @media (max-width:600px){
   .seq-card{ min-height:0; padding:20px 18px 18px; }
@@ -785,127 +642,10 @@ h1.hero-title{
 #seq-track .seq-meta{ position:relative; z-index:1; }
 #seq-track .seq-meta{ margin-top:0; align-self:start; }
 
-/* Séquences transversales : même remontée de la catégorie et du titre */
-#transversale-track .seq-tag{ margin-top:-10px; margin-bottom:6px; }
-#transversale-track .seq-card h3{ position:relative; z-index:2; line-height:1.4; margin-top:-2px; margin-bottom:14px; }
-#transversale-track .seq-meta{ position:relative; z-index:1; }
 @media (max-width:1200px){ #seq-track{ grid-template-columns:repeat(4, minmax(0, 1fr)); } }
 @media (max-width:900px){ #seq-track{ grid-template-columns:repeat(3, minmax(0, 1fr)); } }
 @media (max-width:640px){ #seq-track{ grid-template-columns:repeat(2, minmax(0, 1fr)); gap:0 12px; } }
 @media (max-width:380px){ #seq-track{ grid-template-columns:minmax(0, 1fr); } }
-
-/* Cartes de la section Ressources — liste de liens façon "apps" */
-.annex-cards{
-  display:grid;
-  grid-template-columns:repeat(4, 1fr);
-  gap:16px;
-  margin-top:28px;
-}
-.annex-cards-single{
-  grid-template-columns:minmax(0,420px);
-  justify-content:start;
-}
-.annex-card{
-  border-radius:var(--radius-md);
-  border:1px solid var(--line);
-  background:linear-gradient(165deg, var(--bg-panel-2), var(--bg-panel) 70%);
-  padding:22px 20px;
-  display:flex;
-  flex-direction:column;
-  gap:14px;
-  transition:border-color 0.25s, transform 0.25s;
-  text-align:left;
-  cursor:pointer;
-  font-family:inherit;
-}
-.annex-card:hover{ border-color:var(--accent); transform:translateY(-2px); }
-.annex-card-icon{
-  width:38px; height:38px;
-  display:flex; align-items:center; justify-content:center;
-  border-radius:10px;
-}
-.annex-card-icon svg{ width:22px; height:22px; }
-.annex-card p{
-  margin:0;
-  font-size:0.95rem;
-  line-height:1.45;
-  color:var(--white);
-}
-.annex-card p .hl{ font-weight:700; }
-.annex-card-tcg{
-  position:relative;
-  overflow:hidden;
-  border:1px solid rgba(255,255,255,0.14);
-  background:
-    linear-gradient(135deg, rgba(255,0,150,0.10), rgba(0,163,255,0.10) 35%, rgba(255,214,0,0.10) 65%, rgba(140,0,255,0.12)),
-    linear-gradient(165deg, var(--bg-panel-2), var(--bg-panel) 70%);
-  background-size:250% 250%, 100% 100%;
-  animation:tcg-shine 7s ease-in-out infinite;
-}
-.annex-card-tcg:hover{ border-color:rgba(255,255,255,0.4); }
-.annex-card-row{ display:flex; align-items:flex-start; gap:14px; }
-.annex-card-row .annex-card-icon{ flex-shrink:0; }
-.annex-illus{
-  position:relative; display:flex; align-items:center; justify-content:center;
-  width:88%; aspect-ratio:5/4; margin:auto auto 0;
-  border-radius:calc(var(--radius-md) - 6px);
-  border:1.5px dashed rgba(255,255,255,0.28);
-  background:rgba(255,255,255,0.04);
-  overflow:hidden;
-}
-.annex-illus img{ position:absolute; inset:0; width:100%; height:100%; object-fit:contain; display:block; }
-.annex-illus.has-img{ border:none; background:none; }
-.annex-illus-ph{
-  display:flex; flex-direction:column; align-items:center; gap:6px;
-  color:var(--muted, rgba(255,255,255,0.6)); font-size:0.74rem; text-align:center; padding:8px;
-}
-.annex-illus-ph svg{ width:28px; height:28px; opacity:0.85; }
-.annex-illus.has-img .annex-illus-ph{ display:none; }
-.annex-card-img{
-  display:block; width:88%; height:auto;
-  border-radius:calc(var(--radius-md) - 6px);
-  margin:auto auto 0;
-}
-@keyframes tcg-shine{
-  0%{ background-position:0% 0%, 0 0; }
-  50%{ background-position:100% 100%, 0 0; }
-  100%{ background-position:0% 0%, 0 0; }
-}
-.annex-card-icon-tcg{
-  background:linear-gradient(135deg, #FF3D9A, #00A3FF, #FFD600);
-  color:#0B0F17;
-}
-@media (max-width:1000px){
-  .annex-cards{ grid-template-columns:repeat(2, 1fr); }
-}
-@media (max-width:560px){
-  .annex-cards{ grid-template-columns:1fr; }
-}
-
-.res-track-wrap{ position:relative; }
-.res-track-wrap .gallery-nav{
-  display:flex;
-  position:absolute;
-  top:50%;
-  left:0;
-  right:0;
-  transform:translateY(-50%);
-  justify-content:space-between;
-  pointer-events:none;
-  gap:0;
-  z-index:5;
-}
-.res-track-wrap .gallery-nav button{
-  pointer-events:auto;
-  box-shadow:0 4px 16px rgba(0,0,0,0.35);
-  margin:0 -6px;
-}
-@media (min-width:1600px){
-  .res-track-wrap .gallery-nav{ left:-56px; right:-56px; }
-}
-@media (max-width:700px){
-  .res-track-wrap .gallery-nav{ display:none; }
-}
 
 .res-track{
   display:grid;
@@ -916,31 +656,6 @@ h1.hero-title{
 }
 @media (max-width:1100px){ .res-track{ grid-template-columns:repeat(2, minmax(0, 1fr)); } }
 @media (max-width:600px){ .res-track{ grid-template-columns:minmax(0, 1fr); } }
-/* Les cartes passent à la ligne : plus de défilement horizontal, donc ni flèches ni barre */
-.res-track-wrap .gallery-nav,
-.res-scrollbar{ display:none !important; }
-
-.res-scrollbar{
-  position:relative;
-  height:6px;
-  border-radius:3px;
-  background:rgba(255,255,255,0.08);
-  margin:0 6px 4px;
-  cursor:pointer;
-}
-.res-scrollbar-thumb{
-  position:absolute;
-  top:0; left:0;
-  height:100%;
-  border-radius:3px;
-  background:var(--accent);
-  cursor:grab;
-  transition:background 0.2s;
-}
-.res-scrollbar-thumb:hover,
-.res-scrollbar-thumb.dragging{ background:#3DB4FF; }
-.res-scrollbar-thumb.dragging{ cursor:grabbing; }
-
 .res-card{
   min-width:0;
   min-height:220px;
@@ -953,31 +668,6 @@ h1.hero-title{
   border:1px solid var(--line);
   background:linear-gradient(165deg, var(--bg-panel-2), var(--bg-panel) 70%);
   transition:border-color 0.35s;
-}
-.res-locked-message{
-  font-size: 13px;
-  line-height: 1.5;
-  color: #6b5a4a;
-  text-align: center;
-  margin: 0;
-  padding: 0 6px;
-}
-#cbpm-card{
-  position: relative;
-}
-.res-locked-overlay{
-  display: none;
-  position: absolute;
-  inset: 0;
-  align-items: center;
-  justify-content: center;
-  background: rgba(255,255,255,0.97);
-  border-radius: inherit;
-  z-index: 5;
-  padding: 16px;
-}
-.res-locked-overlay.is-open{
-  display: flex;
 }
 .res-card .res-tag{
   display:inline-flex; align-items:center;
@@ -1004,36 +694,11 @@ h1.hero-title{
 .res-app-icon{
   width:52px; height:52px;
   border-radius:14px;
-  background:rgba(0,163,255,0.10);
+  background:rgba(242,183,5,0.10);
   border:1px solid var(--line);
   display:flex; align-items:center; justify-content:center;
   transition:transform 0.25s, border-color 0.25s;
   position:relative;
-}
-.res-lock-badge{
-  position:absolute;
-  top:-7px;
-  left:-7px;
-  width:24px;
-  height:24px;
-  background:#2c2c2c;
-  border-radius:50%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  z-index:3;
-  box-shadow:0 1px 4px rgba(0,0,0,0.4);
-}
-.res-app-disabled{
-  cursor:default;
-}
-.res-app-disabled .res-app-icon{
-  opacity:0.6;
-}
-.res-lock-badge svg{
-  width:13px;
-  height:13px;
-  fill:#fff;
 }
 .res-app-icon img{
   width:100%; height:100%;
@@ -1041,22 +706,9 @@ h1.hero-title{
   display:block;
   border-radius:14px;
 }
-.res-app[href*="maths-et-tiques"] .res-app-icon,
-.res-app[href*="coquillagesetpoincare"] .res-app-icon,
-.res-app[href*="maths-au-quotidien"] .res-app-icon{
-  background:#fff;
-}
-.res-app[href*="maths-et-tiques"] .res-app-icon img,
-.res-app[href*="coquillagesetpoincare"] .res-app-icon img,
-.res-app[href*="maths-au-quotidien"] .res-app-icon img{
-  object-fit:contain;
-  padding:6px;
-  width:100%; height:100%;
-  box-sizing:border-box;
-}
 .res-app:hover .res-app-icon{
   transform:translateY(-3px);
-  border-color:rgba(0,163,255,0.5);
+  border-color:rgba(242,183,5,0.5);
 }
 .res-app-label{
   font-size:0.68rem; font-weight:600; color:var(--grey);
@@ -1070,243 +722,6 @@ h1.hero-title{
   .res-card{ min-height:190px; padding:20px 18px 18px; }
 }
 
-/* ============================================================
-   MODALE — fiche de chapitre, façon app iPad (master-detail)
-   ============================================================ */
-#chapter-overlay{
-  position:fixed; inset:0;
-  z-index:2000;
-  display:flex; align-items:center; justify-content:center;
-  padding:20px;
-  background:rgba(5,9,16,0.72);
-  backdrop-filter:blur(10px);
-  -webkit-backdrop-filter:blur(10px);
-  opacity:0;
-  visibility:hidden;
-  transition:opacity 0.25s ease, visibility 0.25s ease;
-}
-#chapter-overlay.is-open{ opacity:1; visibility:visible; }
-
-.chapter-modal{
-  width:min(1240px, 100%);
-  height:min(90vh, 940px);
-  display:flex; flex-direction:column;
-  border-radius:26px;
-  border:1px solid var(--line);
-  background:linear-gradient(165deg, #101B32, #0B1526 65%);
-  box-shadow:0 40px 100px rgba(0,0,0,0.6);
-  overflow:hidden;
-  transform:translateY(22px) scale(0.97);
-  opacity:0;
-  transition:transform 0.32s cubic-bezier(.2,.8,.2,1), opacity 0.32s ease;
-}
-#chapter-overlay.is-open .chapter-modal{ transform:translateY(0) scale(1); opacity:1; }
-
-/* barre de titre, façon fenêtre iPadOS */
-.chapter-modal-titlebar{
-  display:flex; align-items:center; gap:14px;
-  padding:16px 18px;
-  border-bottom:1px solid var(--line);
-  background:rgba(255,255,255,0.015);
-  flex-shrink:0;
-}
-.chapter-modal-close{
-  width:30px; height:30px; border-radius:50%;
-  border:1px solid var(--line);
-  background:rgba(255,255,255,0.04);
-  color:var(--grey);
-  font-size:0.85rem; line-height:1;
-  cursor:pointer;
-  display:flex; align-items:center; justify-content:center;
-  transition:border-color 0.2s, color 0.2s, background 0.2s;
-  flex-shrink:0;
-}
-.chapter-modal-close:hover{ border-color:var(--accent); color:var(--white); background:rgba(0,163,255,0.12); }
-
-.chapter-modal-titlebar-info{
-  display:flex; align-items:center; gap:10px;
-  min-width:0;
-  font-size:0.82rem; font-weight:700; color:var(--white);
-}
-.chapter-modal-titlebar-info .n{
-  width:22px; height:22px; border-radius:7px; flex-shrink:0;
-  background:rgba(0,163,255,0.16);
-  color:var(--accent);
-  display:flex; align-items:center; justify-content:center;
-  font-size:0.66rem; font-weight:800;
-}
-.chapter-modal-titlebar-info .sep{ color:var(--grey-dim); font-weight:400; }
-.chapter-modal-titlebar-info .cat{ color:var(--grey); font-weight:600; }
-
-.chapter-modal-main{
-  flex:1;
-  display:flex;
-  min-height:0;
-}
-
-/* colonne "master" — liste groupée façon Réglages iPadOS */
-.chapter-sidebar{
-  width:280px;
-  flex-shrink:0;
-  overflow-y:auto;
-  scrollbar-width:none;
-  padding:18px 12px 24px;
-  border-right:1px solid var(--line);
-  background:rgba(255,255,255,0.012);
-}
-.chapter-sidebar::-webkit-scrollbar{ display:none; }
-.chapter-sidebar-desc{
-  padding:2px 10px 16px;
-  font-size:0.8rem; line-height:1.5; color:var(--grey);
-}
-.chapter-sidebar-group{ margin-bottom:18px; }
-.chapter-sidebar-group-label{
-  padding:0 10px 6px;
-  font-size:0.66rem; font-weight:800; letter-spacing:0.09em;
-  text-transform:uppercase;
-  color:var(--grey-dim);
-}
-.chapter-nav-item{
-  width:100%;
-  display:flex; align-items:center; gap:10px;
-  padding:9px 10px;
-  border-radius:11px;
-  border:none;
-  background:transparent;
-  color:var(--grey);
-  font-size:0.85rem; font-weight:600;
-  text-align:left;
-  cursor:pointer;
-  transition:background 0.18s, color 0.18s;
-}
-.chapter-nav-item:hover{ background:rgba(255,255,255,0.05); color:var(--white); }
-.chapter-nav-item.is-active{ background:var(--accent); color:#04101f; }
-.chapter-nav-icon{
-  width:26px; height:26px; border-radius:7px; flex-shrink:0;
-  display:flex; align-items:center; justify-content:center;
-  color:#fff;
-}
-.chapter-nav-icon svg{ width:14px; height:14px; }
-.chapter-nav-item.is-active .chapter-nav-icon{ background:rgba(4,16,31,0.18) !important; }
-.chapter-nav-label{ flex:1; min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
-.chapter-nav-count{
-  font-size:0.68rem; font-weight:700;
-  color:var(--grey-dim);
-  background:rgba(255,255,255,0.06);
-  border-radius:20px;
-  padding:1px 7px;
-  flex-shrink:0;
-}
-.chapter-nav-item.is-active .chapter-nav-count{ background:rgba(4,16,31,0.18); color:#04101f; }
-
-/* colonne "detail" */
-.chapter-content{
-  flex:1;
-  min-width:0;
-  overflow-y:auto;
-  padding:30px 36px 40px;
-}
-.chapter-content:has(.pdf-viewer){
-  padding-top:14px;
-  padding-bottom:14px;
-  display:flex;
-  flex-direction:column;
-  overflow:hidden;
-}
-.chapter-content-head{
-  display:flex; align-items:center; gap:12px;
-  margin-bottom:6px;
-}
-.chapter-content-icon{
-  width:34px; height:34px; border-radius:10px; flex-shrink:0;
-  display:flex; align-items:center; justify-content:center;
-  color:#fff;
-}
-.chapter-content-icon svg{ width:17px; height:17px; }
-.chapter-content h4{
-  margin:0; font-size:1.28rem; font-weight:700; letter-spacing:-0.01em;
-}
-.chapter-content-lead{
-  margin:10px 0 26px;
-  font-size:0.86rem; color:var(--grey); line-height:1.6; max-width:62ch;
-}
-
-.chapter-bullets{
-  list-style:none; margin:0 0 4px; padding:0;
-  display:flex; flex-direction:column; gap:10px;
-}
-.chapter-bullets li{
-  position:relative;
-  padding-left:20px;
-  font-size:0.88rem; color:var(--white); line-height:1.55;
-  max-width:64ch;
-}
-.chapter-bullets li::before{
-  content:"";
-  position:absolute; left:0; top:8px;
-  width:6px; height:6px; border-radius:50%;
-  background:var(--accent);
-}
-
-.chapter-note{
-  margin-top:22px;
-  padding:14px 16px;
-  border-radius:14px;
-  border:1px dashed var(--line);
-  background:rgba(255,255,255,0.02);
-  font-size:0.85rem; color:var(--white); line-height:1.6;
-}
-.chapter-note p{ margin:0 0 12px; }
-.chapter-note p:last-child{ margin-bottom:0; }
-.chapter-note ul{ margin:0 0 12px; padding-left:18px; }
-.chapter-note ul:last-child{ margin-bottom:0; }
-.chapter-note li{ margin-bottom:6px; }
-.chapter-note li:last-child{ margin-bottom:0; }
-
-.chapter-doc-list{
-  list-style:none; margin:0; padding:0;
-  display:flex; flex-direction:column; gap:10px;
-}
-.chapter-doc{
-  display:flex; align-items:center; gap:13px;
-  padding:14px 16px;
-  border-radius:16px;
-  border:1px solid var(--line);
-  background:rgba(255,255,255,0.02);
-  text-decoration:none;
-  color:var(--white);
-  transition:border-color 0.2s, background 0.2s, transform 0.2s;
-}
-.chapter-doc:hover{ border-color:rgba(0,163,255,0.5); background:rgba(0,163,255,0.06); transform:translateX(2px); }
-.chapter-doc-icon{
-  width:38px; height:38px; border-radius:10px; flex-shrink:0;
-  background:rgba(0,163,255,0.12);
-  display:flex; align-items:center; justify-content:center;
-  color:var(--accent);
-}
-.chapter-doc-icon svg{ width:17px; height:17px; }
-.chapter-doc-info{ display:flex; flex-direction:column; gap:2px; min-width:0; }
-.chapter-doc-info .doc-title{ font-size:0.87rem; font-weight:700; }
-.chapter-doc-info .doc-type{ font-size:0.72rem; color:var(--grey-dim); }
-.chapter-doc-go{ margin-left:auto; color:var(--grey-dim); flex-shrink:0; }
-.chapter-doc-go svg{ width:14px; height:14px; }
-
-/* réduit à un mode "iPhone" : sidebar en rangée d'onglets en haut */
-@media (max-width:820px){
-  #chapter-overlay{ padding:0; }
-  .chapter-modal{ width:100%; height:100%; border-radius:0; }
-  .chapter-modal-main{ flex-direction:column; }
-  .chapter-sidebar{
-    width:100%; max-height:38vh;
-    border-right:none; border-bottom:1px solid var(--line);
-    padding:14px 14px 10px;
-  }
-  .chapter-sidebar-desc{ padding:0 2px 12px; }
-  .chapter-sidebar-group{ margin-bottom:0; }
-  .chapter-sidebar-group-label{ padding:0 2px 6px; }
-  .chapter-sidebar-group + .chapter-sidebar-group{ margin-top:14px; }
-  .chapter-content{ padding:24px 22px 32px; }
-}
 
 /* ============================================================
    Section secondaire (placeholder, pour donner le ton "lycée")
@@ -1333,7 +748,7 @@ h1.hero-title{
   padding:64px 0 70px;
 }
 .section-block.band.light{
-  background:linear-gradient(180deg, var(--bg) 0%, #14284A 60px, #14284A calc(100% - 60px), var(--bg) 100%);
+  background:linear-gradient(180deg, var(--bg) 0%, #1F180D 60px, #1F180D calc(100% - 60px), var(--bg) 100%);
 }
 .section-block.band .band-inner{
   max-width:1436px;
@@ -1345,848 +760,22 @@ h1.hero-title{
 
 
 
-/* ============ Annexe "Maths et Jeux" ============ */
-.annex-card-jeux{
-  border:1px solid rgba(255,255,255,0.14);
-  background:
-    linear-gradient(135deg, rgba(0,214,143,0.12), rgba(0,163,255,0.10) 50%, rgba(140,255,107,0.06)),
-    linear-gradient(165deg, var(--bg-panel-2), var(--bg-panel) 70%);
+/* Placeholders (contenu à venir) */
+.seq-thumb{ aspect-ratio:4/3; }
+.seq-thumb::before{
+  content:""; position:absolute; inset:14px 20px;
+  border-radius:14px; border:1.5px dashed rgba(255,255,255,0.14);
+  background:rgba(255,255,255,0.025);
 }
-.annex-card-jeux:hover{ border-color:rgba(0,214,143,0.6); }
-.annex-card-icon-jeux{
-  background:linear-gradient(135deg, #00D68F, #00A3FF);
-  color:#0B0F17;
-}
-#jeux-overlay{
-  position:fixed; inset:0; z-index:200;
-  display:flex; align-items:center; justify-content:center;
-  padding:24px;
-  background:rgba(4,6,12,0.72);
-  backdrop-filter:blur(8px);
-  -webkit-backdrop-filter:blur(8px);
-  opacity:0; pointer-events:none;
-  transition:opacity 0.3s;
-}
-#jeux-overlay.is-open{ opacity:1; pointer-events:auto; }
-#jeux-overlay.is-open .fs-modal{ transform:translateY(0) scale(1); opacity:1; }
-.fs-modal.jeux-modal{
-  background:
-    radial-gradient(900px 500px at 10% -10%, rgba(0,214,143,0.18), transparent 60%),
-    radial-gradient(900px 600px at 95% 110%, rgba(0,163,255,0.18), transparent 60%),
-    linear-gradient(160deg, #08170F 0%, #0B0F17 55%, #05070C 100%);
-}
-.jeux-modal .fs-header h2{
-  background:linear-gradient(90deg, #00D68F, #00A3FF, #8CFF6B);
-  -webkit-background-clip:text; background-clip:text; color:transparent;
-}
-.jeux-modal .fs-group h3{ color:#6FE3B8; }
-.jeux-modal .fs-close:hover{ border-color:#00D68F; background:rgba(0,214,143,0.16); }
-
-/* ============ Annexe "Histoire des mathématiques" ============ */
-.annex-card-hist{
-  border:1px solid rgba(255,255,255,0.14);
-  background:
-    linear-gradient(135deg, rgba(255,184,0,0.12), rgba(255,122,0,0.10) 50%, rgba(0,163,255,0.06)),
-    linear-gradient(165deg, var(--bg-panel-2), var(--bg-panel) 70%);
-}
-.annex-card-hist:hover{ border-color:rgba(255,184,0,0.6); }
-/* Illustrations des cartes d'annexe : sans cadre, débordent légèrement et se fondent dans la carte */
-.annex-illus-bleed{
-  width:calc(100% + 28px);
-  margin:auto -14px -14px;
-  overflow:visible;
-  border-radius:0;
-  box-shadow:none;
-}
-.annex-illus-bleed.has-img{ border:none; background:none; }
-.annex-illus-hist img{ object-fit:cover; }
-.annex-illus-bleed img,
-img.annex-card-img.annex-illus-bleed{
-  -webkit-mask-image:
-    linear-gradient(to right, transparent 0%, #000 16%, #000 84%, transparent 100%),
-    linear-gradient(to bottom, transparent 0%, #000 20%, #000 78%, transparent 100%);
-  -webkit-mask-composite:source-in;
-  mask-image:
-    linear-gradient(to right, transparent 0%, #000 16%, #000 84%, transparent 100%),
-    linear-gradient(to bottom, transparent 0%, #000 20%, #000 78%, transparent 100%);
-  mask-composite:intersect;
-}
-img.annex-card-img.annex-illus-bleed{ width:calc(100% + 28px); max-width:none; border-radius:0; }
-.annex-card-icon-hist{
-  background:linear-gradient(135deg, #FFB800, #FF7A00);
-  color:#0B0F17;
-}
-#hist-overlay{
-  position:fixed; inset:0; z-index:200;
-  display:flex; align-items:center; justify-content:center;
-  padding:24px;
-  background:rgba(4,6,12,0.72);
-  backdrop-filter:blur(8px);
-  -webkit-backdrop-filter:blur(8px);
-  opacity:0; pointer-events:none;
-  transition:opacity 0.3s;
-}
-#hist-overlay.is-open{ opacity:1; pointer-events:auto; }
-#hist-overlay.is-open .fs-modal{ transform:translateY(0) scale(1); opacity:1; }
-.fs-modal.hist-modal{
-  background:
-    radial-gradient(900px 500px at 10% -10%, rgba(255,184,0,0.18), transparent 60%),
-    radial-gradient(900px 600px at 95% 110%, rgba(255,122,0,0.16), transparent 60%),
-    linear-gradient(160deg, #1A1208 0%, #0B0F17 55%, #05070C 100%);
-}
-.hist-modal .fs-header h2{
-  background:linear-gradient(90deg, #FFB800, #FF7A00, #FFD54A);
-  -webkit-background-clip:text; background-clip:text; color:transparent;
-}
-.hist-modal .fs-group h3{ color:#FFC866; }
-.hist-modal .fs-close:hover{ border-color:#FFB800; background:rgba(255,184,0,0.16); }
-
-/* ============ Carte d'annexe + modale "Femmes et sciences" ============ */
-.annex-cards-duo{
-  grid-template-columns:repeat(4, minmax(0,1fr));
-  justify-content:stretch;
-}
-@media (max-width:1100px){ .annex-cards-duo{ grid-template-columns:repeat(2, minmax(0,1fr)); } }
-@media (max-width:700px){ .annex-cards-duo{ grid-template-columns:minmax(0,1fr); } }
-.annex-card-fs{
-  border:1px solid rgba(255,255,255,0.14);
-  background:
-    linear-gradient(135deg, rgba(255,61,154,0.12), rgba(140,0,255,0.10) 50%, rgba(0,163,255,0.10)),
-    linear-gradient(165deg, var(--bg-panel-2), var(--bg-panel) 70%);
-}
-.annex-card-fs:hover{ border-color:rgba(255,61,154,0.6); }
-.annex-card-icon-fs{
-  background:linear-gradient(135deg, #FF3D9A, #8C00FF);
-  color:#fff;
-}
-
-#fs-overlay{
-  position:fixed; inset:0; z-index:200;
-  display:flex; align-items:center; justify-content:center;
-  padding:24px;
-  background:rgba(4,6,12,0.72);
-  backdrop-filter:blur(8px);
-  -webkit-backdrop-filter:blur(8px);
-  opacity:0; pointer-events:none;
-  transition:opacity 0.3s;
-}
-#fs-overlay.is-open{ opacity:1; pointer-events:auto; }
-.fs-modal{
-  position:relative;
-  width:min(92vw, 860px);
-  max-height:min(86vh, 720px);
-  border-radius:28px;
-  overflow:hidden;
-  display:flex; flex-direction:column;
-  background:
-    radial-gradient(900px 500px at 10% -10%, rgba(255,61,154,0.20), transparent 60%),
-    radial-gradient(900px 600px at 95% 110%, rgba(140,0,255,0.20), transparent 60%),
-    linear-gradient(160deg, #130A22 0%, #0B0F17 55%, #05070C 100%);
-  border:1px solid rgba(255,255,255,0.10);
-  box-shadow:0 40px 100px rgba(0,0,0,0.55);
-  transform:translateY(24px) scale(0.97); opacity:0;
-  transition:transform 0.35s cubic-bezier(.2,.9,.25,1), opacity 0.3s;
-}
-#fs-overlay.is-open .fs-modal{ transform:translateY(0) scale(1); opacity:1; }
-.fs-close{
-  position:absolute; top:18px; right:18px; z-index:5;
-  width:38px; height:38px; padding:0;
-  border-radius:50%;
-  border:1px solid rgba(255,255,255,0.16);
-  background:rgba(255,255,255,0.06);
-  color:var(--white); cursor:pointer;
-  display:flex; align-items:center; justify-content:center;
-  transition:border-color 0.2s, background 0.2s;
-}
-.fs-close svg{ width:16px; height:16px; display:block; }
-.fs-close:hover{ border-color:#FF3D9A; background:rgba(255,61,154,0.16); }
-.fs-body{ padding:44px 40px 32px; overflow-y:auto; scrollbar-gutter:stable; }
-.fs-header{ text-align:center; margin-bottom:26px; }
-.fs-header h2{
-  margin:0 0 8px; font-size:1.7rem; font-weight:800;
-  background:linear-gradient(90deg, #FF3D9A, #B46BFF, #00A3FF);
-  -webkit-background-clip:text; background-clip:text; color:transparent;
-}
-.fs-header p{ margin:0 auto; max-width:580px; color:var(--grey); font-size:0.92rem; line-height:1.5; }
-.fs-group{ margin-top:24px; }
-.fs-group h3{
-  margin:0 0 10px;
-  font-size:0.72rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase;
-  color:#FF7AB8;
-}
-.fs-links{ display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:12px; }
-@media (max-width:640px){
-  .fs-body{ padding:40px 20px 24px; }
-  .fs-links{ grid-template-columns:1fr; }
-}
-.fs-link{
-  display:flex; align-items:flex-start; gap:12px;
-  padding:14px 16px;
-  border-radius:var(--radius-md);
-  border:1px solid var(--line);
+.seq-thumb img{ position:relative; }
+.res-app-empty{ cursor:default; }
+.res-app-empty .res-app-icon{
   background:rgba(255,255,255,0.03);
-  text-decoration:none; color:var(--white);
-  transition:border-color 0.25s, transform 0.25s, background 0.25s;
+  border:1.5px dashed rgba(255,255,255,0.16);
 }
-.fs-link:hover{ border-color:#FF3D9A; background:rgba(255,61,154,0.07); transform:translateY(-2px); }
-.fs-link-ico{
-  flex-shrink:0; width:36px; height:36px; border-radius:10px;
-  display:flex; align-items:center; justify-content:center;
-  background:linear-gradient(135deg, rgba(255,61,154,0.25), rgba(140,0,255,0.25));
-  color:#FFB3D6;
-}
-.fs-link-ico svg{ width:20px; height:20px; }
-.fs-link-txt{ display:flex; flex-direction:column; gap:3px; min-width:0; }
-.fs-link-title{ font-size:0.9rem; font-weight:700; line-height:1.3; }
-.fs-link-desc{ font-size:0.78rem; color:var(--grey); line-height:1.4; }
+.res-app-empty:hover .res-app-icon{ transform:none; border-color:rgba(255,255,255,0.16); }
+.res-app-empty .res-app-label{ color:var(--grey-dim); }
 
-/* Zone d'illustration d'une ressource (modale Femmes et sciences) */
-.fs-link-illus{ flex-direction:column; align-items:center; gap:12px; padding:14px; text-align:center; }
-.fs-link-illus{ width:100%; max-width:230px; justify-self:start; }
-.fs-link-illus .fs-link-title{ font-size:0.95rem; }
-.fs-illus{
-  position:relative; flex-shrink:0; width:min(100%, 190px); aspect-ratio:546/817;
-  border-radius:calc(var(--radius-md) - 4px);
-  border:1.5px dashed rgba(255,122,184,0.45);
-  background:linear-gradient(135deg, rgba(255,61,154,0.08), rgba(140,0,255,0.08));
-  overflow:hidden;
-  display:flex; align-items:center; justify-content:center;
-}
-.fs-illus img{
-  position:absolute; inset:0; width:100%; height:100%;
-  object-fit:contain; display:block;
-}
-.fs-illus.has-img{ border-style:solid; border-color:var(--line); }
-.fs-illus-ph{
-  display:flex; flex-direction:column; align-items:center; gap:6px;
-  color:#FFB3D6; font-size:0.74rem; text-align:center; padding:8px;
-}
-.fs-illus-ph svg{ width:28px; height:28px; opacity:0.85; }
-.fs-illus.has-img .fs-illus-ph{ display:none; }
-
-/* ============ Modale "Cartes à collectionner" — univers TCG ============ */
-#cartes-overlay{
-  position:fixed; inset:0;
-  z-index:200;
-  display:flex; align-items:center; justify-content:center;
-  padding:24px;
-  background:rgba(4,6,12,0.72);
-  backdrop-filter:blur(8px);
-  -webkit-backdrop-filter:blur(8px);
-  opacity:0;
-  pointer-events:none;
-  transition:opacity 0.3s;
-}
-#cartes-overlay.is-open{ opacity:1; pointer-events:auto; }
-
-.tcg-modal{
-  position:relative;
-  width:min(90vw, 920px);
-  height:min(82vh, 660px);
-  border-radius:28px;
-  overflow:hidden;
-  background:
-    radial-gradient(1200px 600px at 15% -10%, rgba(255,61,154,0.20), transparent 60%),
-    radial-gradient(1000px 700px at 90% 110%, rgba(0,163,255,0.22), transparent 60%),
-    linear-gradient(160deg, #10091E 0%, #0B0F17 55%, #05070C 100%);
-  border:1px solid rgba(255,255,255,0.10);
-  box-shadow:0 40px 100px rgba(0,0,0,0.55);
-  transform:translateY(24px) scale(0.97);
-  opacity:0;
-  transition:transform 0.35s cubic-bezier(.2,.9,.25,1), opacity 0.3s;
-  display:flex;
-  flex-direction:column;
-}
-#cartes-overlay.is-open .tcg-modal{ transform:translateY(0) scale(1); opacity:1; }
-
-.tcg-close{
-  position:absolute; top:18px; right:18px; z-index:5;
-  width:38px; height:38px;
-  border-radius:50%;
-  border:1px solid rgba(255,255,255,0.16);
-  background:rgba(255,255,255,0.06);
-  color:var(--white);
-  cursor:pointer;
-  padding:0;
-  display:flex; align-items:center; justify-content:center;
-  transition:border-color 0.2s, background 0.2s;
-}
-.tcg-close svg{ width:16px; height:16px; display:block; }
-.tcg-close:hover{ border-color:var(--accent); background:rgba(0,163,255,0.14); }
-
-.tcg-view{
-  display:none;
-  flex-direction:column;
-  height:100%;
-  padding:44px 44px 32px;
-  overflow-y:auto;
-  scrollbar-gutter:stable;
-}
-.tcg-view.is-active{ display:flex; }
-
-.tcg-header{ text-align:center; margin-bottom:8px; }
-.tcg-header h2{
-  margin:0 0 8px;
-  font-size:1.7rem;
-  font-weight:800;
-  background:linear-gradient(90deg, #FF3D9A, #FFD600, #00A3FF);
-  -webkit-background-clip:text;
-  background-clip:text;
-  color:transparent;
-}
-.tcg-header p{
-  margin:0 auto; max-width:560px;
-  color:var(--grey);
-  font-size:0.92rem;
-  line-height:1.5;
-}
-
-/* Carrousel de boosters, façon présentoir qui tourne légèrement */
-.tcg-boosters{
-  flex:1;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:36px;
-  padding:40px 10px;
-  perspective:1200px;
-  flex-wrap:wrap;
-}
-.tcg-booster{
-  position:relative;
-  width:168px;
-  height:252px;
-  border-radius:16px;
-  border:1px solid rgba(255,255,255,0.18);
-  cursor:pointer;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:flex-end;
-  padding:16px 12px;
-  text-align:center;
-  color:#fff;
-  font-weight:800;
-  font-size:0.95rem;
-  overflow:hidden;
-  transform:rotate(var(--tilt, 0deg));
-  transition:transform 0.4s cubic-bezier(.2,.9,.25,1), box-shadow 0.4s;
-  box-shadow:0 18px 40px rgba(0,0,0,0.45);
-  background-size:220% 220%;
-  animation:tcg-shine 6s ease-in-out infinite;
-  animation-delay:var(--shine-delay, 0s);
-}
-.tcg-booster:nth-child(1){ --tilt:-7deg; }
-.tcg-booster:nth-child(2){ --tilt:0deg; }
-.tcg-booster:nth-child(3){ --tilt:7deg; }
-.tcg-booster:hover{
-  transform:rotate(0deg) translateY(-10px) scale(1.05);
-  box-shadow:0 26px 60px rgba(0,0,0,0.55);
-  z-index:2;
-}
-.tcg-booster::before{
-  content:'';
-  position:absolute; inset:0;
-  background:linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(0,0,0,0.55) 100%);
-}
-.tcg-booster-has-art::before{ display:none; }
-.tcg-booster-has-art{
-  background-color:transparent;
-  background-size:contain;
-  background-repeat:no-repeat;
-  background-position:center;
-  animation:none;
-  filter:brightness(1.08) saturate(1.18) drop-shadow(0 14px 22px rgba(0,0,0,0.5));
-  border-color:transparent;
-  box-shadow:none;
-}
-.tcg-booster-icon{
-  position:absolute; top:20px; left:50%; transform:translateX(-50%);
-  width:46px; height:46px;
-  display:flex; align-items:center; justify-content:center;
-  border-radius:50%;
-  background:rgba(255,255,255,0.16);
-  border:1px solid rgba(255,255,255,0.3);
-}
-.tcg-booster-icon svg{ width:24px; height:24px; }
-.tcg-booster span{ position:relative; z-index:1; line-height:1.25; }
-.tcg-booster-mathematiciens{
-  background-image:url('images/booster-mathematiciens.png');
-  background-size:contain;
-  background-repeat:no-repeat;
-  background-position:center;
-  animation:none;
-}
-.tcg-booster-outils{
-  background-image:url('images/booster-outils.png');
-  background-size:contain;
-  background-repeat:no-repeat;
-  background-position:center;
-  animation:none;
-}
-.tcg-booster-demonstrations{
-  background-image:url('images/booster-demonstrations.png');
-  background-size:contain;
-  background-repeat:no-repeat;
-  background-position:center;
-  animation:none;
-}
-
-.tcg-cards-header{
-  display:flex; align-items:center; gap:16px;
-  margin-bottom:24px;
-}
-.tcg-back{
-  display:flex; align-items:center; gap:6px;
-  background:rgba(255,255,255,0.08);
-  border:1px solid rgba(255,255,255,0.16);
-  color:var(--white);
-  border-radius:999px;
-  padding:8px 16px 8px 12px;
-  font-size:0.85rem;
-  font-weight:700;
-  cursor:pointer;
-  transition:border-color 0.2s, background 0.2s;
-}
-.tcg-back:hover{ border-color:var(--accent); background:rgba(0,163,255,0.14); }
-.tcg-back svg{ width:16px; height:16px; }
-.tcg-cards-header h3{ margin:0; font-size:1.15rem; font-weight:800; }
-
-.tcg-cards-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fill, minmax(150px, 180px));
-  gap:18px;
-  padding-bottom:10px;
-  justify-content:start;
-}
-.tcg-card{
-  position:relative;
-  border-radius:14px;
-  padding:3px;
-  aspect-ratio:5/7;
-  cursor:default;
-  transition:transform 0.25s;
-}
-.tcg-card[data-zoom-img]{ cursor:zoom-in; }
-.tcg-card:hover{ transform:translateY(-6px) scale(1.03); }
-.tcg-card-inner{
-  position:relative;
-  height:100%;
-  border-radius:12px;
-  background:linear-gradient(165deg, #171122, #0B0F17 70%);
-  border:1px solid rgba(255,255,255,0.14);
-  overflow:hidden;
-}
-.tcg-card-art{
-  position:absolute; inset:0;
-  display:flex; align-items:center; justify-content:center;
-  font-size:2.4rem;
-  background:linear-gradient(160deg, rgba(255,255,255,0.10), rgba(255,255,255,0.02));
-  background-size:cover;
-  background-position:top center;
-  overflow:hidden;
-}
-.tcg-card-art-img{
-  position:absolute; inset:0;
-  width:100%; height:100%;
-  object-fit:cover;
-  object-position:top center;
-  display:block;
-}
-.tcg-card-body{
-  position:absolute; left:0; right:0; bottom:0;
-  padding:10px 12px 12px;
-  background:rgba(10,12,20,0.55);
-  backdrop-filter:blur(3px);
-  -webkit-backdrop-filter:blur(3px);
-}
-.tcg-card-name{ font-weight:800; font-size:0.86rem; margin:0 0 3px; color:var(--white); }
-.tcg-card-type{ font-size:0.68rem; color:var(--grey); margin:0; }
-.tcg-card-rarity{
-  position:absolute; top:8px; right:8px;
-  font-size:0.6rem; font-weight:800;
-  text-transform:uppercase; letter-spacing:0.05em;
-  padding:2px 7px; border-radius:999px;
-  color:#0B0F17;
-}
-.rarity-commune{ background:#9CA3AF; }
-.rarity-rare{ background:#4AB6FF; }
-.rarity-epique{ background:#C084FC; }
-.rarity-legendaire{ background:linear-gradient(90deg,#FFD600,#FF7A00); }
-.tcg-card.rarity-legendaire .tcg-card-inner{ border-color:#FFD600; box-shadow:0 0 18px rgba(255,214,0,0.25); }
-.tcg-card.rarity-epique .tcg-card-inner{ border-color:#C084FC; }
-.tcg-card.rarity-rare .tcg-card-inner{ border-color:#4AB6FF; }
-
-@media (max-width:640px){
-  .tcg-view{ padding:60px 20px 24px; }
-  .tcg-booster{ width:140px; height:210px; }
-}
-
-/* ============ Zoom carte plein écran avec effet tilt ============ */
-#tcg-zoom-overlay{
-  position:fixed; inset:0;
-  z-index:400;
-  display:flex; align-items:center; justify-content:center;
-  background:rgba(4,6,12,0.82);
-  backdrop-filter:blur(10px);
-  -webkit-backdrop-filter:blur(10px);
-  opacity:0;
-  pointer-events:none;
-  transition:opacity 0.25s;
-  cursor:zoom-out;
-  overflow:hidden;
-}
-#tcg-zoom-overlay.is-open{ opacity:1; pointer-events:auto; }
-
-/* Fond plein écran flouté et coloré pour les cartes épiques */
-.tcg-zoom-bg-glow{
-  position:absolute;
-  inset:0;
-  z-index:0;
-  pointer-events:none;
-  opacity:0;
-  filter:blur(120px) saturate(1.1);
-  background:
-    radial-gradient(ellipse 55% 45% at 12% 15%, rgba(43,143,224,0.5), transparent 60%),
-    radial-gradient(ellipse 55% 45% at 88% 15%, rgba(52,199,143,0.5), transparent 60%),
-    radial-gradient(ellipse 55% 45% at 12% 85%, rgba(255,210,60,0.45), transparent 60%),
-    radial-gradient(ellipse 55% 45% at 88% 85%, rgba(178,60,255,0.45), transparent 60%),
-    radial-gradient(ellipse 60% 30% at 50% 100%, rgba(255,60,92,0.4), transparent 65%);
-  transition:opacity 0.6s ease;
-}
-.tcg-zoom-bg-glow.is-epique{ opacity:0.5; }
-.tcg-zoom-stage{
-  perspective:1400px;
-  position:relative;
-  z-index:1;
-  display:inline-block;
-}
-/* Halo lumineux façon arc-en-ciel derrière les cartes légendaires, aux couleurs de leur bordure */
-.tcg-zoom-halo{
-  position:absolute;
-  top:50%; left:50%;
-  width:120%; height:120%;
-  transform:translate(-50%,-50%) scale(0.9);
-  border-radius:24px;
-  pointer-events:none;
-  z-index:1;
-  opacity:0;
-  filter:blur(38px);
-  background:conic-gradient(from 0deg,
-    #2b8fe0, #34c78f, #ffd23c, #ff7a3c, #ff3c5c, #b23cff, #2b8fe0);
-  transition:opacity 0.5s ease;
-}
-.tcg-zoom-halo.is-legendary{
-  opacity:1;
-  filter:blur(46px);
-  transform:translate(-50%,-50%) scale(1.04);
-  animation:legendHaloAppear 0.9s cubic-bezier(.2,.8,.3,1) forwards;
-}
-@keyframes legendHaloAppear{
-  0%{ transform:translate(-50%,-50%) scale(0.75); opacity:0; filter:blur(18px); }
-  100%{ transform:translate(-50%,-50%) scale(1.04); opacity:1; filter:blur(46px); }
-}
-.tcg-zoom-crop{
-  display:inline-block;
-  overflow:hidden;
-  border-radius:18px;
-  box-shadow:0 40px 90px rgba(0,0,0,0.6);
-  position:relative;
-  z-index:2;
-  transform:scale(1);
-  opacity:0;
-  transition:transform 0.3s cubic-bezier(.2,.9,.25,1), opacity 0.3s;
-  will-change:transform;
-}
-#tcg-zoom-overlay.is-open .tcg-zoom-crop{ opacity:1; }
-#tcg-zoom-img{
-  display:block;
-  height:auto;
-  width:auto;
-  max-width:min(80vw, 460px);
-  max-height:90vh;
-  transform:scale(1.035);
-  cursor:default;
-  position:relative;
-}
-@media (max-width:640px){
-  #tcg-zoom-img{ max-width:90vw; }
-}
-
-/* Effet de brillance légendaire à l'ouverture du zoom */
-.tcg-zoom-shine{
-  position:absolute;
-  inset:0;
-  border-radius:18px;
-  pointer-events:none;
-  overflow:hidden;
-  clip-path:inset(0 round 18px);
-  opacity:0;
-  z-index:2;
-}
-.tcg-zoom-shine::before{
-  content:"";
-  position:absolute;
-  top:-50%; left:0;
-  width:60px; height:200%;
-  background:linear-gradient(90deg,
-    transparent 0%,
-    rgba(255,255,255,0.85) 50%,
-    transparent 100%);
-  transform:translateX(-260px) rotate(20deg);
-  opacity:0;
-}
-.tcg-zoom-shine.is-legendary{
-  opacity:1;
-  animation:legendGlow 1.8s ease-out forwards;
-}
-.tcg-zoom-shine.is-legendary::before{
-  animation:legendSweep 1.1s cubic-bezier(.2,.7,.2,1) 0.05s forwards;
-}
-@keyframes legendSweep{
-  0%{ transform:translateX(-260px) rotate(20deg); opacity:1; }
-  95%{ transform:translateX(calc(100% + 260px)) rotate(20deg); opacity:1; }
-  100%{ transform:translateX(calc(100% + 260px)) rotate(20deg); opacity:0; }
-}
-@keyframes legendGlow{
-  0%{ opacity:1; }
-  100%{ opacity:0; }
-}
-
-/* ============ Lecteur PDF intégré (section Cours) ============ */
-.pdf-viewer{
-  margin-top:0;
-  border-radius:14px;
-  overflow:hidden;
-  border:1px solid var(--line);
-  background:rgba(255,255,255,0.02);
-  flex:1;
-  min-height:0;
-  display:flex;
-  flex-direction:column;
-}
-.pdf-viewer-bar{
-  display:flex; align-items:center; justify-content:space-between;
-  gap:12px;
-  padding:10px 14px;
-  background:rgba(255,255,255,0.04);
-  border-bottom:1px solid var(--line);
-}
-.pdf-viewer-name{
-  font-size:0.82rem; font-weight:700; color:var(--white);
-  white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
-}
-.pdf-viewer-actions{ display:flex; align-items:center; gap:8px; flex-shrink:0; }
-.pdf-viewer-download,
-.pdf-viewer-latex{
-  display:flex; align-items:center; gap:6px; flex-shrink:0;
-  font-size:0.76rem; font-weight:700; color:var(--accent);
-  text-decoration:none;
-  padding:6px 13px;
-  border-radius:999px;
-  border:1px solid rgba(0,163,255,0.35);
-  background:rgba(0,163,255,0.08);
-  transition:background 0.2s, border-color 0.2s;
-}
-.pdf-viewer-download svg,
-.pdf-viewer-latex svg{ width:14px; height:14px; }
-.pdf-viewer-download:hover,
-.pdf-viewer-latex:hover{ background:rgba(0,163,255,0.18); border-color:var(--accent); }
-.pdf-viewer-latex{ color:#8CFF6B; border-color:rgba(140,255,107,0.35); background:rgba(140,255,107,0.08); }
-.pdf-viewer-latex:hover{ background:rgba(140,255,107,0.18); border-color:#8CFF6B; }
-.pdf-viewer iframe{
-  width:100%;
-  flex:1;
-  min-height:0;
-  border:0;
-  display:block;
-  background:#fff;
-}
-
-/* Placeholder affiché quand un document n'est pas encore mis en ligne (évite le 404) */
-.pdf-viewer-placeholder{
-  display:none;
-  flex:1;
-  min-height:0;
-  position:relative;
-  background:#0b0c10;
-  overflow:hidden;
-}
-.pdf-viewer.is-missing iframe{ display:none; }
-.pdf-viewer.is-missing .pdf-viewer-placeholder{ display:flex; }
-.pdf-viewer.is-missing .pdf-viewer-download,
-.pdf-viewer.is-missing .pdf-viewer-latex{ display:none; }
-.pdf-viewer-placeholder img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  display:block;
-}
-.pdf-viewer-placeholder span{
-  position:absolute;
-  left:50%;
-  bottom:14px;
-  transform:translateX(-50%);
-  font-size:0.8rem;
-  font-weight:700;
-  color:#fff;
-  background:rgba(0,0,0,0.55);
-  padding:6px 14px;
-  border-radius:999px;
-  backdrop-filter:blur(4px);
-  white-space:nowrap;
-}
-
-/* Double lecteur PDF (Évaluation + Corrigé), avec défilement vertical global */
-.chapter-content:has(.pdf-viewer-dual){
-  padding-top:14px;
-  overflow-y:auto;
-}
-.pdf-viewer-dual{
-  display:flex;
-  flex-direction:column;
-  gap:16px;
-}
-.pdf-viewer-stacked{
-  flex:none;
-  height:56vh;
-}
-@media (max-width:640px){
-  .pdf-viewer-stacked{ height:44vh; }
-}
-
-/* Grille d'activités (plusieurs lecteurs PDF en demi-largeur / demi-hauteur) */
-.chapter-content:has(.pdf-viewer-grid){
-  padding-top:14px;
-  overflow-y:auto;
-}
-.pdf-viewer-grid{
-  display:grid;
-  grid-template-columns:1fr;
-  gap:16px;
-}
-.pdf-viewer-grid .pdf-viewer-stacked{
-  height:38vh;
-}
-/* Vidéo intégrée : format 16/9 plutôt qu'une hauteur fixe */
-.pdf-viewer-grid .pdf-viewer-video{ height:auto; }
-.pdf-viewer-video iframe{
-  flex:none;
-  width:100%;
-  height:auto;
-  aspect-ratio:16 / 9;
-  max-height:62vh;
-  background:#000;
-}
-@media (max-width:900px){
-  .pdf-viewer-grid .pdf-viewer-stacked{ height:34vh; }
-}
-/* Modale code d'accès (protection par code à 6 chiffres) */
-#pin-overlay{
-  position:fixed;
-  inset:0;
-  background:rgba(15,17,23,0.6);
-  backdrop-filter:blur(4px);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  z-index:9999;
-  opacity:0;
-  pointer-events:none;
-  transition:opacity .2s ease;
-}
-#pin-overlay.is-open{
-  opacity:1;
-  pointer-events:auto;
-}
-.pin-modal{
-  background:#fff;
-  border-radius:16px;
-  padding:28px 26px 24px;
-  width:100%;
-  max-width:320px;
-  box-shadow:0 20px 60px rgba(0,0,0,0.25);
-  text-align:center;
-  transform:translateY(8px) scale(.98);
-  transition:transform .2s ease;
-}
-#pin-overlay.is-open .pin-modal{
-  transform:translateY(0) scale(1);
-}
-.pin-modal h4{
-  margin:0 0 4px;
-  font-size:16px;
-  font-weight:700;
-  color:#111;
-}
-.pin-modal p{
-  margin:0 0 18px;
-  font-size:13px;
-  color:#666;
-}
-.pin-inputs{
-  display:flex;
-  gap:8px;
-  justify-content:center;
-  margin-bottom:14px;
-}
-.pin-inputs input{
-  width:38px;
-  height:46px;
-  text-align:center;
-  font-size:20px;
-  font-weight:700;
-  border:1.5px solid #ddd;
-  border-radius:10px;
-  outline:none;
-  transition:border-color .15s ease;
-}
-.pin-inputs input:focus{
-  border-color:#6366f1;
-}
-.pin-error{
-  color:#e11d48;
-  font-size:12.5px;
-  min-height:16px;
-  margin-bottom:10px;
-}
-.pin-actions{
-  display:flex;
-  gap:8px;
-  justify-content:center;
-}
-.pin-actions button{
-  border:none;
-  border-radius:9px;
-  padding:9px 16px;
-  font-size:13.5px;
-  font-weight:600;
-  cursor:pointer;
-}
-.pin-cancel{
-  background:#f2f2f2;
-  color:#444;
-}
-.pin-cancel:hover{ background:#e8e8e8; }
-.pin-confirm{
-  background:#6366f1;
-  color:#fff;
-}
-.pin-confirm:hover{ background:#4f52e0; }
-
-.pin-inputs.is-shake{
-  animation:pinShake .4s ease;
-}
-@keyframes pinShake{
-  0%, 100%{ transform:translateX(0); }
-  20%{ transform:translateX(-8px); }
-  40%{ transform:translateX(8px); }
-  60%{ transform:translateX(-6px); }
-  80%{ transform:translateX(6px); }
-}
-.pin-inputs.is-shake input{
-  border-color:#e11d48 !important;
-}
 
 </style>
 </head>
@@ -2206,11 +795,10 @@ img.annex-card-img.annex-illus-bleed{ width:calc(100% + 28px); max-width:none; b
   <div class="nav-center">
     <div class="nav-section-links">
       <a class="nav-seclink is-active" href="#section-progression">Progression</a>
-      <a class="nav-seclink" href="#section-transversale">Transversale</a>
-      <a class="nav-seclink" href="#section-annexes">Annexes</a>
       <a class="nav-seclink" href="#section-ressources">Ressources</a>
     </div>
   </div>
+
 
   <div class="nav-side nav-grades">
     <div class="nav-grade-dropdown">
@@ -2223,9 +811,9 @@ img.annex-card-img.annex-illus-bleed{ width:calc(100% + 28px); max-width:none; b
       </div>
     </div>
     <div class="nav-grade-dropdown">
-      <a class="nav-link nav-link-active" href="#">2nde</a>
+      <a class="nav-link" href="#">2nde</a>
       <div class="nav-grade-menu">
-        <a class="is-active" href="#">2nde</a>
+        <a href="#">2nde</a>
         <a href="https://professeurbrahim.github.io/SNT/">SNT</a>
       </div>
     </div>
@@ -2238,8 +826,9 @@ img.annex-card-img.annex-illus-bleed{ width:calc(100% + 28px); max-width:none; b
       </div>
     </div>
     <div class="nav-grade-dropdown">
-      <a class="nav-link" href="#">Term</a>
+      <a class="nav-link nav-link-active" href="#">Term</a>
       <div class="nav-grade-menu">
+        <a class="is-active" href="#">TermComp</a>
         <a href="#">Term Ens. Sci.</a>
         <a href="#">Term Spé</a>
         <a href="#">Term Techno</a>
@@ -2268,28 +857,14 @@ img.annex-card-img.annex-illus-bleed{ width:calc(100% + 28px); max-width:none; b
       </a>
     </div>
   </div>
-  <button id="docs-progress-button" class="nav-btn" title="Progression des documents">%</button>
   <button id="scrolltop-button" class="nav-btn" title="Haut de page">↑</button>
-</div>
-
-<div id="docs-progress-overlay">
-  <div id="docs-progress-panel">
-    <div class="docs-progress-head">
-      <h3>Progression des documents</h3>
-      <button id="docs-progress-close" aria-label="Fermer">✕</button>
-    </div>
-    <div class="docs-progress-body" id="docs-progress-body">
-      <div class="docs-progress-loading" id="docs-progress-loading">Vérification des documents en cours…</div>
-      <div class="docs-progress-list" id="docs-progress-list"></div>
-    </div>
-  </div>
 </div>
 
 <main id="top">
 
   <section id="hero">
     <div class="hero-inner">
-      <h1 class="hero-title">Classe de seconde</h1>
+      <h1 class="hero-title">Terminale complémentaire</h1>
       <div class="year-progress">
         <div class="year-progress-bar"><div class="year-progress-fill" id="year-progress-fill"></div></div>
         <div class="year-progress-label" id="year-progress-label">Progression de l'année scolaire</div>
@@ -2306,233 +881,99 @@ img.annex-card-img.annex-illus-bleed{ width:calc(100% + 28px); max-width:none; b
     </div>
 
     <div class="seq-track-wrap">
-
     <div class="seq-track" id="seq-track">
 
       <a class="seq-card v1" href="#" data-chapter-id="seq1">
-        <span class="seq-tag"><span class="cat-label cat-red">Nombres et calculs</span></span>
-        <h3><span class="n">01</span><span class="t">Ensembles de nombres</span></h3>
+        <span class="seq-tag"><span class="cat-label">Catégorie</span></span>
+        <h3><span class="n">01</span><span class="t">Séquence 01</span></h3>
         <div class="seq-meta">
-          <div class="seq-thumb"><img src="images/Nombres réels et intervalles.jpg" alt="Nombres réels et intervalles"></div>
+          <div class="seq-thumb"><img src="images/seq01.jpg" alt="Séquence 01" onerror="this.remove()"></div>
         </div>
         <div class="seq-visual"></div>
       </a>
 
-      <a class="seq-card v2" href="#" data-chapter-id="seq5">
-        <span class="seq-tag"><span class="cat-label">Géométrie</span></span>
-        <h3><span class="n">02</span><span class="t">Vecteurs n°1</span></h3>
+      <a class="seq-card v2" href="#" data-chapter-id="seq2">
+        <span class="seq-tag"><span class="cat-label">Catégorie</span></span>
+        <h3><span class="n">02</span><span class="t">Séquence 02</span></h3>
         <div class="seq-meta">
-          <div class="seq-thumb"><img src="images/Vecteurs (Partie 1).jpg" alt="Vecteurs (Partie 1)"></div>
+          <div class="seq-thumb"><img src="images/seq02.jpg" alt="Séquence 02" onerror="this.remove()"></div>
         </div>
         <div class="seq-visual"></div>
       </a>
 
       <a class="seq-card v3" href="#" data-chapter-id="seq3">
-        <span class="seq-tag"><span class="cat-label cat-red">Nombres et calculs</span></span>
-        <h3><span class="n">03</span><span class="t">Calcul algébrique</span></h3>
+        <span class="seq-tag"><span class="cat-label">Catégorie</span></span>
+        <h3><span class="n">03</span><span class="t">Séquence 03</span></h3>
         <div class="seq-meta">
-          <div class="seq-thumb"><img src="images/Calcul algébrique.jpg" alt="Calcul algébrique"></div>
+          <div class="seq-thumb"><img src="images/seq03.jpg" alt="Séquence 03" onerror="this.remove()"></div>
         </div>
         <div class="seq-visual"></div>
       </a>
 
-      <a class="seq-card v1" href="#" data-chapter-id="seq2">
-        <span class="seq-tag"><span class="cat-label cat-green">Fonctions</span></span>
-        <h3><span class="n">04</span><span class="t">Représentation graphique</span></h3>
+      <a class="seq-card v1" href="#" data-chapter-id="seq4">
+        <span class="seq-tag"><span class="cat-label">Catégorie</span></span>
+        <h3><span class="n">04</span><span class="t">Séquence 04</span></h3>
         <div class="seq-meta">
-          <div class="seq-thumb"><img src="images/Fonctions représentation graphique.jpg" alt="Fonctions : représentation graphique"></div>
+          <div class="seq-thumb"><img src="images/seq04.jpg" alt="Séquence 04" onerror="this.remove()"></div>
         </div>
         <div class="seq-visual"></div>
       </a>
 
-      <a class="seq-card v2" href="#" data-chapter-id="seq4">
-        <span class="seq-tag"><span class="cat-label cat-red">Nombres et calculs</span></span>
-        <h3><span class="n">05</span><span class="t">Équations</span></h3>
+      <a class="seq-card v2" href="#" data-chapter-id="seq5">
+        <span class="seq-tag"><span class="cat-label">Catégorie</span></span>
+        <h3><span class="n">05</span><span class="t">Séquence 05</span></h3>
         <div class="seq-meta">
-          <div class="seq-thumb"><img src="images/Équations et inéquations.jpg" alt="Équations"></div>
+          <div class="seq-thumb"><img src="images/seq05.jpg" alt="Séquence 05" onerror="this.remove()"></div>
         </div>
         <div class="seq-visual"></div>
       </a>
 
       <a class="seq-card v3" href="#" data-chapter-id="seq6">
-        <span class="seq-tag"><span class="cat-label cat-red">Nombres et calculs</span></span>
-        <h3><span class="n">06</span><span class="t">Arithmétique</span></h3>
+        <span class="seq-tag"><span class="cat-label">Catégorie</span></span>
+        <h3><span class="n">06</span><span class="t">Séquence 06</span></h3>
         <div class="seq-meta">
-          <div class="seq-thumb"><img src="images/Arithmétique.jpg" alt="Arithmétique"></div>
+          <div class="seq-thumb"><img src="images/seq06.jpg" alt="Séquence 06" onerror="this.remove()"></div>
         </div>
         <div class="seq-visual"></div>
       </a>
 
-      <a class="seq-card v1" href="#" data-chapter-id="seq8">
-        <span class="seq-tag"><span class="cat-label">Géométrie</span></span>
-        <h3><span class="n">07</span><span class="t">Vecteurs n°2</span></h3>
+      <a class="seq-card v1" href="#" data-chapter-id="seq7">
+        <span class="seq-tag"><span class="cat-label">Catégorie</span></span>
+        <h3><span class="n">07</span><span class="t">Séquence 07</span></h3>
         <div class="seq-meta">
-          <div class="seq-thumb"><img src="images/Vecteurs et coordonnées (Partie 1).jpg" alt="Vecteurs et coordonnées (Partie 1)"></div>
+          <div class="seq-thumb"><img src="images/seq07.jpg" alt="Séquence 07" onerror="this.remove()"></div>
         </div>
         <div class="seq-visual"></div>
       </a>
 
-      <a class="seq-card v2" href="#" data-chapter-id="seq-info">
-        <span class="seq-tag"><span class="cat-label cat-purple">Stats &amp; Probas</span></span>
-        <h3><span class="n">08</span><span class="t">Information chiffrée</span></h3>
+      <a class="seq-card v2" href="#" data-chapter-id="seq8">
+        <span class="seq-tag"><span class="cat-label">Catégorie</span></span>
+        <h3><span class="n">08</span><span class="t">Séquence 08</span></h3>
         <div class="seq-meta">
-          <div class="seq-thumb"><img src="images/Information chiffrée.jpg" alt="Information chiffrée"></div>
-        </div>
-        <div class="seq-visual"></div>
-      </a>
-
-      <a class="seq-card v3" href="#" data-chapter-id="seq4b">
-        <span class="seq-tag"><span class="cat-label cat-red">Nombres et calculs</span></span>
-        <h3><span class="n">09</span><span class="t">Inéquations</span></h3>
-        <div class="seq-meta">
-          <div class="seq-thumb"><img src="images/Inequations.jpg" alt="Inéquations"></div>
+          <div class="seq-thumb"><img src="images/seq08.jpg" alt="Séquence 08" onerror="this.remove()"></div>
         </div>
         <div class="seq-visual"></div>
       </a>
 
       <a class="seq-card v3" href="#" data-chapter-id="seq9">
-        <span class="seq-tag"><span class="cat-label cat-green">Fonctions</span></span>
-        <h3><span class="n">10</span><span class="t">Fonctions de référence</span></h3>
+        <span class="seq-tag"><span class="cat-label">Catégorie</span></span>
+        <h3><span class="n">09</span><span class="t">Séquence 09</span></h3>
         <div class="seq-meta">
-          <div class="seq-thumb"><img src="images/Fonctions de référence.jpg" alt="Fonctions de référence"></div>
+          <div class="seq-thumb"><img src="images/seq09.jpg" alt="Séquence 09" onerror="this.remove()"></div>
         </div>
         <div class="seq-visual"></div>
       </a>
 
       <a class="seq-card v1" href="#" data-chapter-id="seq10">
-        <span class="seq-tag"><span class="cat-label cat-purple">Stats &amp; Probas</span></span>
-        <h3><span class="n">11</span><span class="t">Statistiques</span></h3>
+        <span class="seq-tag"><span class="cat-label">Catégorie</span></span>
+        <h3><span class="n">10</span><span class="t">Séquence 10</span></h3>
         <div class="seq-meta">
-          <div class="seq-thumb"><img src="images/Statistiques.jpg" alt="Statistiques"></div>
-        </div>
-        <div class="seq-visual"></div>
-      </a>
-
-      <a class="seq-card v3" href="#" data-chapter-id="seq12">
-        <span class="seq-tag"><span class="cat-label cat-green">Fonctions</span></span>
-        <h3><span class="n">12</span><span class="t">Variations</span></h3>
-        <div class="seq-meta">
-          <div class="seq-thumb"><img src="images/Variations d'une fonction (Partie 2).jpg" alt="Variations d'une fonction (Partie 2)"></div>
-        </div>
-        <div class="seq-visual"></div>
-      </a>
-
-      <a class="seq-card v1" href="#" data-chapter-id="seq13">
-        <span class="seq-tag"><span class="cat-label cat-purple">Stats &amp; Probas</span></span>
-        <h3><span class="n">13</span><span class="t">Probabilités n°1</span></h3>
-        <div class="seq-meta">
-          <div class="seq-thumb"><img src="images/Probabilités (Partie 1).jpg" alt="Probabilités (Partie 1)"></div>
-        </div>
-        <div class="seq-visual"></div>
-      </a>
-
-      <a class="seq-card v2" href="#" data-chapter-id="seq14">
-        <span class="seq-tag"><span class="cat-label">Géométrie</span></span>
-        <h3><span class="n">14</span><span class="t">Droites du plan</span></h3>
-        <div class="seq-meta">
-          <div class="seq-thumb"><img src="images/Droites du plan (Partie 2).jpg" alt="Droites du plan (Partie 2)"></div>
-        </div>
-        <div class="seq-visual"></div>
-      </a>
-
-      <a class="seq-card v3" href="#" data-chapter-id="seq17">
-        <span class="seq-tag"><span class="cat-label cat-purple">Stats &amp; Probas</span></span>
-        <h3><span class="n">15</span><span class="t">Probabilités n°2</span></h3>
-        <div class="seq-meta">
-          <div class="seq-thumb"><img src="images/Probabilités (Partie 2).jpg" alt="Probabilités (Partie 2)"></div>
+          <div class="seq-thumb"><img src="images/seq10.jpg" alt="Séquence 10" onerror="this.remove()"></div>
         </div>
         <div class="seq-visual"></div>
       </a>
 
     </div>
-    </div>
-   </div>
-  </section>
-
-  <section class="section-block band light" id="section-transversale">
-   <div class="band-inner">
-    <h2>Transversale</h2>
-
-    <div class="seq-track full-width" id="transversale-track">
-
-      <a class="seq-card v1" href="#" data-chapter-id="transversale-automatismes">
-        <span class="seq-tag"><span class="cat-label cat-yellow">Transversale</span></span>
-        <h3><span class="n">01</span><span class="t">Automatismes</span></h3>
-        <div class="seq-meta">
-          <div class="seq-thumb"><img src="images/Automatismes.png" alt="Automatismes"></div>
-        </div>
-        <div class="seq-visual"></div>
-      </a>
-
-      <a class="seq-card v2" href="#" data-chapter-id="transversale-vocabulaire">
-        <span class="seq-tag"><span class="cat-label cat-brown">Transversale</span></span>
-        <h3><span class="n">02</span><span class="t">Vocabulaire ensembliste et logique</span></h3>
-        <div class="seq-meta">
-          <div class="seq-thumb"><img src="images/Vocabulaire ensembliste et logique.png" alt="Vocabulaire ensembliste et logique"></div>
-        </div>
-        <div class="seq-visual"></div>
-      </a>
-
-      <a class="seq-card v3" href="#" data-chapter-id="transversale-algo">
-        <span class="seq-tag"><span class="cat-label cat-pink">Transversale</span></span>
-        <h3><span class="n">03</span><span class="t">Algorithmique et programmation</span></h3>
-        <div class="seq-meta">
-          <div class="seq-thumb"><img src="images/Algorithmique et programmation.png" alt="Algorithmique et programmation"></div>
-        </div>
-        <div class="seq-visual"></div>
-      </a>
-
-    </div>
-   </div>
-  </section>
-
-  <section class="section-block band" id="section-annexes">
-   <div class="band-inner">
-    <h2>Annexes</h2>
-
-    <div class="annex-cards annex-cards-duo">
-      <button type="button" class="annex-card annex-card-tcg" id="open-cartes-modal">
-        <span class="annex-card-row">
-        <span class="annex-card-icon annex-card-icon-tcg">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="12" height="16" rx="2" transform="rotate(-8 9 13)"/><rect x="8" y="3" width="12" height="16" rx="2"/></svg>
-        </span>
-        <p><span class="hl">Cartes</span> — un projet de cartes à collectionner : mathématiciens, outils de l'année et démonstrations.</p>
-        </span>
-        <img class="annex-card-img annex-illus-bleed" src="images/Cartes%20annexe.webp" alt="Aperçu des cartes à collectionner : Sophie Germain, Emmy Noether, Maryam Mirzakhani, Thalès, René Descartes, Ératosthène, Al-Khwârizmî" loading="lazy">
-      </button>
-
-      <button type="button" class="annex-card annex-card-fs" id="open-fs-modal">
-        <span class="annex-card-row">
-        <span class="annex-card-icon annex-card-icon-fs">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="5"/><path d="M12 14v8M9 19h6"/></svg>
-        </span>
-        <p><span class="hl">Femmes et sciences</span> — des ressources sur l'égalité filles-garçons et la place des femmes dans les sciences.</p>
-        </span>
-        <!-- Image attendue ici : images/Annexe Femmes et sciences.webp -->
-        <span class="annex-illus annex-illus-bleed"><img src="images/Annexe%20Femmes%20et%20sciences.webp" alt="Illustration de l'annexe Femmes et sciences" loading="lazy" onload="this.parentNode.classList.add('has-img')" onerror="this.remove()"><span class="annex-illus-ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="1.8"/><path d="M21 16l-5-5-8 8"/></svg>Image à ajouter</span></span>
-      </button>
-
-      <button type="button" class="annex-card annex-card-hist" id="open-hist-modal">
-        <span class="annex-card-row">
-        <span class="annex-card-icon annex-card-icon-hist">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.5"/><path d="M12 6v6l4 2"/></svg>
-        </span>
-        <p><span class="hl">Histoire des mathématiques</span> — des repères pour découvrir l'histoire des notions du programme.</p>
-        </span>
-        <!-- Image : images/École d'Athènes - Raphaël.webp -->
-        <span class="annex-illus annex-illus-hist annex-illus-bleed"><img src="images/%C3%89cole%20d'Ath%C3%A8nes%20-%20Rapha%C3%ABl.webp" alt="L'École d'Athènes, fresque de Raphaël : philosophes et mathématiciens de l'Antiquité réunis autour de Platon et Aristote" loading="lazy" onload="this.parentNode.classList.add('has-img')" onerror="this.remove()"><span class="annex-illus-ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="1.8"/><path d="M21 16l-5-5-8 8"/></svg>Image à ajouter</span></span>
-      </button>
-
-      <button type="button" class="annex-card annex-card-jeux" id="open-jeux-modal">
-        <span class="annex-card-row">
-        <span class="annex-card-icon annex-card-icon-jeux">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="8.5" cy="8.5" r="1" fill="currentColor"/><circle cx="15.5" cy="8.5" r="1" fill="currentColor"/><circle cx="12" cy="12" r="1" fill="currentColor"/><circle cx="8.5" cy="15.5" r="1" fill="currentColor"/><circle cx="15.5" cy="15.5" r="1" fill="currentColor"/></svg>
-        </span>
-        <p><span class="hl">Maths et Jeux</span> — des jeux et des défis pour apprendre et s'entraîner en s'amusant.</p>
-        </span>
-        <!-- Image : images/Maths et Jeux - Plateau de jeux.webp -->
-        <span class="annex-illus annex-illus-bleed"><img src="images/Maths%20et%20Jeux%20-%20Plateau%20de%20jeux.webp" alt="Plateau de jeu illustré entouré de dés, de pions et de pièces de jeux de société" loading="lazy" onload="this.parentNode.classList.add('has-img')" onerror="this.remove()"><span class="annex-illus-ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="1.8"/><path d="M21 16l-5-5-8 8"/></svg>Image à ajouter</span></span>
-      </button>
     </div>
    </div>
   </section>
@@ -2542,221 +983,62 @@ img.annex-card-img.annex-illus-bleed{ width:calc(100% + 28px); max-width:none; b
     <h2>Ressources</h2>
 
     <div class="res-track-wrap">
-      <div class="gallery-nav">
-        <button id="res-prev" aria-label="Précédent"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
-        <button id="res-next" aria-label="Suivant"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></button>
-      </div>
-
     <div class="res-track" id="res-track">
 
       <div class="res-card">
-        <span class="res-tag">Manuels</span>
+        <span class="res-tag">Catégorie 1</span>
         <div class="res-apps">
-          <a class="res-app" href="https://manuel.sesamath.net/numerique/?ouvrage=ms2_2023" target="_blank" rel="noopener"><span class="res-app-icon"><img src="images/Sesamaths.png" alt="Sésamaths"></span><span class="res-app-label">Sésamaths</span></a>
-          <a class="res-app" href="https://mesmanuels.fr/demo/9782017909729" target="_blank" rel="noopener"><span class="res-app-icon"><img src="images/Déclic.png" alt="Déclic"></span><span class="res-app-label">Déclic</span></a>
-          <a class="res-app" href="https://mesmanuels.fr/demo/9782401117181" target="_blank" rel="noopener"><span class="res-app-icon"><img src="images/Maths 2de.jpg" alt="Maths 2de"></span><span class="res-app-label">Maths 2de</span></a>
-          <a class="res-app res-app-disabled" href="#" onclick="return false;"><span class="res-app-icon"><span class="res-lock-badge" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 1a5 5 0 0 0-5 5v3H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-9a2 2 0 0 0-2-2h-1V6a5 5 0 0 0-5-5zm-3 8V6a3 3 0 0 1 6 0v3z"/></svg></span><img src="images/Barbazo2026.png" alt="Barbazo 2026"></span><span class="res-app-label">Barbazo</span></a>
-          <a class="res-app" href="https://mesmanuels.fr/demo/9782278093748" target="_blank" rel="noopener"><span class="res-app-icon"><img src="images/Math'x.png" alt="Math'x"></span><span class="res-app-label">Math'x</span></a>
-          <a class="res-app" href="https://mesmanuels.fr/acces-libre/9782401049697" target="_blank" rel="noopener"><span class="res-app-icon"><img src="images/Variations.png" alt="Variations"></span><span class="res-app-label">Variations 2019</span></a>
-          <a class="res-app" href="https://www.lelivrescolaire.fr/manuels/mathematiques-2de-2019" target="_blank" rel="noopener"><span class="res-app-icon"><img src="images/LLS.png" alt="Le Livre Scolaire"></span><span class="res-app-label">Le Livre Scolaire</span></a>
+          <span class="res-app res-app-empty"><span class="res-app-icon"></span><span class="res-app-label">&nbsp;</span></span>
+          <span class="res-app res-app-empty"><span class="res-app-icon"></span><span class="res-app-label">&nbsp;</span></span>
+          <span class="res-app res-app-empty"><span class="res-app-icon"></span><span class="res-app-label">&nbsp;</span></span>
+          <span class="res-app res-app-empty"><span class="res-app-icon"></span><span class="res-app-label">&nbsp;</span></span>
+          <span class="res-app res-app-empty"><span class="res-app-icon"></span><span class="res-app-label">&nbsp;</span></span>
+          <span class="res-app res-app-empty"><span class="res-app-icon"></span><span class="res-app-label">&nbsp;</span></span>
         </div>
       </div>
 
       <div class="res-card">
-        <span class="res-tag">Eduscol</span>
+        <span class="res-tag">Catégorie 2</span>
         <div class="res-apps">
-          <a class="res-app" href="ressources/Annexe – Programme.pdf" target="_blank" rel="noopener"><span class="res-app-icon"><img src="images/Programme.png" alt="Programme"></span><span class="res-app-label">Programme</span></a>
-          <a class="res-app" href="ressources/Annexe-Automatismes.pdf" target="_blank" rel="noopener"><span class="res-app-icon"><img src="images/AutomatismesEduscol.png" alt="Automatismes"></span><span class="res-app-label">Automatismes</span></a>
-          <a class="res-app" href="ressources/Annexe-Raisonnement et démonstration.pdf" target="_blank" rel="noopener"><span class="res-app-icon"><img src="images/Raisonnement et démonstration.png" alt="Raisonnement et démonstration"></span><span class="res-app-label">Raisonnement et démonstration</span></a>
-          <a class="res-app" href="ressources/Tests Positionnement.pdf" target="_blank" rel="noopener"><span class="res-app-icon"><img src="images/Tests Positionnement.jpg" alt="Tests de positionnement"></span><span class="res-app-label">Tests de positionnement</span></a>
-          <a class="res-app" href="https://codimd.apps.education.fr/s/ACseF0laL" target="_blank" rel="noopener"><span class="res-app-icon"><img src="images/académieOrléansTours.png" alt="Changements de programme"></span><span class="res-app-label">Changements de programme</span></a>
-          <a class="res-app" href="https://codimd.apps.education.fr/s/_wrb4URtT" target="_blank" rel="noopener"><span class="res-app-icon"><img src="images/IA.png" alt="IA et devoirs maisons"></span><span class="res-app-label">IA et devoirs maisons</span></a>
-          <a class="res-app" href="https://edubase.eduscol.education.fr/" target="_blank" rel="noopener"><span class="res-app-icon" style="background:#fff;"><img src="images/Edubase.png" alt="Edubase" style="width:70%;height:70%;object-fit:contain;"></span><span class="res-app-label">Edubase</span></a>
+          <span class="res-app res-app-empty"><span class="res-app-icon"></span><span class="res-app-label">&nbsp;</span></span>
+          <span class="res-app res-app-empty"><span class="res-app-icon"></span><span class="res-app-label">&nbsp;</span></span>
+          <span class="res-app res-app-empty"><span class="res-app-icon"></span><span class="res-app-label">&nbsp;</span></span>
+          <span class="res-app res-app-empty"><span class="res-app-icon"></span><span class="res-app-label">&nbsp;</span></span>
+          <span class="res-app res-app-empty"><span class="res-app-icon"></span><span class="res-app-label">&nbsp;</span></span>
+          <span class="res-app res-app-empty"><span class="res-app-icon"></span><span class="res-app-label">&nbsp;</span></span>
         </div>
       </div>
 
       <div class="res-card">
-        <span class="res-tag">Sites ressources</span>
+        <span class="res-tag">Catégorie 3</span>
         <div class="res-apps">
-          <a class="res-app" href="https://www.problematheque-csen.fr/banque-de-probleme/" target="_blank" rel="noopener"><span class="res-app-icon"><img src="images/Problematheque.png" alt="Problematheque"></span><span class="res-app-label">Problematheque</span></a>
-          <a class="res-app" href="https://www.apmep.fr/Liste-des-brochures-de-l-APMEP" target="_blank" rel="noopener"><span class="res-app-icon"><img src="images/APMEP.png" alt="APMEP"></span><span class="res-app-label">APMEP</span></a>
-          <a class="res-app" href="https://www.univ-irem.fr/" target="_blank" rel="noopener"><span class="res-app-icon" style="background:#fff;"><img src="images/IREM.png" alt="IREM" style="width:70%;height:70%;object-fit:contain;"></span><span class="res-app-label">IREM</span></a>
-          <a class="res-app" href="https://fr.mathigon.org/" target="_blank" rel="noopener"><span class="res-app-icon"><img src="images/Formation Mathigon.jpg" alt="Mathigon"></span><span class="res-app-label">Mathigon</span></a>
-          <a class="res-app" href="https://www.cijm.org/" target="_blank" rel="noopener"><span class="res-app-icon"><img src="images/CIJM.png" alt="CIJM"></span><span class="res-app-label">CIJM</span></a>
-          <a class="res-app" href="https://maths-msf.site.ac-strasbourg.fr/index.htm" target="_blank" rel="noopener"><span class="res-app-icon"><img src="images/MSF.png" alt="Maths sans frontière"></span><span class="res-app-label">Maths sans frontière</span></a>
-          <a class="res-app" href="https://irem.univ-grenoble-alpes.fr/revues/petit-x/petit-x-365064.kjsp" target="_blank" rel="noopener"><span class="res-app-icon"><img src="images/Petit x.jpg" alt="Petit x"></span><span class="res-app-label">Petit x</span></a>
-          <a class="res-app" href="https://www2.mathkang.org/default.html" target="_blank" rel="noopener"><span class="res-app-icon"><img src="images/Kangourou.jpg" alt="Kangourou"></span><span class="res-app-label">Kangourou</span></a>
+          <span class="res-app res-app-empty"><span class="res-app-icon"></span><span class="res-app-label">&nbsp;</span></span>
+          <span class="res-app res-app-empty"><span class="res-app-icon"></span><span class="res-app-label">&nbsp;</span></span>
+          <span class="res-app res-app-empty"><span class="res-app-icon"></span><span class="res-app-label">&nbsp;</span></span>
+          <span class="res-app res-app-empty"><span class="res-app-icon"></span><span class="res-app-label">&nbsp;</span></span>
+          <span class="res-app res-app-empty"><span class="res-app-icon"></span><span class="res-app-label">&nbsp;</span></span>
+          <span class="res-app res-app-empty"><span class="res-app-icon"></span><span class="res-app-label">&nbsp;</span></span>
         </div>
       </div>
 
       <div class="res-card">
-        <span class="res-tag">Sites de cours</span>
+        <span class="res-tag">Catégorie 4</span>
         <div class="res-apps">
-          <a class="res-app" href="https://www.maths-et-tiques.fr/index.php/cours-maths/niveau-seconde" target="_blank" rel="noopener"><span class="res-app-icon"><img src="images/Maths et tiques.png" alt="Maths&tiques"></span><span class="res-app-label">Maths&tiques</span></a>
-          <a class="res-app" href="https://www.coquillagesetpoincare.fr/seconde-generale.html" target="_blank" rel="noopener"><span class="res-app-icon"><img src="images/coquillage et poincaré.png" alt="Coquillages & Poincaré"></span><span class="res-app-label">Coquillages & Poincaré</span></a>
-          <a class="res-app" href="https://fiches-maths.com/seconde" target="_blank" rel="noopener"><span class="res-app-icon"><img src="images/Fiches Maths.png" alt="Fiches Maths"></span><span class="res-app-label">Fiches Maths</span></a>
-          <a class="res-app" href="https://colasbd.github.io/index?fbclid=IwcGRvZgVleHRuA2FlbQIxMABicmlkETFVYnVUbWJPV0c3aEhGYUZoc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHrvryh1qoUv46SzAycConxYGb2zVN_AJV0OzVG0pZPb0wWtF_hhRFX3C23S9_aem_hZV2uf7wMX8LaaBZNSTKVw" target="_blank" rel="noopener"><span class="res-app-icon"><img src="images/ColasBD.jpg" alt="ColasBD"></span><span class="res-app-label">ColasBD</span></a>
-          <a class="res-app" href="https://jaicompris.com/lycee/math/seconde-math.php" target="_blank" rel="noopener"><span class="res-app-icon"><img src="images/jaicompris.jpg" alt="jaicompris"></span><span class="res-app-label">jaicompris</span></a>
-          <a class="res-app" href="https://www.mathoutils.fr/cours-et-exercices/cours-et-exercices-2de-generale/" target="_blank" rel="noopener"><span class="res-app-icon"><img src="images/Mathoutils.png" alt="Mathoutils"></span><span class="res-app-label">Mathoutils</span></a>
-        </div>
-      </div>
-
-      <div class="res-card" id="cbpm-card">
-        <span class="res-tag">CBPM</span>
-        <div class="res-apps">
-          <a class="res-app res-app-locked" href="ressources/Des maths ensemble et pour chacun.pdf" target="_blank" rel="noopener"><span class="res-app-icon"><img src="images/Des maths ensemble et pour chacun.png" alt="Des maths ensemble..."></span><span class="res-app-label">Des maths ensemble...</span></a>
-          <a class="res-app res-app-locked" href="https://nuage02.apps.education.fr/index.php/s/7eHWi8wDq4WAATF?dir=/2nde%20Cl%C3%A9mence%202025-2026" target="_blank" rel="noopener"><span class="res-app-icon"><img src="images/logoCBPM.jpeg" alt="Clémence Scolari"></span><span class="res-app-label">Clémence Scolari</span></a>
-          <a class="res-app res-app-locked" href="ressources/Ibou Madrista.pdf" target="_blank" rel="noopener"><span class="res-app-icon"><img src="images/Ibou Madrista.png" alt="Ibou Madrista"></span><span class="res-app-label">Dieng</span></a>
-          <a class="res-app res-app-locked" href="ressources/Cdv_seconde.pdf" target="_blank" rel="noopener"><span class="res-app-icon"><img src="images/Cdv_seconde.jpg" alt="Cahier de vacances"></span><span class="res-app-label">Cahier de vacances</span></a>
-          <a class="res-app" href="https://digipad.app/p/704384/446ba941287f2?fbclid=IwcGRvZgVleHRuA2FlbQIxMABicmlkETFVYnVUbWJPV0c3aEhGYUZoc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHh5ps3WU2xra0MYQ3_-1orP8zG1jmUHPj4Fk4AET262oeC3kv8v-p-kJhzlA_aem_oKCDu9jPt5I5smJfcRcTSg" target="_blank" rel="noopener"><span class="res-app-icon"><img src="images/Classe puzzle.png" alt="Classe puzzle"></span><span class="res-app-label">Classe puzzle</span></a>
-          <a class="res-app" href="https://view.genially.com/64391d13c955200012d90ae9" target="_blank" rel="noopener"><span class="res-app-icon"><img src="images/Formation Mathigon.jpg" alt="Formation Mathigon"></span><span class="res-app-label">Formation Mathigon</span></a>
-        </div>
-        <div class="res-locked-overlay" id="cbpm-locked-overlay">
-          <p class="res-locked-message">L'auteur/e de ce document n'a pas donné son accord pour diffusé publiquement ce document. Rejoignez le groupe facebook "Le coin boulot des profs de mathématiques" pour le retrouver.</p>
-        </div>
-      </div>
-
-      <div class="res-card">
-        <span class="res-tag">Automatismes</span>
-        <div class="res-apps">
-          <a class="res-app" href="https://coopmaths.fr/alea/" target="_blank" rel="noopener"><span class="res-app-icon"><img src="images/Mathaléa.jpg" alt="Mathaléa"></span><span class="res-app-label">Mathaléa</span></a>
-          <a class="res-app" href="https://mathsmentales.net/" target="_blank" rel="noopener"><span class="res-app-icon"><img src="images/MathsMentales.jpg" alt="MathsMentales"></span><span class="res-app-label">MathsMentales</span></a>
-          <a class="res-app" href="https://maths-au-quotidien.fr/automaths/#/notions/2de" target="_blank" rel="noopener"><span class="res-app-icon"><img src="images/Maths au quotidien.png" alt="Maths au quotidien"></span><span class="res-app-label">Maths au quotidien</span></a>
-          <a class="res-app" href="ressources/cahier_automatismes_2nde.pdf" target="_blank" rel="noopener"><span class="res-app-icon"><img src="images/cahier_automatismes_2nde.png" alt="Livret Coopmaths"></span><span class="res-app-label">Livret Coopmaths</span></a>
-        </div>
-      </div>
-
-      <div class="res-card">
-        <span class="res-tag">Outils</span>
-        <div class="res-apps">
-          <a class="res-app" href="https://www.geogebra.org/" target="_blank" rel="noopener"><span class="res-app-icon"><img src="images/Geogebra.png" alt="Geogebra"></span><span class="res-app-label">Geogebra</span></a>
-          <a class="res-app" href="https://ladigitale.dev/" target="_blank" rel="noopener"><span class="res-app-icon"><img src="images/digitale.png" alt="La digitale"></span><span class="res-app-label">La digitale</span></a>
-          <a class="res-app" href="https://learningapps.org/index.php?category=2&amp;s=&amp;stufeStart=3&amp;stufeEnd=3" target="_blank" rel="noopener"><span class="res-app-icon"><img src="images/learningapps.jpg" alt="learningapps"></span><span class="res-app-label">learningapps</span></a>
-          <a class="res-app" href="https://eduscol.education.gouv.fr/6849/jouons-avec-des-applications-pour-faire-des-maths?utm_source=chatgpt.com" target="_blank" rel="noopener"><span class="res-app-icon"><img src="images/Jeux Eduscol.jpg" alt="Jeux Eduscol"></span><span class="res-app-label">Jeux Eduscol</span></a>
-          <a class="res-app" href="https://www.maths-et-tiques.fr/index.php/outils-pour-le-prof/outils-pour-le-lycee" target="_blank" rel="noopener"><span class="res-app-icon" style="background:#fff;"><img src="images/Maths et tiques.png" alt="Animations Maths&tiques"></span><span class="res-app-label">Animations Maths&tiques</span></a>
-          <a class="res-app" href="https://www.wooclap.com/fr/" target="_blank" rel="noopener"><span class="res-app-icon"><img src="images/Wooclap.png" alt="Wooclap"></span><span class="res-app-label">Wooclap</span></a>
-          <a class="res-app" href="https://get.plickers.com/" target="_blank" rel="noopener"><span class="res-app-icon"><img src="images/Plickers.jpg" alt="Plickers"></span><span class="res-app-label">Plickers</span></a>
+          <span class="res-app res-app-empty"><span class="res-app-icon"></span><span class="res-app-label">&nbsp;</span></span>
+          <span class="res-app res-app-empty"><span class="res-app-icon"></span><span class="res-app-label">&nbsp;</span></span>
+          <span class="res-app res-app-empty"><span class="res-app-icon"></span><span class="res-app-label">&nbsp;</span></span>
+          <span class="res-app res-app-empty"><span class="res-app-icon"></span><span class="res-app-label">&nbsp;</span></span>
+          <span class="res-app res-app-empty"><span class="res-app-icon"></span><span class="res-app-label">&nbsp;</span></span>
+          <span class="res-app res-app-empty"><span class="res-app-icon"></span><span class="res-app-label">&nbsp;</span></span>
         </div>
       </div>
 
     </div>
-
-      <div class="res-scrollbar" id="res-scrollbar">
-        <div class="res-scrollbar-thumb" id="res-scrollbar-thumb"></div>
-      </div>
     </div>
    </div>
   </section>
 
 </main>
-
-<div id="chapter-overlay" aria-hidden="true">
-  <div class="chapter-modal" role="dialog" aria-modal="true" aria-labelledby="chapter-modal-title">
-
-    <div class="chapter-modal-titlebar">
-      <button class="chapter-modal-close" id="chapter-modal-close" aria-label="Fermer">✕</button>
-      <div class="chapter-modal-titlebar-info">
-        <span class="n" id="chapter-modal-n">01</span>
-        <span id="chapter-modal-title">Titre du chapitre</span>
-        <span class="sep">·</span>
-        <span class="cat" id="chapter-modal-cat">Algèbre</span>
-      </div>
-    </div>
-
-    <div class="chapter-modal-main">
-      <nav class="chapter-sidebar" id="chapter-sidebar">
-        <!-- groupes de navigation générés en JS -->
-      </nav>
-      <div class="chapter-content" id="chapter-content">
-        <!-- contenu du panneau sélectionné, généré en JS -->
-      </div>
-    </div>
-
-  </div>
-</div>
-
-<div id="cartes-overlay" aria-hidden="true">
-  <div class="tcg-modal" role="dialog" aria-modal="true" aria-labelledby="cartes-modal-title">
-    <button class="tcg-close" id="cartes-modal-close" aria-label="Fermer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
-
-    <div class="tcg-view tcg-view-boosters is-active" id="tcg-view-boosters">
-      <div class="tcg-header">
-        <h2 id="cartes-modal-title">Collection de cartes</h2>
-        <p>Un projet de cartes à collectionner : mathématiciens et mathématiciennes, outils de l'année, démonstrations à connaître. Choisis un booster pour l'ouvrir.</p>
-      </div>
-      <div class="tcg-boosters" id="tcg-boosters"><!-- boosters générés en JS --></div>
-    </div>
-
-    <div class="tcg-view tcg-view-cards" id="tcg-view-cards">
-      <div class="tcg-cards-header">
-        <button class="tcg-back" id="tcg-back-btn">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
-          Boosters
-        </button>
-        <h3 id="tcg-cards-title">Booster</h3>
-      </div>
-      <div class="tcg-cards-grid" id="tcg-cards-grid"><!-- cartes générées en JS --></div>
-    </div>
-  </div>
-</div>
-
-<div id="fs-overlay" aria-hidden="true">
-  <div class="fs-modal" role="dialog" aria-modal="true" aria-labelledby="fs-modal-title">
-    <button class="fs-close" id="fs-modal-close" aria-label="Fermer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
-    <div class="fs-body">
-      <div class="fs-header">
-        <h2 id="fs-modal-title">Femmes et sciences</h2>
-      </div>
-      <div class="fs-group">
-        <h3>Exercices de sensibilisation</h3>
-        <div class="fs-links">
-          <a class="fs-link fs-link-illus" href="ressources/Livret EFG Maths.pdf" target="_blank" rel="noopener"><span class="fs-illus" id="fs-illus-efg"><!-- Pour illustrer le livret : image attendue ici : images/Livret EFG Maths.png --><img src="images/Livret%20EFG%20Maths.png" alt="Aperçu du Livret EFG Maths" loading="lazy" onload="this.parentNode.classList.add('has-img')" onerror="this.remove()"><span class="fs-illus-ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="1.8"/><path d="M21 16l-5-5-8 8"/></svg>Image à ajouter</span></span><span class="fs-link-title">Livret EFG Maths</span></a>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div id="hist-overlay" aria-hidden="true">
-  <div class="fs-modal hist-modal" role="dialog" aria-modal="true" aria-labelledby="hist-modal-title">
-    <button class="fs-close" id="hist-modal-close" aria-label="Fermer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
-    <div class="fs-body">
-      <div class="fs-header">
-        <h2 id="hist-modal-title">Histoire des mathématiques</h2>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div id="jeux-overlay" aria-hidden="true">
-  <div class="fs-modal jeux-modal" role="dialog" aria-modal="true" aria-labelledby="jeux-modal-title">
-    <button class="fs-close" id="jeux-modal-close" aria-label="Fermer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
-    <div class="fs-body">
-      <div class="fs-header">
-        <h2 id="jeux-modal-title">Maths et Jeux</h2>
-      </div>
-      <div class="fs-group">
-        <h3>Sites ressources</h3>
-        <div class="fs-links">
-          <a class="fs-link" href="https://jeux2maths.fr/" target="_blank" rel="noopener"><span class="fs-link-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg></span><span class="fs-link-txt"><span class="fs-link-title">Jeux2Maths</span></span></a>
-          <a class="fs-link" href="https://cache.media.education.gouv.fr/file/Maths_par_le_jeu/08/5/01bis-RA16_C3_C4_MATH_math_jeu_annexe_tableau_640085.pdf" target="_blank" rel="noopener"><span class="fs-link-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></svg></span><span class="fs-link-txt"><span class="fs-link-title">Maths par le jeu (tableau en annexe)</span></span></a>
-          <a class="fs-link" href="https://eduscol.education.gouv.fr/6849/jouons-avec-des-applications-pour-faire-des-maths" target="_blank" rel="noopener"><span class="fs-link-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg></span><span class="fs-link-txt"><span class="fs-link-title">Jouons avec des applications pour faire des maths (Eduscol)</span></span></a>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div id="tcg-zoom-overlay" aria-hidden="true">
-  <div class="tcg-zoom-bg-glow" id="tcg-zoom-bg-glow"></div>
-  <div class="tcg-zoom-stage" id="tcg-zoom-stage">
-    <div class="tcg-zoom-halo" id="tcg-zoom-halo"></div>
-    <div class="tcg-zoom-crop">
-      <img id="tcg-zoom-img" src="" alt="">
-    </div>
-    <div class="tcg-zoom-shine" id="tcg-zoom-shine"></div>
-  </div>
-</div>
 
 <script>
   // Masquer la navbar au scroll vers le bas
@@ -2822,1322 +1104,6 @@ img.annex-card-img.annex-illus-bleed{ width:calc(100% + 28px); max-width:none; b
     label.textContent = `Année scolaire ${startYear}-${startYear + 1} · ${percentTronque.toFixed(1)}% écoulés`;
   })();
 
-  // Barre de défilement personnalisée sous un carrousel
-  function initCarouselScrollbar(trackEl, barId, thumbId){
-    const bar = document.getElementById(barId);
-    const thumb = document.getElementById(thumbId);
-    if (!bar || !thumb) return;
-
-    function updateThumb(){
-      const trackWidth = trackEl.scrollWidth;
-      const visibleWidth = trackEl.clientWidth;
-      const barWidth = bar.clientWidth;
-      if (trackWidth <= visibleWidth){ bar.style.display = 'none'; return; }
-      bar.style.display = 'block';
-      const thumbWidth = Math.max(40, (visibleWidth / trackWidth) * barWidth);
-      const maxThumbLeft = barWidth - thumbWidth;
-      const maxScroll = trackWidth - visibleWidth;
-      const ratio = maxScroll > 0 ? trackEl.scrollLeft / maxScroll : 0;
-      thumb.style.width = thumbWidth + 'px';
-      thumb.style.left = (ratio * maxThumbLeft) + 'px';
-    }
-
-    trackEl.addEventListener('scroll', updateThumb);
-    window.addEventListener('resize', updateThumb);
-    updateThumb();
-
-    let dragging = false, dragStartX = 0, dragStartLeft = 0;
-
-    function scrollFromThumbLeft(thumbLeft){
-      const barWidth = bar.clientWidth;
-      const thumbWidth = thumb.offsetWidth;
-      const maxThumbLeft = barWidth - thumbWidth;
-      const maxScroll = trackEl.scrollWidth - trackEl.clientWidth;
-      const ratio = maxThumbLeft > 0 ? thumbLeft / maxThumbLeft : 0;
-      trackEl.scrollLeft = ratio * maxScroll;
-    }
-
-    thumb.addEventListener('mousedown', (e) => {
-      dragging = true;
-      thumb.classList.add('dragging');
-      dragStartX = e.clientX;
-      dragStartLeft = thumb.offsetLeft;
-      e.preventDefault();
-    });
-    window.addEventListener('mousemove', (e) => {
-      if (!dragging) return;
-      const barWidth = bar.clientWidth;
-      const thumbWidth = thumb.offsetWidth;
-      let newLeft = dragStartLeft + (e.clientX - dragStartX);
-      newLeft = Math.max(0, Math.min(barWidth - thumbWidth, newLeft));
-      scrollFromThumbLeft(newLeft);
-    });
-    window.addEventListener('mouseup', () => {
-      if (!dragging) return;
-      dragging = false;
-      thumb.classList.remove('dragging');
-    });
-
-    bar.addEventListener('click', (e) => {
-      if (e.target === thumb) return;
-      const barRect = bar.getBoundingClientRect();
-      const clickX = e.clientX - barRect.left;
-      scrollFromThumbLeft(clickX - thumb.offsetWidth / 2);
-    });
-
-    // Support tactile
-    thumb.addEventListener('touchstart', (e) => {
-      dragging = true;
-      dragStartX = e.touches[0].clientX;
-      dragStartLeft = thumb.offsetLeft;
-    }, { passive:true });
-    window.addEventListener('touchmove', (e) => {
-      if (!dragging) return;
-      const barWidth = bar.clientWidth;
-      const thumbWidth = thumb.offsetWidth;
-      let newLeft = dragStartLeft + (e.touches[0].clientX - dragStartX);
-      newLeft = Math.max(0, Math.min(barWidth - thumbWidth, newLeft));
-      scrollFromThumbLeft(newLeft);
-    }, { passive:true });
-    window.addEventListener('touchend', () => { dragging = false; });
-  }
-
-
-  const resTrack = document.getElementById('res-track');
-  const resCardWidth = () => resTrack.querySelector('.res-card').getBoundingClientRect().width + 20;
-  document.getElementById('res-next').addEventListener('click', () => resTrack.scrollBy({ left: resCardWidth(), behavior: 'smooth' }));
-  document.getElementById('res-prev').addEventListener('click', () => resTrack.scrollBy({ left: -resCardWidth(), behavior: 'smooth' }));
-  initCarouselScrollbar(resTrack, 'res-scrollbar', 'res-scrollbar-thumb');
-
-  // Modale "fiche de chapitre" — vue maître-détail façon app iPad
-  (function () {
-    const overlay = document.getElementById('chapter-overlay');
-    const modalN = document.getElementById('chapter-modal-n');
-    const modalCat = document.getElementById('chapter-modal-cat');
-    const modalTitle = document.getElementById('chapter-modal-title');
-    const sidebar = document.getElementById('chapter-sidebar');
-    const content = document.getElementById('chapter-content');
-    const closeBtn = document.getElementById('chapter-modal-close');
-
-    const icoDoc   = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>';
-    const icoGo    = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
-    const icoList  = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg>';
-    const icoTarget= '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="0.6" fill="currentColor"/></svg>';
-    const icoBook  = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>';
-    const icoBolt  = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2 3 14h8l-1 8 10-12h-8l1-8z"/></svg>';
-    const icoFlask = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 2h6M10 2v6.2L4.6 18a2 2 0 0 0 1.8 3h11.2a2 2 0 0 0 1.8-3L14 8.2V2"/></svg>';
-    const icoPencil= '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 20 8.5-8.5a2.1 2.1 0 0 0-3-3L9 17v3h3z"/><path d="M3 21h6"/></svg>';
-    const icoCheck = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11.5 11.2 14 15 8.5"/><rect x="4" y="3" width="16" height="18" rx="2.5"/></svg>';
-    const icoSigma = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 4H6l6 8-6 8h12"/></svg>';
-    const icoCompass="<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><circle cx=\"12\" cy=\"12\" r=\"9.5\"/><path d=\"m14.5 9.5-2 5-3 1 2-5z\"/></svg>";
-    const icoChat  = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a8 8 0 1 1-3.4-6.5"/><path d="M21 3v6h-6"/></svg>';
-    const icoChat2 = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v12H8l-4 4z"/></svg>';
-
-    // Palette de teintes pour les icônes, dérivée de l\'accent du site
-    const tint = (hex) => hex;
-    const tints = {
-      blue:  '#00A3FF',
-      cyan:  '#2FC7E0',
-      indigo:'#5B7CFF',
-      teal:  '#1FB88F',
-      amber: '#E0A72F',
-      violet:'#8A6BFF',
-      slate: '#6E7C99'
-    };
-
-    // Structure dédiée pour la carte "Automatismes" : catégories du programme + liens par automatisme
-    const automatismesData = {
-      commentaires: 'Nouveauté structurelle du programme 2026. Objectifs doubles : préparer à court terme l\'épreuve anticipée de première, et développer à long terme l\'esprit critique par une meilleure maîtrise des nombres, du calcul et des représentations graphiques. À travailler de façon progressive dès la 2de, sans se limiter au format QCM. Trois contenus sont à décaler en partie vers la 1ère selon la progression de l\'équipe pendant les années de transition (26-27-28) : les identités remarquables, la résolution des inéquations, la comparaison de distributions par boîtes à moustaches.',
-      categories: [
-        {
-          key: 'calcul', label: 'Calcul numérique et algébrique', icon: 'icoBolt', color: 'amber',
-          items: [
-            { title: 'Comparer deux nombres (différence, quotient)', href: '#' },
-            { title: 'Opérations et comparaisons de fractions simples', href: '#' },
-            { title: 'Opérations sur les puissances', href: '#' },
-            { title: 'Passer d\'une écriture à une autre (décimale, fractionnaire, pourcentage)', href: '#' },
-            { title: 'Estimer un ordre de grandeur', href: '#' },
-            { title: 'Vraisemblance et cohérence d\'un résultat', href: '#' },
-            { title: 'Conversions d\'unités', href: '#' },
-            { title: 'Calcul littéral élémentaire', href: '#' },
-            { title: 'Développer, factoriser, réduire une expression', href: '#' },
-            { title: 'Résoudre une équation ou une inéquation simple', href: '#' },
-            { title: 'Isoler une variable dans une égalité', href: '#' },
-            { title: 'Application numérique d\'une formule', href: '#' },
-          ]
-        },
-        {
-          key: 'proportions', label: 'Proportions et pourcentages', icon: 'icoTarget', color: 'indigo',
-          items: [
-            { title: 'Calculer, appliquer, exprimer une proportion', href: '#' },
-            { title: 'Retrouver une partie connaissant le tout, ou l\'inverse', href: '#' },
-          ]
-        },
-        {
-          key: 'evolutions', label: 'Évolutions et variations', icon: 'icoCompass', color: 'slate',
-          items: [
-            { title: 'Formulation additive vers formulation multiplicative', href: '#' },
-          ]
-        },
-        {
-          key: 'fonctions', label: 'Fonctions et représentations', icon: 'icoSigma', color: 'teal',
-          items: [
-            { title: 'Déterminer graphiquement images et antécédents', href: '#' },
-            { title: 'Exploiter une équation de courbe', href: '#' },
-            { title: 'Reconnaître fonction linéaire, fonction affine', href: '#' },
-          ]
-        },
-        {
-          key: 'geometrie', label: 'Géométrie', icon: 'icoCheck', color: 'cyan',
-          items: [
-            { title: 'Repérer un point sur une droite graduée', href: '#' },
-            { title: 'Lire et placer un point dans un repère orthogonal', href: '#' },
-            { title: 'Calculer périmètres, aires et volumes', href: '#' },
-            { title: 'Théorème de Pythagore', href: '#' },
-            { title: 'Théorème de Thalès', href: '#' },
-            { title: 'Trigonométrie dans le triangle rectangle', href: '#' },
-          ]
-        },
-        {
-          key: 'statistiques', label: 'Statistiques', icon: 'icoBook', color: 'blue',
-          items: [
-            { title: 'Lire et commenter des graphiques usuels', href: '#' },
-            { title: 'Calculer et interpréter moyenne, médiane, quartiles', href: '#' },
-            { title: 'Comparer des distributions à l\'aide de boîtes à moustaches', href: '#' },
-          ]
-        },
-        {
-          key: 'probabilites', label: 'Probabilités', icon: 'icoFlask', color: 'violet',
-          items: [
-            { title: 'Une probabilité est un nombre entre 0 et 1', href: '#' },
-            { title: 'Calculer la probabilité de l\'événement contraire', href: '#' },
-            { title: 'Probabilité d\'un événement comme somme des issues', href: '#' },
-            { title: 'Utiliser P(A) = Card(A) / Card(Ω) en équiprobabilité', href: '#' },
-          ]
-        },
-      ]
-    };
-
-    // Contenu spécifique tiré du programme officiel 2026, pour certains chapitres identifiés par data-chapter-id
-    const chapterOverrides = {
-      'seq1': {
-        coursPdf: 'cours/Nombres reels et intervalles.pdf',
-        coursLatex: 'https://fr.overleaf.com/read/tvwwfwvrksvv#84aa50',
-        evaluations: [
-          { pdf:'Evaluations/Chapitre 1 :  Ensembles de nombres/Nombres réels A.pdf', label:'Nombres réels - Évaluation A', latex:'https://fr.overleaf.com/project/675aa41b9c1cefb6853ae41c/share#8fec722490b5d78c5a1deb7ddd4c9fd00b210caad82bbc63' },
-          { pdf:'Evaluations/Chapitre 1 :  Ensembles de nombres/Nombres réels B.pdf', label:'Nombres réels - Évaluation B', latex:'https://fr.overleaf.com/project/675ac5194ca4cae145b3ebb5/share#5b9844bfc7fa6eaa47651b9a724f68f12fdf58b07273f586' },
-          { pdf:'Evaluations/Chapitre 1 :  Ensembles de nombres/Ensembles de nombres - Evaluation diagnostique.pdf', label:'Ensembles de nombres - Évaluation diagnostique', latex:'https://fr.overleaf.com/project/675737aecda2c2a7d3351f44/share#07877adbfe9645adad2d3e131a96fbf04ec450454b5d1853' },
-          { pdf:'Evaluations/Chapitre 1 :  Ensembles de nombres/Intervalles A.pdf', label:'Intervalles - Évaluation A', latex:'https://fr.overleaf.com/project/67601b1d6c6f8bbb4c0109c0/share#6a2a791d60c8429f9f719d3d5ea12b125aef317e680e7967' },
-          { pdf:'Evaluations/Chapitre 1 :  Ensembles de nombres/Intervalles B.pdf', label:'Intervalles - Évaluation B', latex:'https://fr.overleaf.com/project/6760840c1ab747ebfa6ba27d/share#2328228d60abe64721cfd9cf456970b3bbfc99bf7ffd1829' }
-        ],
-        exercicePdf: 'exercices/Nombres reels et intervalles - Exercices.pdf',
-        exerciceCorrectionPdf: 'exercices/Nombres reels et intervalles - Correction.pdf',
-        activites: [
-          { pdf:'activites/Nombres reels et intervalles - Activite 1.pdf', label:'Nombres reels et intervalles - Activité 1' },
-          { pdf:'activites/Nombres reels et intervalles - Activite 2.pdf', label:'Nombres reels et intervalles - Activité 2' },
-          { video:'https://www.arte.tv/player/v5/index.php?json_url=https%3A%2F%2Fapi.arte.tv%2Fapi%2Fplayer%2Fv2%2Fconfig%2Ffr%2F097454-009-A&lang=fr_FR',
-            href:'https://www.arte.tv/fr/videos/097454-009-A/voyages-au-pays-des-maths/',
-            label:'Activité 3 - Voyages au pays des maths (ARTE)' }
-        ],
-        contenu: {
-          lead: 'Ensembles de nombres, droite numérique et intervalles de ℝ.',
-          items: [
-            'Ensemble ℚ des nombres rationnels. Nombres irrationnels ; exemples fournis par la géométrie, par exemple √2 et π.',
-            'Ensemble 𝔻 des nombres décimaux. Encadrement décimal d\'un nombre réel à 10⁻ⁿ près.',
-            'Ensemble ℝ des nombres réels, droite numérique.',
-            'Intervalles de ℝ. Représentation graphique, notations du type [a, +∞[, ] –∞, a], [a, b], etc.',
-            'Notation en valeur absolue |a| pour la distance de a à 0. Distance entre deux nombres réels.',
-            'Inéquation du type |x – a| ⩽ r. Représentation graphique des solutions, intervalle [a – r, a + r].'
-          ]
-        },
-        competences: {
-          lead: '',
-          items: [
-            'Lire l\'abscisse d\'un nombre réel sur une droite graduée et placer un nombre réel d\'abscisse donnée.',
-            'Donner un encadrement, d\'amplitude donnée, d\'un nombre réel par des décimaux.',
-            'Dans le cadre de la résolution de problèmes, arrondir en donnant le nombre de chiffres significatifs adapté à la situation.',
-            'Représenter un intervalle de la droite numérique ; déterminer si un nombre réel appartient à un intervalle donné.'
-          ]
-        },
-        demonstrations: [
-          'Le nombre rationnel 1/3 n\'est pas décimal.',
-          'Le nombre réel √2 est irrationnel.'
-        ],
-        prolongements: [
-          'Développement décimal illimité d\'un nombre réel.',
-          'Observation, sur des exemples, de la périodicité du développement décimal de nombres rationnels.',
-          'Exemple d\'algorithme : encadrement de √2 par balayage (recherche d\'un encadrement décimal d\'amplitude donnée).'
-        ],
-        commentaires: '<p>La valeur absolue d\'un nombre est maintenant définie en classe de 5e dans le nouveau programme de collège, mais on ne va pas au-delà de la définition. En 2de on ne va pas au-delà de la caractérisation d\'un intervalle de centre a. En revanche, la fonction valeur absolue est étudiée en tant que telle et intègre la liste des fonctions de référence (voir section Fonctions).</p><p>La valeur absolue d\'un nombre n\'aura pas été vue au collège : il faudra la définir en Seconde.</p><p>Les élèves n\'auront pas résolu les inéquations au collège : le travail sur les inéquations (dont l\'écriture des solutions utilisant des intervalles, en s\'appuyant sur la représentation sur la droite graduée) reste à mener en Seconde.</p><p>Même dans les nouveaux programmes, les intervalles ne seront pas abordés au collège.</p>'
-      },
-      'seq2': {
-        coursPdf: 'cours/Fonctions représentation graphique.pdf',
-        evalPdf: 'evaluations/Fonctions représentation graphique - Evaluation.pdf',
-        evalCorrectionPdf: 'evaluations/Fonctions représentation graphique - Correction.pdf',
-        exercicePdf: 'exercices/Fonctions représentation graphique - Exercices.pdf',
-        exerciceCorrectionPdf: 'exercices/Fonctions représentation graphique - Correction.pdf',
-        activites: [
-          { pdf:'activites/Fonctions représentation graphique - Activite 1.pdf', label:'Fonctions représentation graphique - Activité 1' },
-          { pdf:'activites/Fonctions représentation graphique - Activite 2.pdf', label:'Fonctions représentation graphique - Activité 2' }
-        ],
-        contenu: {
-          lead: 'Notion de fonction et lecture d\'une courbe représentative.',
-          items: [
-            'Fonction à valeurs réelles définie sur un intervalle ou une réunion finie d\'intervalles de ℝ.',
-            'Recherche de domaine d\'étude (ensemble de définition).',
-            'Courbe représentative : la courbe d\'équation y = f(x) est l\'ensemble des points du plan dont les coordonnées (x, y) vérifient y = f(x).'
-          ]
-        },
-        competences: {
-          lead: '',
-          items: [
-            'Exploiter l\'équation y = f(x) d\'une courbe : appartenance, calcul de coordonnées.',
-            'Résoudre, graphiquement ou à l\'aide d\'un outil numérique, une équation ou inéquation du type f(x)=g(x), f(x)<g(x).',
-            'Modéliser par des fonctions des situations issues des mathématiques, des autres disciplines ou de la vie courante ou citoyenne (activité d\'introduction « l\'enclos »).'
-          ]
-        },
-        commentaires: 'Première rencontre avec la notion de fonction : privilégier une entrée par une activité de modélisation (par exemple « l\'enclos ») avant de formaliser le vocabulaire.'
-      },
-      'seq3': {
-        coursPdf: 'cours/Calcul algébrique.pdf',
-        evalPdf: 'evaluations/Calcul algébrique - Evaluation.pdf',
-        evalCorrectionPdf: 'evaluations/Calcul algébrique - Correction.pdf',
-        exercicePdf: 'exercices/Calcul algébrique - Exercices.pdf',
-        exerciceCorrectionPdf: 'exercices/Calcul algébrique - Correction.pdf',
-        activites: [
-          { pdf:'activites/Calcul algébrique - Activite 1.pdf', label:'Calcul algébrique - Activité 1' },
-          { pdf:'activites/Calcul algébrique - Activite 2.pdf', label:'Calcul algébrique - Activité 2' }
-        ],
-        contenu: {
-          lead: 'Calcul sur les expressions algébriques, les puissances et les racines carrées.',
-          items: [
-            'Exemples simples de calcul sur des expressions algébriques, en particulier sur des expressions fractionnaires.',
-            'Règles de calcul sur les puissances entières relatives, sur les racines carrées. Relation √(a²) = |a|.',
-            'Comparaison additive (par différence), comparaison multiplicative (par rapport, pour deux nombres strictement positifs).'
-          ]
-        },
-        competences: {
-          lead: '',
-          items: [
-            'Effectuer des calculs numériques ou littéraux mettant en jeu des puissances, des racines carrées, des écritures fractionnaires.',
-            'Comparer deux quantités en utilisant leur différence, ou leur rapport (ratio) ; interpréter cette comparaison en termes de variation additive ou multiplicative.'
-          ]
-        },
-        demonstrations: [
-          'Quels que soient les réels positifs a et b, on a : √(ab) = √a × √b.'
-        ],
-        prolongements: [
-          'Exemple d\'algorithme : déterminer la première puissance d\'un nombre positif donné supérieure ou inférieure à une valeur donnée.',
-          'Approfondissement possible : développement de (a + b + c)².',
-          'Approfondissement possible : développement de (a + b)³.',
-          'Approfondissement possible : inégalité entre moyennes géométrique et arithmétique de deux réels strictement positifs.'
-        ],
-        commentaires: '<ul><li>La racine carrée est définie en 4e avec le théorème de Pythagore puis reprise en 3e dans le cadre de la résolution des équations du type x²=a. Aucune technicité de calculs n\'est travaillée au collège.</li><li>Les trois identités remarquables auront été vues en classe de 3e dans le nouveau programme de collège.</li></ul><p>(a+b)² et (a−b)² sont à travailler en classe de seconde (dans « les deux sens »).</p>'
-      },
-      'seq4': {
-        coursPdf: 'cours/Équations et inéquations.pdf',
-        evalPdf: 'evaluations/Équations et inéquations - Evaluation.pdf',
-        evalCorrectionPdf: 'evaluations/Équations et inéquations - Correction.pdf',
-        exercicePdf: 'exercices/Équations et inéquations - Exercices.pdf',
-        exerciceCorrectionPdf: 'exercices/Équations et inéquations - Correction.pdf',
-        activites: [
-          { pdf:'activites/Équations et inéquations - Activite 1.pdf', label:'Équations et inéquations - Activité 1' },
-          { pdf:'activites/Équations et inéquations - Activite 2.pdf', label:'Équations et inéquations - Activité 2' }
-        ],
-        contenu: {
-          lead: 'Équations du premier degré, équations produit et quotient.',
-          items: [
-            'Ensemble des solutions des équations du type ax + b = 0.',
-            'Équation de la forme A(x)B(x) = 0 (équation produit nul).',
-            'Équation A(x) / B(x) = k (équation quotient) en lien avec l\'ensemble de définition d\'une expression.'
-          ]
-        },
-        competences: {
-          lead: '',
-          items: [
-            'Donner l\'ensemble des solutions d\'une équation du premier degré, d\'une équation du type x² = a.',
-            'Sur des cas simples de relations entre variables (ex. U=RI, d=vt, S=πr², V=abc, V=πr²h), exprimer une variable en fonction des autres ; cas d\'une relation du premier degré ax+by=c.',
-            'Choisir la forme la plus adaptée (factorisée, développée réduite) d\'une expression en vue de la résolution d\'un problème.'
-          ]
-        },
-        commentaires: '<p>Les résolutions des équations ax+b=0, A(x)B(x)=0 et x²=a sont à voir en lien avec les fonctions. Un travail est à mener sur les ensembles de solutions et les ensembles de définition.</p>'
-      },
-      'seq4b': {
-        coursPdf: 'cours/Inéquations.pdf',
-        evalPdf: 'evaluations/Inéquations - Evaluation.pdf',
-        evalCorrectionPdf: 'evaluations/Inéquations - Correction.pdf',
-        exercicePdf: 'exercices/Inéquations - Exercices.pdf',
-        exerciceCorrectionPdf: 'exercices/Inéquations - Correction.pdf',
-        activites: [
-          { pdf:'activites/Inéquations - Activite 1.pdf', label:'Inéquations - Activité 1' },
-          { pdf:'activites/Inéquations - Activite 2.pdf', label:'Inéquations - Activité 2' }
-        ],
-        contenu: {
-          lead: 'Inéquations du premier degré et propriétés des inégalités.',
-          items: [
-            'Ensemble des solutions des inéquations de la forme ax + b > 0.',
-            'Somme d\'inégalités. Produit d\'une inégalité par un réel positif, négatif, en liaison avec le sens de variation d\'une fonction affine.'
-          ]
-        },
-        competences: {
-          lead: '',
-          items: [
-            'Donner l\'ensemble des solutions d\'une inéquation du premier degré.',
-            'Modéliser un problème par une inéquation.'
-          ]
-        },
-        commentaires: '<p>Les élèves n\'auront pas résolu les inéquations au collège : le travail sur les inéquations (dont l\'écriture des solutions utilisant des intervalles, en s\'appuyant sur la représentation sur la droite graduée) est à mener en Seconde.</p>'
-      },
-      'seq5': {
-        coursPdf: 'cours/Vecteurs - Partie 1.pdf',
-        coursLatex: 'https://fr.overleaf.com/project/66a0bc17acf544e82f14f230/share#76371f508af2d94a734e420edb19c9ad2bf23d76b0f363fe',
-        evalPdf: 'evaluations/Vecteurs (Partie 1) - Evaluation.pdf',
-        evalCorrectionPdf: 'evaluations/Vecteurs (Partie 1) - Correction.pdf',
-        exercicePdf: 'exercices/Vecteurs (Partie 1) - Exercices.pdf',
-        exerciceCorrectionPdf: 'exercices/Vecteurs (Partie 1) - Correction.pdf',
-        activites: [
-          { pdf:'activites/Vecteurs (Partie 1) - Activite 1.pdf', label:'Vecteurs (Partie 1) - Activité 1' },
-          { pdf:'activites/Vecteurs (Partie 1) - Activite 2.pdf', label:'Vecteurs (Partie 1) - Activité 2' }
-        ],
-        contenu: {
-          lead: 'Vecteurs : égalité, produit par un réel et colinéarité.',
-          items: [
-            'Égalité de deux vecteurs. Notation u⃗. Vecteur nul 0⃗.',
-            'Représentants d\'un vecteur.',
-            'Produit d\'un vecteur par un nombre réel. Colinéarité de deux vecteurs.',
-            'Caractérisation vectorielle du milieu d\'un segment.',
-            'Représentation d\'un vecteur comme combinaison de deux vecteurs non colinéaires.'
-          ]
-        },
-        competences: {
-          lead: '',
-          items: [
-            'Représenter la somme de deux vecteurs à partir de représentants de même origine.',
-            'Résoudre des problèmes avec des méthodes diverses (méthodes vectorielles, repérées ou non, méthodes géométriques).'
-          ]
-        },
-        prolongements: [
-          'Barycentre de deux points.',
-          'Barycentre de trois points.'
-        ]
-      },
-      'seq6': {
-        coursPdf: 'cours/Arithmétique.pdf',
-        evalPdf: 'evaluations/Arithmétique - Evaluation.pdf',
-        evalCorrectionPdf: 'evaluations/Arithmétique - Correction.pdf',
-        exercicePdf: 'exercices/Arithmétique - Exercices.pdf',
-        exerciceCorrectionPdf: 'exercices/Arithmétique - Correction.pdf',
-        activites: [
-          { pdf:'activites/Arithmétique - Activite 1.pdf', label:'Arithmétique - Activité 1' },
-          { pdf:'activites/Arithmétique - Activite 2.pdf', label:'Arithmétique - Activité 2' }
-        ],
-        contenu: {
-          lead: 'Multiples, diviseurs et parité dans ℕ et ℤ.',
-          items: [
-            'Définition des notions de multiple, de diviseur, de nombre pair, de nombre impair : a est multiple de b s\'il existe un entier k tel que a = kb.',
-            'Notations ℕ et ℤ.'
-          ]
-        },
-        competences: {
-          lead: '',
-          items: [
-            'Modéliser et résoudre des problèmes mobilisant les notions de multiple, de diviseur, de nombre pair, de nombre impair.',
-            'Présenter les fractions sous forme irréductible.'
-          ]
-        },
-        demonstrations: [
-          'Pour une valeur numérique de a, la somme de deux multiples de a est multiple de a.',
-          'Le carré d\'un nombre impair est impair.'
-        ],
-        prolongements: [
-          'Exemples d\'algorithme : déterminer si un entier naturel a est multiple d\'un entier naturel b.',
-          'Exemples d\'algorithme : pour des entiers a et b donnés, déterminer le plus grand multiple de a inférieur ou égal à b.'
-        ],
-        commentaires: '<p>La définition d\'un multiple est explicitée.</p><p>Les élèves auront moins fait d\'arithmétique au collège (pas de nombre premier dans le nouveau programme de cycle 4).</p>'
-      },
-      'seq8': {
-        coursPdf: 'cours/Vecteurs et coordonnées (Partie 1).pdf',
-        evalPdf: 'evaluations/Vecteurs et coordonnées (Partie 1) - Evaluation.pdf',
-        evalCorrectionPdf: 'evaluations/Vecteurs et coordonnées (Partie 1) - Correction.pdf',
-        exercicePdf: 'exercices/Vecteurs et coordonnées (Partie 1) - Exercices.pdf',
-        exerciceCorrectionPdf: 'exercices/Vecteurs et coordonnées (Partie 1) - Correction.pdf',
-        activites: [
-          { pdf:'activites/Vecteurs et coordonnées (Partie 1) - Activite 1.pdf', label:'Vecteurs et coordonnées (Partie 1) - Activité 1' },
-          { pdf:'activites/Vecteurs et coordonnées (Partie 1) - Activite 2.pdf', label:'Vecteurs et coordonnées (Partie 1) - Activité 2' }
-        ],
-        contenu: {
-          lead: 'Coordonnées d\'un vecteur dans une base orthonormée, déterminant de deux vecteurs et critère de colinéarité.',
-          items: [
-            'Expression des coordonnées du vecteur AB⃗ en fonction de celles de A et de B.',
-            'Base orthonormée. Coordonnées d\'un vecteur. Expression de la norme d\'un vecteur.',
-            'Déterminant de deux vecteurs dans une base orthonormée.',
-            'Critère de colinéarité. Application à l\'alignement, au parallélisme.'
-          ]
-        },
-        competences: {
-          lead: '',
-          items: [
-            'Représenter un vecteur dont on connaît les coordonnées ; lire les coordonnées d\'un vecteur.',
-            'Calculer les coordonnées d\'une somme de vecteurs, d\'un produit d\'un vecteur par un nombre réel.',
-            'Calculer la distance entre deux points ; calculer les coordonnées du milieu d\'un segment.',
-            'Résoudre des problèmes en utilisant la représentation la plus adaptée des vecteurs.',
-            'Caractériser alignement et parallélisme par la colinéarité de vecteurs.'
-          ]
-        },
-        demonstrations: [
-          'Caractérisations de la colinéarité de deux vecteurs non nuls : nullité du déterminant ; proportionnalité des coordonnées.'
-        ],
-        prolongements: [
-          'Formule permettant le calcul des coordonnées du milieu d\'un segment (était une capacité attendue dans le programme 2019 ; devient un approfondissement).',
-          'Expression de l\'aire d\'un triangle : 1/2 ab sin C.',
-          'Démontrer que l\'isobarycentre de trois points non alignés est l\'intersection des médianes.'
-        ]
-      },
-      'seq-info': {
-        contenu: {
-          lead: 'Proportions, pourcentages et évolutions.',
-          items: [
-            'Proportions : ensembles de référence inclus les uns dans les autres ; pourcentage de pourcentage.',
-            'Évolution : variation absolue (variation additive) V2 – V1, coefficient multiplicateur (variation multiplicative) V2 / V1, variation relative (V2–V1) / V1 (taux d\'évolution).',
-            'Évolutions successives, évolution réciproque : relation sur les coefficients multiplicateurs (produit, inverse).',
-            'Traiter des situations simples mettant en jeu des pourcentages de pourcentages.'
-          ]
-        },
-        competences: {
-          lead: '',
-          items: [
-            'Exploiter la relation entre effectifs, proportions et pourcentages.',
-            'Calculer le taux d\'évolution global à partir des taux d\'évolution successifs ; calculer un taux d\'évolution réciproque.',
-            'Exploiter la relation entre deux valeurs successives et leur taux d\'évolution.'
-          ]
-        }
-      },
-      'seq9': {
-        coursPdf: 'cours/Fonctions de référence.pdf',
-        evalPdf: 'evaluations/Fonctions de référence - Evaluation.pdf',
-        evalCorrectionPdf: 'evaluations/Fonctions de référence - Correction.pdf',
-        exercicePdf: 'exercices/Fonctions de référence - Exercices.pdf',
-        exerciceCorrectionPdf: 'exercices/Fonctions de référence - Correction.pdf',
-        activites: [
-          { pdf:'activites/Fonctions de référence - Activite 1.pdf', label:'Fonctions de référence - Activité 1' },
-          { pdf:'activites/Fonctions de référence - Activite 2.pdf', label:'Fonctions de référence - Activité 2' }
-        ],
-        contenu: {
-          lead: 'Fonctions de référence : valeur absolue, carré, inverse. Signe d\'une fonction affine, d\'un produit ou d\'un quotient.',
-          items: [
-            'Connaître les fonctions valeur absolue, carré, inverse : définitions et courbes représentatives.',
-            'Signe des fonctions de référence.',
-            'Signe d\'une fonction affine.',
-            'Tableau de signes pour une fonction produit ou quotient.',
-            'En liaison avec la section « Fonctions », étude du signe des expressions de la forme A(x)B(x) et A(x) / B(x).',
-            'Fonctions racine carrée et cube : définitions et courbes représentatives (utilisées pour résoudre f(x) = k et f(x) < k).'
-          ]
-        },
-        competences: {
-          lead: '',
-          items: [
-            'Résoudre une équation ou une inéquation du type f(x)=k, f(x)<k, en choisissant une méthode adaptée (graphique, algébrique, logicielle), pour les fonctions affines, valeur absolue, carré, inverse, racine carrée et cube.',
-            'Fonctions valeur absolue et carré : étudier le signe et les variations.',
-            'Pour deux nombres a et b donnés et une fonction de référence f, comparer f(a) et f(b) numériquement ou graphiquement.',
-            'Pour une fonction affine, relier sens de variation, signe de la fonction et droite représentative.',
-            'Résoudre une équation ou une inéquation du type f(x)=0, f(x)>0 à l\'aide d\'un tableau de signes, lorsque f est un produit ou un quotient.'
-          ]
-        },
-        demonstrations: [
-          'Position relative des courbes d\'équation y=x, y=x², pour x ⩾ 0.'
-        ]
-      },
-      'seq10': {
-        coursPdf: 'cours/Statistiques (Partie 1).pdf',
-        evalPdf: 'evaluations/Statistiques (Partie 1) - Evaluation.pdf',
-        evalCorrectionPdf: 'evaluations/Statistiques (Partie 1) - Correction.pdf',
-        exercicePdf: 'exercices/Statistiques (Partie 1) - Exercices.pdf',
-        exerciceCorrectionPdf: 'exercices/Statistiques (Partie 1) - Correction.pdf',
-        activites: [
-          { pdf:'activites/Statistiques (Partie 1) - Activite 1.pdf', label:'Statistiques (Partie 1) - Activité 1' },
-          { pdf:'activites/Statistiques (Partie 1) - Activite 2.pdf', label:'Statistiques (Partie 1) - Activité 2' }
-        ],
-        contenu: {
-          lead: 'Moyenne, indicateurs de dispersion et comparaison de séries statistiques.',
-          items: [
-            'Linéarité de la moyenne.',
-            'Indicateurs de dispersion : écart type.',
-            'Influence sur la moyenne, la médiane de l\'ajout ou de la suppression d\'une valeur dans la série.',
-            'Regroupement par classes : histogramme et polygone des fréquences cumulées.',
-            'Croisement de deux variables qualitatives : tableau croisé d\'effectifs, fréquence conditionnelle, fréquence marginale.'
-          ]
-        },
-        competences: {
-          lead: 'Pour une série statistique regroupée en classes :',
-          items: [
-            'Calculer la moyenne à partir de la moyenne et des effectifs de chaque classe (moyenne pondérée) ; cas particulier où la répartition est uniforme dans chaque classe (donc égale au centre de la classe).',
-            'Déterminer la classe médiane à partir des effectifs des classes ; estimation de la médiane dans le cas de répartition uniforme dans la classe médiane.',
-            'Décrire les différences entre deux séries statistiques, en s\'appuyant sur des indicateurs ou couples d\'indicateurs (moyenne - écart type / médiane - écart interquartile), sur des représentations graphiques données.',
-            'Représenter une série regroupée en classes par un histogramme ; construire et exploiter un polygone des fréquences cumulées.',
-            'À partir d\'un tableau croisé d\'effectifs, calculer des fréquences conditionnelles et des fréquences marginales.',
-            'Compléter un tableau croisé par des raisonnements sur les effectifs ou sur les fréquences conditionnelles.'
-          ]
-        },
-        prolongements: [
-          'Exemple d\'algorithme : à partir de deux listes représentant deux caractères d\'individus, déterminer un sous-ensemble d\'individus répondant à un critère (filtre, utilisation de ET, OU, NON).',
-          'Exemple d\'algorithme : dresser le tableau croisé de deux variables qualitatives à partir du fichier des individus et calculer des fréquences conditionnelles ou marginales.'
-        ]
-      },
-      'seq12': {
-        coursPdf: 'cours/Variations d\'une fonction (Partie 1).pdf',
-        evalPdf: 'evaluations/Variations d\'une fonction (Partie 1) - Evaluation.pdf',
-        evalCorrectionPdf: 'evaluations/Variations d\'une fonction (Partie 1) - Correction.pdf',
-        exercicePdf: 'exercices/Variations d\'une fonction (Partie 1) - Exercices.pdf',
-        exerciceCorrectionPdf: 'exercices/Variations d\'une fonction (Partie 1) - Correction.pdf',
-        activites: [
-          { pdf:'activites/Variations d\'une fonction (Partie 1) - Activite 1.pdf', label:'Variations d\'une fonction (Partie 1) - Activité 1' },
-          { pdf:'activites/Variations d\'une fonction (Partie 1) - Activite 2.pdf', label:'Variations d\'une fonction (Partie 1) - Activité 2' }
-        ],
-        contenu: {
-          lead: 'Sens de variation d\'une fonction et tableau de variations ; variations des fonctions de référence et des fonctions affines.',
-          items: [
-            'Croissance, décroissance, monotonie d\'une fonction définie sur un intervalle. Tableau de variations.',
-            'Maximum, minimum d\'une fonction sur un intervalle.',
-            'Variations des fonctions de référence.',
-            'Variations d\'une fonction affine selon le signe du coefficient directeur.',
-            'Pour une fonction affine donnée par f(x) = mx + p, interprétation de m comme taux d\'accroissement et de p comme ordonnée à l\'origine.'
-          ]
-        },
-        competences: {
-          lead: '',
-          items: [
-            'Relier représentation graphique et tableau de variations.',
-            'Déterminer graphiquement les extrémums d\'une fonction sur un intervalle.',
-            'Exploiter un logiciel de géométrie dynamique ou de calcul formel, la calculatrice ou Python pour décrire les variations d\'une fonction donnée par une formule.',
-            'Traiter des problèmes d\'optimisation.',
-            'Justifier le sens de variation d\'une fonction affine à partir du signe de son coefficient directeur.',
-            'Relier les variations d\'une fonction de référence (affine, carré, inverse) à sa représentation graphique.',
-            'Fonctions valeur absolue et carré : déterminer leurs variations et leur signe.'
-          ]
-        },
-        demonstrations: [
-          'Variations des fonctions affines, carré, inverse.'
-        ],
-        prolongements: [
-          'Exemples d\'algorithme : pour une fonction dont le tableau de variations est donné, algorithmes d\'approximation numérique d\'un extrémum (balayage, dichotomie).',
-          'Exemples d\'algorithme : algorithme de calcul approché de longueur d\'une portion de courbe représentative de fonction.',
-          'Approfondissement possible : relier les courbes représentatives de la fonction racine carrée et de la fonction carré sur ℝ+.'
-        ]
-      },
-      'seq13': {
-        coursPdf: 'cours/Probabilités (Partie 1).pdf',
-        evalPdf: 'evaluations/Probabilités (Partie 1) - Evaluation.pdf',
-        evalCorrectionPdf: 'evaluations/Probabilités (Partie 1) - Correction.pdf',
-        exercicePdf: 'exercices/Probabilités (Partie 1) - Exercices.pdf',
-        exerciceCorrectionPdf: 'exercices/Probabilités (Partie 1) - Correction.pdf',
-        activites: [
-          { pdf:'activites/Probabilités (Partie 1) - Activite 1.pdf', label:'Probabilités (Partie 1) - Activité 1' },
-          { pdf:'activites/Probabilités (Partie 1) - Activite 2.pdf', label:'Probabilités (Partie 1) - Activité 2' }
-        ],
-        contenu: {
-          lead: 'Probabilité conditionnelle et arbres pondérés.',
-          items: [
-            'Probabilité conditionnelle d\'un évènement B sachant un évènement A de probabilité non nulle. Notation Pₐ(B).',
-            'Arbres de probabilité, application au calcul de probabilités.'
-          ]
-        },
-        competences: {
-          lead: '',
-          items: [
-            'Construire un arbre pondéré ou un tableau en lien avec une situation donnée ; passer du registre de la langue naturelle au registre symbolique et inversement.',
-            'Calculer des probabilités conditionnelles lorsque les évènements sont présentés sous forme de tableau croisé d\'effectifs ou d\'arbre de probabilité.',
-            'Interpréter les pondérations de chaque branche d\'un arbre en termes de probabilités, notamment conditionnelles.'
-          ]
-        }
-      },
-      'seq14': {
-        coursPdf: 'cours/Droites du plan (Partie 1).pdf',
-        evalPdf: 'evaluations/Droites du plan (Partie 1) - Evaluation.pdf',
-        evalCorrectionPdf: 'evaluations/Droites du plan (Partie 1) - Correction.pdf',
-        exercicePdf: 'exercices/Droites du plan (Partie 1) - Exercices.pdf',
-        exerciceCorrectionPdf: 'exercices/Droites du plan (Partie 1) - Correction.pdf',
-        activites: [
-          { pdf:'activites/Droites du plan (Partie 1) - Activite 1.pdf', label:'Droites du plan (Partie 1) - Activité 1' },
-          { pdf:'activites/Droites du plan (Partie 1) - Activite 2.pdf', label:'Droites du plan (Partie 1) - Activité 2' }
-        ],
-        contenu: {
-          lead: 'Équation de droite, vecteur directeur et pente ; compléments sur les équations de droites.',
-          items: [
-            'Vecteur directeur d\'une droite.',
-            'Équation de droite : équation cartésienne, équation réduite.',
-            'Pente (ou coefficient directeur) d\'une droite non parallèle à l\'axe des ordonnées.'
-          ]
-        },
-        competences: {
-          lead: '',
-          items: [
-            'Tracer une droite connaissant son équation cartésienne ou réduite.',
-            'Déterminer une équation de droite à partir de deux points, d\'un point et un vecteur directeur, ou d\'un point et la pente.',
-            'Déterminer la pente ou un vecteur directeur d\'une droite donnée par une équation ou une représentation graphique.',
-            'Établir que trois points sont alignés ou non.',
-            'Déterminer si deux droites sont parallèles ou sécantes.',
-            'Déterminer le point d\'intersection de deux droites sécantes données par leur équation réduite.'
-          ]
-        },
-        demonstrations: [
-          'En utilisant le déterminant, établir la forme générale d\'une équation de droite.'
-        ],
-        prolongements: [
-          'Exemple d\'algorithme : étudier l\'alignement de trois points dans le plan.',
-          'Exemple d\'algorithme : déterminer une équation de droite passant par deux points donnés.',
-          'Démontrer que les hauteurs d\'un triangle sont concourantes.',
-          'Démontrer que le point de concours des médiatrices est le centre du cercle circonscrit.',
-          'Approfondissement possible : ensemble des points équidistants d\'un point et de l\'axe des abscisses.',
-          'Approfondissement possible : représentation, sur des exemples, de parties du plan décrites par des inégalités sur les coordonnées.'
-        ]
-      },
-      'seq17': {
-        coursPdf: 'cours/Probabilités (Partie 2).pdf',
-        evalPdf: 'evaluations/Probabilités (Partie 2) - Evaluation.pdf',
-        evalCorrectionPdf: 'evaluations/Probabilités (Partie 2) - Correction.pdf',
-        exercicePdf: 'exercices/Probabilités (Partie 2) - Exercices.pdf',
-        exerciceCorrectionPdf: 'exercices/Probabilités (Partie 2) - Correction.pdf',
-        activites: [
-          { pdf:'activites/Probabilités (Partie 2) - Activite 1.pdf', label:'Probabilités (Partie 2) - Activité 1' },
-          { pdf:'activites/Probabilités (Partie 2) - Activite 2.pdf', label:'Probabilités (Partie 2) - Activité 2' }
-        ],
-        contenu: {
-          lead: 'Loi des grands nombres et probabilités conditionnelles.',
-          items: [
-            'Version vulgarisée de la loi des grands nombres : « Lorsque n est grand, sauf exception, la fréquence observée est proche de la probabilité. »',
-            'Arbres de probabilité, application au calcul de probabilités.'
-          ]
-        },
-        competences: {
-          lead: '',
-          items: [
-            'Observer la loi des grands nombres à l\'aide d\'une simulation sur Python ou tableur.',
-            'Faire le lien entre la définition des probabilités conditionnelles et la multiplication des probabilités des branches du chemin correspondant.',
-            'Distinguer en situation Pₐ(B) et P_B(A), par exemple dans des situations de type « faux positifs ».'
-          ]
-        }
-      },
-      'transversale-vocabulaire': {
-        contenu: {
-          lead: 'Notions transversales à tous les chapitres du programme, à travailler d\'abord en situation puis à formaliser après plusieurs rencontres.',
-          items: [
-            'Élément d\'un ensemble, sous-ensemble, ensemble vide, appartenance et inclusion.',
-            'Réunion, intersection et complémentaire d\'un ensemble ; notations ∅, ∈, ⊂, ⋂, ⋃, {…}.',
-            'Notation des ensembles de nombres et des intervalles.',
-            'Notion de couple et de produit cartésien de deux ensembles.',
-            'Complémentaire d\'un sous-ensemble A de E : notation Ā ou E \\ A.',
-            'Reconnaître une proposition mathématique, utiliser des variables pour en écrire.',
-            'Lire et écrire des propositions avec les connecteurs « et », « ou » ; formuler une négation simple.',
-            'Mobiliser un contre-exemple pour montrer qu\'une proposition est fausse.',
-            'Formuler une implication, une équivalence logique, et les mobiliser dans un raisonnement.',
-            'Formuler la réciproque et la contraposée d\'une implication.',
-            'Lire et écrire des propositions avec quantification universelle ou existentielle (symboles ∀ et ∃ hors programme).',
-            'Raisonnements par disjonction des cas et par l\'absurde.'
-          ]
-        },
-        competences: {
-          lead: 'Ce que l\'élève doit savoir faire en fin d\'année sur ce thème transversal.',
-          items: [
-            'Utiliser à bon escient le vocabulaire et les symboles ensemblistes de base.',
-            'Distinguer et formuler implication, équivalence, réciproque et contraposée.',
-            'Produire un raisonnement par disjonction des cas ou par l\'absurde dans un contexte simple.',
-            'Réinvestir ce vocabulaire dans les autres chapitres (équations, fonctions, statistiques, géométrie).'
-          ]
-        },
-        commentaires: 'Il n\'est pas question de travailler ces notions dans des séquences dédiées, mais de les traiter de manière transversale au fil des activités. Le programme invite, comme au collège, à davantage travailler sur les ensembles : ensemble de solutions d\'une équation ou d\'une inéquation, ensemble de définition d\'une fonction, ensemble de référence en statistiques, ensemble de points en géométrie.'
-      },
-      'transversale-algo': {
-        contenu: {
-          lead: 'Deux volets : variables et instructions élémentaires, puis notion de fonction en algorithmique.',
-          items: [
-            'Variables informatiques de type entier, booléen, flottant, chaîne de caractères.',
-            'Affectation (notée ← en langage naturel).',
-            'Séquence d\'instructions, instruction conditionnelle.',
-            'Boucle bornée (for), boucle non bornée (while).',
-            'Fonctions à un ou plusieurs arguments.',
-            'Fonction renvoyant un nombre aléatoire.',
-            'Série statistique obtenue par la répétition de l\'appel d\'une telle fonction.'
-          ]
-        },
-        competences: {
-          lead: 'Ce que l\'élève doit savoir faire en fin d\'année sur ce thème transversal.',
-          items: [
-            'Écrire et lire un programme simple utilisant variables, tests et boucles.',
-            'Choisir ou déterminer le type d\'une variable (entier, booléen, flottant, chaîne de caractères).',
-            'Écrire une formule combinant des variables.',
-            'Lire, comprendre, modifier ou compléter des programmes plus complexes.',
-            'Appeler une fonction.',
-            'Lire et comprendre une fonction renvoyant une moyenne ou un écart type.',
-            'Écrire des fonctions renvoyant le résultat d\'une répétition d\'expériences aléatoires indépendantes.',
-            'Structurer un programme en fonctions plutôt qu\'en instructions successives.',
-            'Simuler une expérience aléatoire à l\'aide d\'une fonction renvoyant un nombre aléatoire.',
-            'Mobiliser l\'algorithmique dans des situations variées, pas seulement des calculs routiniers.'
-          ]
-        },
-        commentaires: 'Il est recommandé de ne pas se limiter à des calculs routiniers : le travail de l\'algorithmique doit se faire dans des situations variées. L\'accent est mis sur la programmation modulaire (fonctions), à privilégier ; cela permet de contourner les instructions print et input, qui ne sont pas des attendus du programme.'
-      }
-    };
-
-    // Rubriques disponibles pour chaque chapitre, groupées comme un volet de Réglages iPadOS
-    function buildSections(card) {
-      const title = (card.querySelector('h3 .t') || card.querySelector('h3'))?.textContent.trim() || '';
-      const desc  = card.querySelector('.seq-desc')?.textContent.trim() || '';
-      const notions = desc.replace(/\.$/, '').split(/,| et /i).map(s => s.trim()).filter(Boolean);
-      const chapterId = card.getAttribute('data-chapter-id');
-      const override = chapterOverrides[chapterId];
-
-      // Structure allégée pour la carte "Automatismes" : Contenu, Activités, Commentaires uniquement
-      if (chapterId === 'transversale-automatismes') {
-        return [
-          { group: 'Programme', items: [
-            { key:'contenu', label:'Contenu', icon:icoList, color:tints.blue,
-              render: () => renderBullets('Contenu du chapitre', '', automatismesData.categories.map(cat => cat.label)) },
-          ]},
-          { group: 'Ressources de cours', items: [
-            { key:'activites', label:'Activités', icon:icoFlask, color:tints.teal,
-            render: () => renderActivitiesGrid([
-              { pdf:'#', label:automatismesData.title || 'Activité 1' },
-              { pdf:'#', label:'Activité 2' },
-            ]) },
-        ]},
-        { group: 'Aller plus loin', items: [
-          { key:'commentaires', label:'Commentaires', icon:icoChat2, color:tints.slate,
-            render: () => renderNote('Commentaires', automatismesData.commentaires) },
-        ]},
-      ];
-    }
-
-    // Structure allégée pour "Vocabulaire ensembliste et logique" : Contenu, Activités, Commentaires uniquement
-      if (chapterId === 'transversale-vocabulaire') {
-        const ov = chapterOverrides['transversale-vocabulaire'];
-        return [
-          { group: 'Programme', items: [
-            { key:'contenu', label:'Contenu', icon:icoList, color:tints.blue,
-              render: () => renderBullets('Contenu du chapitre', ov.contenu.lead, ov.contenu.items) },
-          ]},
-          { group: 'Ressources de cours', items: [
-            { key:'activites', label:'Activités', icon:icoFlask, color:tints.teal,
-              render: () => renderActivitiesGrid(
-                (ov.activites && ov.activites.length ? ov.activites : [
-                  { pdf:'#', label: title },
-                  { pdf:'#', label: title }
-                ])
-              ) },
-          ]},
-          { group: 'Aller plus loin', items: [
-            { key:'commentaires', label:'Commentaires', icon:icoChat2, color:tints.slate,
-              render: () => renderNote('Commentaires', ov.commentaires) },
-          ]},
-        ];
-      }
-
-      // Structure allégée pour "Algorithmique et programmation" : Contenu, Activités, Commentaires uniquement
-      if (chapterId === 'transversale-algo') {
-        const ov = chapterOverrides['transversale-algo'];
-        return [
-          { group: 'Programme', items: [
-            { key:'contenu', label:'Contenu', icon:icoList, color:tints.blue,
-              render: () => renderBullets('Contenu du chapitre', ov.contenu.lead, ov.contenu.items) },
-          ]},
-          { group: 'Ressources de cours', items: [
-            { key:'activites', label:'Activités', icon:icoFlask, color:tints.teal,
-              render: () => renderActivitiesGrid(
-                (ov.activites && ov.activites.length ? ov.activites : [
-                  { pdf:'#', label: title },
-                  { pdf:'#', label: title }
-                ])
-              ) },
-          ]},
-          { group: 'Aller plus loin', items: [
-            { key:'commentaires', label:'Commentaires', icon:icoChat2, color:tints.slate,
-              render: () => renderNote('Commentaires', ov.commentaires) },
-          ]},
-        ];
-      }
-
-      const programmeItems = [
-        { key:'contenu', label:'Contenu', icon:icoList, color:tints.blue,
-          render: () => override
-            ? renderBullets('Contenu du chapitre', override.contenu.lead, override.contenu.items)
-            : renderBullets('Contenu du chapitre',
-            `Notions abordées dans « ${title} ».`,
-            notions.length ? notions.map(n => n.charAt(0).toUpperCase() + n.slice(1)) : [desc]) },
-        { key:'competences', label:'Compétences', icon:icoTarget, color:tints.indigo,
-          render: () => override
-            ? renderBullets('Compétences visées', override.competences.lead, override.competences.items)
-            : renderBullets('Compétences visées',
-              '',
-              [
-              `Connaître et utiliser le vocabulaire lié à « ${title.toLowerCase()} ».`,
-              'Appliquer les méthodes du cours dans des exercices guidés puis en autonomie.',
-              'Justifier un résultat en rédigeant une argumentation rigoureuse.',
-              'Mobiliser la notion dans un problème ou une situation concrète.'
-            ]) },
-      ];
-      if (override && override.demonstrations) {
-        programmeItems.push({ key:'demonstrations', label:'Démonstrations', icon:icoSigma, color:tints.indigo,
-          render: () => renderBullets('Démonstrations exemplaires', '', override.demonstrations) });
-      }
-
-      return [
-        { group: 'Programme', items: programmeItems },
-        { group: 'Ressources de cours', items: [
-          { key:'cours', label:'Cours', icon:icoBook, color:tints.blue,
-            render: () => (override && override.coursPdf)
-              ? renderPdfViewer('Cours', override.coursPdf, null, override.coursLatex)
-              : renderDocs('Cours', [
-              { title:'Cours complet', type:'Document de cours', href:'#' },
-              { title:'Résumé / fiche de synthèse', type:'À garder sous la main', href:'#' },
-            ]) },
-          { key:'automatismes', label:'Automatismes', icon:icoBolt, color:tints.amber,
-            render: () => renderDocs('Automatismes', [
-              { title:'Fiche d\'automatismes', type:'Calcul mental et réflexes', href:'#' },
-              { title:'Diaporama flash', type:'Questions chronométrées', href:'#' },
-            ]) },
-          { key:'activites', label:'Activités', icon:icoFlask, color:tints.teal,
-            render: () => renderActivitiesGrid(
-              (override && override.activites && override.activites.length ? override.activites : [
-                { pdf:'#', label: title },
-                { pdf:'#', label: title }
-              ])
-            ) },
-          { key:'exercices', label:'Exercices', icon:icoPencil, color:tints.violet,
-            render: () => (override && override.exercicePdf && override.exerciceCorrectionPdf)
-              ? renderDualPdfViewer(override.exercicePdf, 'Exercices', override.exerciceCorrectionPdf, 'Corrigé', override.exerciceLatex, override.exerciceCorrectionLatex)
-              : renderDocs('Exercices', [
-              { title:'Fiche d\'exercices', type:'Entraînement progressif', href:'#' },
-              { title:'Corrigés', type:'Correction détaillée', href:'#' },
-            ]) },
-          { key:'evaluations', label:'Évaluations', icon:icoCheck, color:tints.cyan,
-            render: () => (override && override.evaluations && override.evaluations.length)
-              ? renderActivitiesGrid(override.evaluations)
-              : (override && override.evalPdf && override.evalCorrectionPdf)
-              ? renderDualPdfViewer(override.evalPdf, 'Évaluation', override.evalCorrectionPdf, 'Corrigé', override.evalLatex, override.evalCorrectionLatex)
-              : renderDocs('Évaluations', [
-              { title:'Évaluation', type:'Contrôle de connaissances', href:'#' },
-              { title:'Corrigé de l\'évaluation', type:'Barème et correction', href:'#' },
-            ]) },
-        ]},
-        { group: 'Aller plus loin', items: [
-          { key:'prolongements', label:'Prolongements possibles', icon:icoCompass, color:tints.slate,
-            render: () => (override && override.prolongements && override.prolongements.length)
-              ? renderBullets('Prolongements possibles', '', override.prolongements)
-              : renderBullets('Prolongements possibles', '', []) },
-          { key:'commentaires', label:'Commentaires', icon:icoChat2, color:tints.slate,
-            render: () => override
-              ? renderNote('Commentaires', override.commentaires)
-              : renderNote('Commentaires',
-              'Remarques pédagogiques, prérequis à rappeler, points de vigilance à surveiller pendant la séance.') },
-        ]},
-      ];
-    }
-
-    function renderBullets(heading, lead, items) {
-      return `
-        <div class="chapter-content-head">
-          <h4>${heading}</h4>
-        </div>
-        ${lead ? `<p class="chapter-content-lead">${lead}</p>` : ''}
-        <ul class="chapter-bullets">
-          ${items.map(i => `<li>${i}</li>`).join('')}
-        </ul>
-      `;
-    }
-
-    function renderNote(heading, text) {
-      return `
-        <div class="chapter-content-head">
-          <h4>${heading}</h4>
-        </div>
-        <div class="chapter-note">${text}</div>
-      `;
-    }
-
-    function renderDocs(heading, docs) {
-      return `
-        <div class="chapter-content-head">
-          <h4>${heading}</h4>
-        </div>
-        <ul class="chapter-doc-list">
-          ${docs.map(doc => `
-            <li>
-              <a class="chapter-doc" href="${doc.href}">
-                <span class="chapter-doc-icon">${icoDoc}</span>
-                <span class="chapter-doc-info">
-                  <span class="doc-title">${doc.title}</span>
-                  <span class="doc-type">${doc.type}</span>
-                </span>
-                <span class="chapter-doc-go">${icoGo}</span>
-              </a>
-            </li>
-          `).join('')}
-        </ul>
-      `;
-    }
-
-    function renderPdfViewer(heading, pdfPath, fileName, latexUrl) {
-      const label = fileName || pdfPath.split('/').pop();
-      return `
-        <div class="pdf-viewer" data-pdf="${pdfPath}">
-          <div class="pdf-viewer-bar">
-            <span class="pdf-viewer-name">${label}</span>
-            <span class="pdf-viewer-actions">
-              ${latexUrl ? `
-              <a class="pdf-viewer-latex" href="${latexUrl}" target="_blank" rel="noopener">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 7L4 12l5 5M15 7l5 5-5 5"/></svg>
-                LaTeX
-              </a>` : ''}
-              <a class="pdf-viewer-download" href="${pdfPath}" download>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 19h16"/></svg>
-                Télécharger
-              </a>
-            </span>
-          </div>
-          <iframe src="${pdfPath}" title="${label}" loading="lazy"></iframe>
-          <div class="pdf-viewer-placeholder">
-            <img class="pdf-placeholder-gif" alt="" loading="lazy">
-            <span>Document bientôt disponible</span>
-          </div>
-        </div>
-      `;
-    }
-
-    function renderActivitiesGrid(activities){
-      function block(pdfPath, label, latexUrl){
-        return `
-          <div class="pdf-viewer pdf-viewer-stacked" data-pdf="${pdfPath}">
-            <div class="pdf-viewer-bar">
-              <span class="pdf-viewer-name">${label}</span>
-              <span class="pdf-viewer-actions">
-                ${latexUrl ? `
-                <a class="pdf-viewer-latex" href="${latexUrl}" target="_blank" rel="noopener">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 7L4 12l5 5M15 7l5 5-5 5"/></svg>
-                  LaTeX
-                </a>` : ''}
-                <a class="pdf-viewer-download" href="${pdfPath}" download>
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 19h16"/></svg>
-                  Télécharger
-                </a>
-              </span>
-            </div>
-            <iframe src="${pdfPath}" title="${label}" loading="lazy"></iframe>
-            <div class="pdf-viewer-placeholder">
-              <img class="pdf-placeholder-gif" alt="" loading="lazy">
-              <span>Document bientôt disponible</span>
-            </div>
-          </div>
-        `;
-      }
-      function videoBlock(embedUrl, label, pageUrl){
-        return `
-          <div class="pdf-viewer pdf-viewer-stacked pdf-viewer-video">
-            <div class="pdf-viewer-bar">
-              <span class="pdf-viewer-name">${label}</span>
-              <span class="pdf-viewer-actions">
-                ${pageUrl ? `
-                <a class="pdf-viewer-download" href="${pageUrl}" target="_blank" rel="noopener">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg>
-                  Voir sur ARTE
-                </a>` : ''}
-              </span>
-            </div>
-            <iframe src="${embedUrl}" title="${label}" loading="lazy" allowfullscreen
-              allow="autoplay; fullscreen; picture-in-picture; encrypted-media"></iframe>
-          </div>
-        `;
-      }
-      return `
-        <div class="pdf-viewer-grid">
-          ${activities.map(a => a.video ? videoBlock(a.video, a.label, a.href) : block(a.pdf, a.label, a.latex)).join('')}
-        </div>
-      `;
-    }
-
-    function renderDualPdfViewer(pdfA, labelA, pdfB, labelB, latexA, latexB){
-      function block(pdfPath, label, latexUrl){
-        return `
-          <div class="pdf-viewer pdf-viewer-stacked" data-pdf="${pdfPath}">
-            <div class="pdf-viewer-bar">
-              <span class="pdf-viewer-name">${label}</span>
-              <span class="pdf-viewer-actions">
-                ${latexUrl ? `
-                <a class="pdf-viewer-latex" href="${latexUrl}" target="_blank" rel="noopener">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 7L4 12l5 5M15 7l5 5-5 5"/></svg>
-                  LaTeX
-                </a>` : ''}
-                <a class="pdf-viewer-download" href="${pdfPath}" download>
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 19h16"/></svg>
-                  Télécharger
-                </a>
-              </span>
-            </div>
-            <iframe src="${pdfPath}" title="${label}" loading="lazy"></iframe>
-            <div class="pdf-viewer-placeholder">
-              <img class="pdf-placeholder-gif" alt="" loading="lazy">
-              <span>Document bientôt disponible</span>
-            </div>
-          </div>
-        `;
-      }
-      return `
-        <div class="pdf-viewer-dual">
-          ${block(pdfA, labelA, latexA)}
-          ${block(pdfB, labelB, latexB)}
-        </div>
-      `;
-    }
-
-    function renderAutomatismesCategory(cat) {
-      return `
-        <div class="chapter-content-head">
-          <h4>${cat.label}</h4>
-        </div>
-        <ul class="chapter-doc-list">
-          ${cat.items.map(item => `
-            <li>
-              <a class="chapter-doc" href="${item.href}" target="_blank" rel="noopener">
-                <span class="chapter-doc-icon">${icoDoc}</span>
-                <span class="chapter-doc-info">
-                  <span class="doc-title">${item.title}</span>
-                </span>
-                <span class="chapter-doc-go">${icoGo}</span>
-              </a>
-            </li>
-          `).join('')}
-        </ul>
-      `;
-    }
-
-    /* ============================================================
-       PROGRESSION DES DOCUMENTS — panneau en pourcentage
-       ============================================================ */
-    function collectDocsByCategory() {
-      const categories = {
-        cours:        { label: 'Cours',        urls: [] },
-        activites:    { label: 'Activités',    urls: [] },
-        exercices:    { label: 'Exercices',    urls: [] },
-        evaluations:  { label: 'Évaluations',  urls: [] },
-        corrections:  { label: 'Corrections',  urls: [] }
-      };
-      Object.keys(chapterOverrides).forEach(key => {
-        const ov = chapterOverrides[key];
-        if (!ov) return;
-        if (ov.coursPdf) categories.cours.urls.push(ov.coursPdf);
-        if (Array.isArray(ov.activites)) {
-          ov.activites.forEach(a => { if (a && a.pdf) categories.activites.urls.push(a.pdf); });
-        }
-        if (ov.exercicePdf) categories.exercices.urls.push(ov.exercicePdf);
-        if (ov.evalPdf) categories.evaluations.urls.push(ov.evalPdf);
-        if (Array.isArray(ov.evaluations)) {
-          ov.evaluations.forEach(e => { if (e && e.pdf) categories.evaluations.urls.push(e.pdf); });
-        }
-        if (ov.exerciceCorrectionPdf) categories.corrections.urls.push(ov.exerciceCorrectionPdf);
-        if (ov.evalCorrectionPdf) categories.corrections.urls.push(ov.evalCorrectionPdf);
-      });
-      return categories;
-    }
-
-    function checkUrlExists(url) {
-      return fetch(url, { method: 'HEAD' })
-        .then(res => !!res.ok)
-        .catch(() => false);
-    }
-
-    let docsProgressCache = null;
-
-    function renderDocsProgressRow(catKey, cat, present, total) {
-      const pct = total > 0 ? Math.round((present / total) * 100) : 0;
-      return `
-        <div class="docs-progress-row" data-cat="${catKey}">
-          <div class="docs-progress-row-top">
-            <span class="docs-progress-row-label">${cat.label}</span>
-            <span class="docs-progress-row-pct">${pct}%</span>
-          </div>
-          <div class="docs-progress-bar"><div class="docs-progress-bar-fill" style="width:${pct}%"></div></div>
-          <div class="docs-progress-row-count">${present} / ${total} document${total > 1 ? 's' : ''} mis en ligne</div>
-        </div>
-      `;
-    }
-
-    function computeAndRenderDocsProgress(force) {
-      const loadingEl = document.getElementById('docs-progress-loading');
-      const listEl = document.getElementById('docs-progress-list');
-      if (!loadingEl || !listEl) return;
-
-      if (docsProgressCache && !force) {
-        renderDocsProgressFromCache();
-        return;
-      }
-
-      loadingEl.style.display = 'block';
-      listEl.style.display = 'none';
-      listEl.innerHTML = '';
-
-      const categories = collectDocsByCategory();
-      const catKeys = Object.keys(categories);
-
-      const checks = catKeys.map(catKey => {
-        const urls = categories[catKey].urls;
-        return Promise.all(urls.map(checkUrlExists)).then(results => {
-          const present = results.filter(Boolean).length;
-          return { catKey, present, total: urls.length };
-        });
-      });
-
-      Promise.all(checks).then(resultsArr => {
-        docsProgressCache = { categories, resultsArr };
-        renderDocsProgressFromCache();
-      });
-
-      function renderDocsProgressFromCache() {
-        const { categories, resultsArr } = docsProgressCache;
-        let html = '';
-        let totalPresent = 0;
-        let totalAll = 0;
-        resultsArr.forEach(({ catKey, present, total }) => {
-          html += renderDocsProgressRow(catKey, categories[catKey], present, total);
-          totalPresent += present;
-          totalAll += total;
-        });
-        const totalPct = totalAll > 0 ? Math.round((totalPresent / totalAll) * 100) : 0;
-        html += `
-          <div class="docs-progress-row docs-progress-total">
-            <div class="docs-progress-row-top">
-              <span class="docs-progress-row-label">Total</span>
-              <span class="docs-progress-row-pct">${totalPct}%</span>
-            </div>
-            <div class="docs-progress-bar"><div class="docs-progress-bar-fill" style="width:${totalPct}%"></div></div>
-            <div class="docs-progress-row-count">${totalPresent} / ${totalAll} documents mis en ligne</div>
-          </div>
-        `;
-        loadingEl.style.display = 'none';
-        listEl.style.display = 'flex';
-        listEl.innerHTML = html;
-      }
-    }
-
-    function openDocsProgress() {
-      const overlay = document.getElementById('docs-progress-overlay');
-      if (!overlay) return;
-      overlay.classList.add('is-open');
-      computeAndRenderDocsProgress(false);
-    }
-
-    function closeDocsProgress() {
-      const overlay = document.getElementById('docs-progress-overlay');
-      if (!overlay) return;
-      overlay.classList.remove('is-open');
-    }
-
-    const docsProgressButton = document.getElementById('docs-progress-button');
-    const docsProgressOverlay = document.getElementById('docs-progress-overlay');
-    const docsProgressCloseBtn = document.getElementById('docs-progress-close');
-    if (docsProgressButton) docsProgressButton.addEventListener('click', openDocsProgress);
-    if (docsProgressCloseBtn) docsProgressCloseBtn.addEventListener('click', closeDocsProgress);
-    if (docsProgressOverlay) {
-      docsProgressOverlay.addEventListener('click', (e) => {
-        if (e.target === docsProgressOverlay) closeDocsProgress();
-      });
-    }
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') closeDocsProgress();
-    });
-
-    function openChapter(card) {
-      const n = card.querySelector('h3 .n')?.textContent.trim() || '';
-      const cat = card.querySelector('.seq-tag')?.textContent.trim() || '';
-      const title = (card.querySelector('h3 .t') || card.querySelector('h3'))?.textContent.trim() || '';
-      const desc = card.querySelector('.seq-desc')?.textContent.trim() || '';
-
-      modalN.textContent = n;
-      modalCat.textContent = cat;
-      modalTitle.textContent = title;
-
-      const sections = buildSections(card);
-
-      // reconstruit la navigation groupée
-      sidebar.querySelectorAll('.chapter-sidebar-group').forEach(g => g.remove());
-      let firstItem = null;
-
-      sections.forEach(group => {
-        const groupEl = document.createElement('div');
-        groupEl.className = 'chapter-sidebar-group';
-        const label = document.createElement('div');
-        label.className = 'chapter-sidebar-group-label';
-        label.textContent = group.group;
-        groupEl.appendChild(label);
-
-        group.items.forEach(item => {
-          const btn = document.createElement('button');
-          btn.type = 'button';
-          btn.className = 'chapter-nav-item';
-          btn.innerHTML = `
-            <span class="chapter-nav-icon" style="background:${item.color}">${item.icon}</span>
-            <span class="chapter-nav-label">${item.label}</span>
-          `;
-          btn.addEventListener('click', () => selectItem(item, btn));
-          groupEl.appendChild(btn);
-          if (!firstItem) firstItem = { item, btn };
-        });
-
-        sidebar.appendChild(groupEl);
-      });
-
-    const placeholderGifs = ['images/Satisfying.gif', 'images/Satisfying2.gif', 'images/Satisfying3.gif'];
-
-
-    function checkPdfPlaceholders(container) {
-      container.querySelectorAll('.pdf-viewer[data-pdf]').forEach(viewer => {
-        const url = viewer.getAttribute('data-pdf');
-        if (!url) return;
-        const img = viewer.querySelector('.pdf-placeholder-gif');
-        if (img && !img.getAttribute('src')) {
-          img.src = placeholderGifs[Math.floor(Math.random() * placeholderGifs.length)];
-        }
-        if (!url || url === '#') {
-          viewer.classList.add('is-missing');
-          return;
-        }
-        fetch(url, { method: 'HEAD' })
-          .then(res => {
-            if (!res.ok) viewer.classList.add('is-missing');
-          })
-          .catch(() => viewer.classList.add('is-missing'));
-      });
-    }
-
-    function selectItem(item, btn) {
-        sidebar.querySelectorAll('.chapter-nav-item').forEach(b => b.classList.remove('is-active'));
-        btn.classList.add('is-active');
-        content.innerHTML = item.render();
-        content.scrollTop = 0;
-        checkPdfPlaceholders(content);
-      }
-
-      if (firstItem) selectItem(firstItem.item, firstItem.btn);
-
-      overlay.classList.add('is-open');
-      overlay.setAttribute('aria-hidden', 'false');
-      document.body.style.overflow = 'hidden';
-    }
-
-    function closeChapter() {
-      overlay.classList.remove('is-open');
-      overlay.setAttribute('aria-hidden', 'true');
-      document.body.style.overflow = '';
-    }
-
-    document.querySelectorAll('.seq-card').forEach(card => {
-      card.addEventListener('click', (e) => {
-        e.preventDefault();
-        openChapter(card);
-      });
-    });
-
-    closeBtn.addEventListener('click', closeChapter);
-    overlay.addEventListener('click', (e) => { if (e.target === overlay) closeChapter(); });
-    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeChapter(); });
-  })();
 
   // Titres des séquences : même taille pour tous, la plus grande qui tient sur une ligne
   function fitSeqTitles(){
@@ -4189,430 +1155,8 @@ img.annex-card-img.annex-illus-bleed{ width:calc(100% + 28px); max-width:none; b
     }
   });
 
-  // ============ Modale "Femmes et sciences" ============
-  (function(){
-    const overlay = document.getElementById('fs-overlay');
-    const openBtn = document.getElementById('open-fs-modal');
-    const closeBtn = document.getElementById('fs-modal-close');
-    if (!overlay || !openBtn) return;
-    function openModal(){
-      overlay.classList.add('is-open');
-      overlay.setAttribute('aria-hidden', 'false');
-      document.body.style.overflow = 'hidden';
-    }
-    function closeModal(){
-      overlay.classList.remove('is-open');
-      overlay.setAttribute('aria-hidden', 'true');
-      document.body.style.overflow = '';
-    }
-    openBtn.addEventListener('click', openModal);
-    closeBtn.addEventListener('click', closeModal);
-    overlay.addEventListener('click', (e) => { if (e.target === overlay) closeModal(); });
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && overlay.classList.contains('is-open')) closeModal();
-    });
-  })();
 
-  // ============ Modale "Maths et Jeux" ============
-  (function(){
-    const overlay = document.getElementById('jeux-overlay');
-    const openBtn = document.getElementById('open-jeux-modal');
-    const closeBtn = document.getElementById('jeux-modal-close');
-    if (!overlay || !openBtn) return;
-    function openModal(){
-      overlay.classList.add('is-open');
-      overlay.setAttribute('aria-hidden', 'false');
-      document.body.style.overflow = 'hidden';
-    }
-    function closeModal(){
-      overlay.classList.remove('is-open');
-      overlay.setAttribute('aria-hidden', 'true');
-      document.body.style.overflow = '';
-    }
-    openBtn.addEventListener('click', openModal);
-    closeBtn.addEventListener('click', closeModal);
-    overlay.addEventListener('click', (e) => { if (e.target === overlay) closeModal(); });
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && overlay.classList.contains('is-open')) closeModal();
-    });
-  })();
-
-  // ============ Modale "Histoire des mathématiques" ============
-  (function(){
-    const overlay = document.getElementById('hist-overlay');
-    const openBtn = document.getElementById('open-hist-modal');
-    const closeBtn = document.getElementById('hist-modal-close');
-    if (!overlay || !openBtn) return;
-    function openModal(){
-      overlay.classList.add('is-open');
-      overlay.setAttribute('aria-hidden', 'false');
-      document.body.style.overflow = 'hidden';
-    }
-    function closeModal(){
-      overlay.classList.remove('is-open');
-      overlay.setAttribute('aria-hidden', 'true');
-      document.body.style.overflow = '';
-    }
-    openBtn.addEventListener('click', openModal);
-    closeBtn.addEventListener('click', closeModal);
-    overlay.addEventListener('click', (e) => { if (e.target === overlay) closeModal(); });
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && overlay.classList.contains('is-open')) closeModal();
-    });
-  })();
-
-  // ============ Modale "Cartes à collectionner" — univers TCG ============
-  (function(){
-    const overlay = document.getElementById('cartes-overlay');
-    const openBtn = document.getElementById('open-cartes-modal');
-    const closeBtn = document.getElementById('cartes-modal-close');
-    const viewBoosters = document.getElementById('tcg-view-boosters');
-    const viewCards = document.getElementById('tcg-view-cards');
-    const boostersEl = document.getElementById('tcg-boosters');
-    const cardsGrid = document.getElementById('tcg-cards-grid');
-    const cardsTitle = document.getElementById('tcg-cards-title');
-    const backBtn = document.getElementById('tcg-back-btn');
-    if (!overlay || !openBtn) return;
-
-    const icoMaths = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg>';
-    const icoOutils = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 1 0-5.4 5.4L3 18v3h3l6.3-6.3a4 4 0 0 0 5.4-5.4z"/></svg>';
-    const icoDemo = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3H5a2 2 0 0 0-2 2v4M15 3h4a2 2 0 0 1 2 2v4M9 21H5a2 2 0 0 1-2-2v-4M15 21h4a2 2 0 0 0 2-2v-4"/></svg>';
-
-    const boosterSets = [
-      {
-        key: 'mathematiciens',
-        title: 'Mathématiciens & mathématiciennes',
-        cls: 'tcg-booster-mathematiciens',
-        icon: icoMaths,
-        hasArt: true,
-        cards: [
-          { name: 'Michel Chasles', type: 'Géométrie · XIXe siècle', rarity: 'commune', art: '📏', img: 'images/Cartes Chasles commune.png', zoomImg: 'images/Cartes Chasles commune Zoom.png' },
-          { name: 'Al-Khwârizmî', type: 'Algèbre · IXe siècle', rarity: 'rare', art: '📜', img: 'images/Cartes Al-Khwârizmî rare.png', zoomImg: 'images/Cartes Al-Khwârizmî rare Zoom.png' },
-          { name: 'Emmy Noether', type: 'Algèbre · XXe siècle', rarity: 'rare', art: '✨', img: 'images/Cartes Noether rare.png', zoomImg: 'images/Cartes Noether rare Zoom.png' },
-          { name: 'Ératosthène', type: 'Géométrie · Antiquité', rarity: 'rare', art: '🌍', img: 'images/Cartes Ératosthène rare.png', zoomImg: 'images/Cartes Ératosthène rare Zoom.png' },
-          { name: 'Maryam Mirzakhani', type: 'Géométrie · XXIe siècle', rarity: 'rare', art: '🎗️', img: 'images/Cartes Mirzakhani rare.png', zoomImg: 'images/Cartes Mirzakhani rare Zoom.png' },
-          { name: 'Pythagore', type: 'Géométrie · Antiquité', rarity: 'epique', art: '🔺', img: 'images/Cartes Pythagore épique.png', zoomImg: 'images/Cartes Pythagore épique Zoom.png' },
-          { name: 'René Descartes', type: 'Repérage · XVIIe siècle', rarity: 'epique', art: '🧭', img: 'images/Cartes Descartes épique.png', zoomImg: 'images/Cartes Descartes épique Zoom.png' },
-          { name: 'Sophie Germain', type: 'Arithmétique · XIXe siècle', rarity: 'epique', art: '🔢', img: 'images/Cartes Germain épique.png', zoomImg: 'images/Cartes Germain épique Zoom.png' },
-          { name: 'Thalès', type: 'Géométrie · Antiquité', rarity: 'epique', art: '📐', img: 'images/Cartes Thalès épique.png', zoomImg: 'images/Cartes Thalès épique Zoom.png' },
-          { name: 'Pythagore', type: 'Géométrie · Antiquité', rarity: 'legendaire', art: '🔺', img: 'images/carte-pythagore.png', zoomImg: 'images/Cartes Pythagore Zoom.png' },
-        ]
-      },
-      {
-        key: 'outils',
-        title: "Outils & objets de l'année",
-        cls: 'tcg-booster-outils',
-        icon: icoOutils,
-        hasArt: true,
-        cards: [
-          { name: 'La calculatrice', type: 'Outil de calcul', rarity: 'commune', art: '🧮', img: 'images/carte-calculatrice.png' },
-          { name: 'Le compas', type: 'Outil de tracé', rarity: 'commune', art: '📐', img: 'images/carte-compas.png' },
-          { name: 'Arbre de probabilité', type: 'Représentation · Probabilités', rarity: 'commune', art: '🌳', img: 'images/carte-arbre-probabilite.png' },
-          { name: 'Équation de droite', type: 'Droites du plan', rarity: 'commune', art: '📈', img: 'images/carte-equation-droite.png' },
-          { name: 'Équation du premier degré', type: 'Équations', rarity: 'commune', art: '=', img: 'images/carte-equation-premier-degre.png' },
-          { name: 'Équation produit nul', type: 'Équations', rarity: 'commune', art: '0', img: 'images/carte-equation-produit-nul.png' },
-          { name: 'Fonction affine', type: 'Fonctions', rarity: 'commune', art: '📈', img: 'images/carte-fonction-affine.png' },
-          { name: 'Fonction carré', type: 'Fonctions', rarity: 'commune', art: '📈', img: 'images/carte-fonction-carre.png' },
-          { name: 'Fonction inverse', type: 'Fonctions', rarity: 'commune', art: '📈', img: 'images/carte-fonction-inverse.png' },
-          { name: 'Inéquation du premier degré', type: 'Inéquations', rarity: 'commune', art: '≤', img: 'images/carte-inequation-premier-degre.png' },
-          { name: 'Intervalle (mathématiques)', type: 'Ensembles de nombres', rarity: 'commune', art: '[ ]', img: 'images/carte-intervalle.png' },
-          { name: 'NumWorks', type: 'Calculatrice graphique', rarity: 'commune', art: '🖩', img: 'images/carte-numworks.png' },
-          { name: 'Représentation graphique d\'une fonction', type: 'Fonctions', rarity: 'commune', art: '📉', img: 'images/carte-representation-graphique.png' },
-          { name: 'Tableau de signes', type: 'Étude de signe', rarity: 'commune', art: '±', img: 'images/carte-tableau-signes.png' },
-          { name: 'Variations d\'une fonction', type: 'Fonctions', rarity: 'commune', art: '↗', img: 'images/carte-variations-fonction.png' },
-          { name: 'Coordonnées cartésiennes', type: 'Repérage', rarity: 'rare', art: '📍', img: 'images/carte-coordonnees-cartesiennes.png' },
-          { name: 'La droite graduée', type: 'Représentation', rarity: 'rare', art: '📏', img: 'images/carte-droite-graduee.png' },
-          { name: 'Ensemble de nombres', type: 'Ensembles', rarity: 'rare', art: '🔢', img: 'images/carte-ensemble-nombres.png' },
-          { name: 'GeoGebra', type: 'Logiciel de géométrie', rarity: 'rare', art: '💻', img: 'images/carte-geogebra.png' },
-          { name: 'Loi des grands nombres', type: 'Probabilités', rarity: 'rare', art: '📊', img: 'images/carte-loi-grands-nombres.png' },
-          { name: 'Probabilité conditionnelle', type: 'Probabilités', rarity: 'rare', art: '🎲', img: 'images/carte-probabilite-conditionnelle.png' },
-          { name: 'Puissance d\'un nombre', type: 'Calcul algébrique', rarity: 'rare', art: 'ⁿ', img: 'images/carte-puissance.png' },
-          { name: 'Racine carrée', type: 'Nombres réels', rarity: 'rare', art: '√', img: 'images/carte-racine-carree.png' },
-          { name: 'Vecteur', type: 'Géométrie vectorielle', rarity: 'rare', art: '➜', img: 'images/carte-vecteur.png' },
-          { name: "L'arbre pondéré", type: 'Représentation · Probabilités', rarity: 'epique', art: '🌳', img: 'images/carte-arbre-pondere.png' },
-          { name: 'Python', type: 'Langage de programmation', rarity: 'epique', art: '🐍', img: 'images/carte-python.png' },
-        ]
-      },
-      {
-        key: 'demonstrations',
-        title: 'Démonstrations à connaître',
-        cls: 'tcg-booster-demonstrations',
-        icon: icoDemo,
-        hasArt: true,
-        cards: [
-          { name: '1/3 n\'est pas décimal', type: 'Nombres réels', rarity: 'commune', art: '⅓', img: 'images/carte-demo-un-tiers.png' },
-          { name: 'Somme de deux multiples', type: 'Arithmétique', rarity: 'commune', art: '➕', img: 'images/carte-demo-somme-multiples.png' },
-          { name: '√(ab) = √a × √b', type: 'Calcul algébrique', rarity: 'rare', art: '∙', img: 'images/carte-demo-racine-produit.png' },
-          { name: 'Carré d\'un nombre impair', type: 'Arithmétique', rarity: 'rare', art: '²', img: 'images/carte-demo-carre-impair.png' },
-          { name: 'Position des courbes y=x et y=x²', type: 'Fonctions de référence', rarity: 'rare', art: '⌒', img: 'images/carte-demo-courbes.png' },
-          { name: '√2 est irrationnel', type: 'Nombres réels', rarity: 'epique', art: '√', img: 'images/demo-racine2.png' },
-          { name: 'Variations affine, carré, inverse', type: 'Fonctions', rarity: 'epique', art: '↗', img: 'images/carte-demo-variations.png' },
-          { name: 'Équation de droite par le déterminant', type: 'Droites du plan', rarity: 'epique', art: '⟍', img: 'images/carte-demo-droite-determinant.png' },
-          { name: 'Colinéarité par le déterminant', type: 'Vecteurs', rarity: 'legendaire', art: '⟂', img: 'images/carte-demo-colinearite.png' },
-        ]
-      }
-    ];
-
-    function renderBoosters(){
-      boostersEl.innerHTML = boosterSets.map(set => `
-        <button type="button" class="tcg-booster ${set.cls}${set.hasArt ? ' tcg-booster-has-art' : ''}" data-set="${set.key}">
-          ${set.hasArt ? '' : `<span class="tcg-booster-icon">${set.icon}</span><span>${set.title}</span>`}
-        </button>
-      `).join('');
-      boostersEl.querySelectorAll('.tcg-booster').forEach(btn => {
-        btn.addEventListener('click', () => openBooster(btn.getAttribute('data-set')));
-      });
-    }
-
-    function openBooster(key){
-      const set = boosterSets.find(s => s.key === key);
-      if (!set) return;
-      cardsTitle.textContent = set.title;
-      cardsGrid.innerHTML = set.cards.map(card => `
-        <div class="tcg-card rarity-${card.rarity}">
-          <div class="tcg-card-inner">
-            <span class="tcg-card-rarity rarity-${card.rarity}">${card.rarity}</span>
-            <div class="tcg-card-art">${card.art}${card.img ? `<img class="tcg-card-art-img" src="${card.img}" alt="${card.name}" onerror="this.remove()" onload="this.closest('.tcg-card').setAttribute('data-zoom-img', '${card.zoomImg || card.img}')">` : ''}</div>
-            <div class="tcg-card-body">
-              <p class="tcg-card-name">${card.name}</p>
-              <p class="tcg-card-type">${card.type}</p>
-            </div>
-          </div>
-        </div>
-      `).join('');
-      viewBoosters.classList.remove('is-active');
-      viewCards.classList.add('is-active');
-    }
-
-    function showBoosters(){
-      viewCards.classList.remove('is-active');
-      viewBoosters.classList.add('is-active');
-    }
-
-    function openModal(){
-      renderBoosters();
-      showBoosters();
-      overlay.classList.add('is-open');
-      overlay.setAttribute('aria-hidden', 'false');
-      document.body.style.overflow = 'hidden';
-    }
-    function closeModal(){
-      overlay.classList.remove('is-open');
-      overlay.setAttribute('aria-hidden', 'true');
-      document.body.style.overflow = '';
-    }
-
-    openBtn.addEventListener('click', openModal);
-    closeBtn.addEventListener('click', closeModal);
-    backBtn.addEventListener('click', showBoosters);
-    overlay.addEventListener('click', (e) => { if (e.target === overlay) closeModal(); });
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && overlay.classList.contains('is-open')) closeModal();
-    });
-
-    // Zoom d'une carte au clic, avec effet tilt qui suit la souris
-    // Protection par code d'accès (PIN à 6 chiffres) sur certains liens de ressources
-    function initPinProtection(){
-      const pinOverlay = document.getElementById('pin-overlay');
-      const pinInputs = Array.from(document.querySelectorAll('#pin-inputs input'));
-      const pinError = document.getElementById('pin-error');
-      const pinCancel = document.getElementById('pin-cancel');
-      const pinConfirm = document.getElementById('pin-confirm');
-      if (!pinOverlay || !pinCancel || !pinConfirm) return;
-      let pendingHref = null;
-      let pendingCode = null;
-
-      function resetPinInputs(){
-        pinInputs.forEach(i => i.value = '');
-        pinError.textContent = '';
-        const pinInputsBox = document.getElementById('pin-inputs');
-        pinInputsBox.classList.remove('is-shake');
-      }
-      function openPin(href, code){
-        pendingHref = href;
-        pendingCode = code;
-        resetPinInputs();
-        pinOverlay.classList.add('is-open');
-        pinOverlay.setAttribute('aria-hidden', 'false');
-        setTimeout(() => pinInputs[0].focus(), 50);
-      }
-      function closePin(){
-        pinOverlay.classList.remove('is-open');
-        pinOverlay.setAttribute('aria-hidden', 'true');
-        pendingHref = null;
-        pendingCode = null;
-      }
-      function tryUnlock(){
-        const entered = pinInputs.map(i => i.value).join('');
-        if (entered.length < 6){
-          pinError.textContent = 'Code incomplet.';
-          return;
-        }
-        if (entered === pendingCode){
-          const href = pendingHref;
-          closePin();
-          window.open(href, '_blank', 'noopener');
-        } else {
-          pinError.textContent = 'Code incorrect, réessaie.';
-          const pinInputsBox = document.getElementById('pin-inputs');
-          pinInputsBox.classList.remove('is-shake');
-          void pinInputsBox.offsetWidth;
-          pinInputsBox.classList.add('is-shake');
-          pinInputs.forEach(i => i.value = '');
-          setTimeout(() => {
-            pinInputsBox.classList.remove('is-shake');
-            pinInputs[0].focus();
-          }, 400);
-        }
-      }
-
-      document.addEventListener('click', (e) => {
-        const link = e.target.closest('a[data-pin-protected="true"]');
-        if (!link) return;
-        e.preventDefault();
-        openPin(link.getAttribute('href'), link.getAttribute('data-pin-code'));
-      });
-
-      const cbpmOverlay = document.getElementById('cbpm-locked-overlay');
-      if (cbpmOverlay){
-        document.addEventListener('click', (e) => {
-          const lockedLink = e.target.closest('.res-app-locked');
-          if (!lockedLink) return;
-          e.preventDefault();
-          cbpmOverlay.classList.add('is-open');
-        });
-        cbpmOverlay.addEventListener('click', () => {
-          cbpmOverlay.classList.remove('is-open');
-        });
-      }
-
-      pinInputs.forEach((input, idx) => {
-        input.addEventListener('input', () => {
-          input.value = input.value.replace(/[^0-9]/g, '').slice(0,1);
-          if (input.value && idx < pinInputs.length - 1){
-            pinInputs[idx+1].focus();
-          }
-          if (idx === pinInputs.length - 1 && input.value){
-            tryUnlock();
-          }
-        });
-        input.addEventListener('keydown', (e) => {
-          if (e.key === 'Backspace' && !input.value && idx > 0){
-            pinInputs[idx-1].focus();
-          }
-          if (e.key === 'Enter'){
-            tryUnlock();
-          }
-        });
-      });
-
-      pinCancel.addEventListener('click', closePin);
-      pinConfirm.addEventListener('click', tryUnlock);
-      pinOverlay.addEventListener('click', (e) => {
-        if (e.target === pinOverlay) closePin();
-      });
-    }
-    if (document.readyState === 'loading'){
-      document.addEventListener('DOMContentLoaded', initPinProtection);
-    } else {
-      initPinProtection();
-    }
-
-    const zoomOverlay = document.getElementById('tcg-zoom-overlay');
-    const zoomStage = document.getElementById('tcg-zoom-stage');
-    const zoomImg = document.getElementById('tcg-zoom-img');
-    const zoomCrop = document.querySelector('.tcg-zoom-crop');
-    const zoomShine = document.getElementById('tcg-zoom-shine');
-    const zoomHalo = document.getElementById('tcg-zoom-halo');
-    const zoomBgGlow = document.getElementById('tcg-zoom-bg-glow');
-
-    cardsGrid.addEventListener('click', (e) => {
-      const cardEl = e.target.closest('.tcg-card');
-      if (!cardEl) return;
-      const imgSrc = cardEl.getAttribute('data-zoom-img');
-      if (!imgSrc) return;
-      const isLegendary = cardEl.classList.contains('rarity-legendaire');
-      const isEpique = cardEl.classList.contains('rarity-epique');
-      zoomImg.src = imgSrc;
-      zoomCrop.style.transform = 'scale(1) rotateX(0deg) rotateY(0deg)';
-      zoomOverlay.classList.add('is-open');
-      zoomOverlay.setAttribute('aria-hidden', 'false');
-
-      // Relance l'effet de brillance à chaque ouverture d'une carte légendaire
-      zoomShine.classList.remove('is-legendary');
-      zoomShine.style.display = 'none';
-      zoomHalo.classList.remove('is-legendary');
-      zoomBgGlow.classList.remove('is-epique');
-      if (isLegendary){
-        // force reflow pour pouvoir rejouer l'animation CSS
-        zoomShine.style.display = '';
-        void zoomShine.offsetWidth;
-        zoomShine.classList.add('is-legendary');
-        void zoomHalo.offsetWidth;
-        zoomHalo.classList.add('is-legendary');
-      }
-      if (isEpique){
-        void zoomBgGlow.offsetWidth;
-        zoomBgGlow.classList.add('is-epique');
-      }
-    });
-
-    zoomShine.addEventListener('animationend', (e) => {
-      if (e.animationName === 'legendGlow'){
-        zoomShine.classList.remove('is-legendary');
-        zoomShine.style.display = 'none';
-      }
-    });
-
-    function closeZoom(){
-      zoomOverlay.classList.remove('is-open');
-      zoomOverlay.setAttribute('aria-hidden', 'true');
-      zoomCrop.style.transform = 'scale(1) rotateX(0deg) rotateY(0deg)';
-      zoomShine.classList.remove('is-legendary');
-      zoomShine.style.display = 'none';
-      zoomHalo.classList.remove('is-legendary');
-      zoomBgGlow.classList.remove('is-epique');
-    }
-
-    zoomOverlay.addEventListener('click', closeZoom);
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && zoomOverlay.classList.contains('is-open')) closeZoom();
-    });
-
-    zoomStage.addEventListener('mousemove', (e) => {
-      const rect = zoomCrop.getBoundingClientRect();
-      const px = (e.clientX - rect.left) / rect.width;
-      const py = (e.clientY - rect.top) / rect.height;
-      const rotateY = (px - 0.5) * 22;
-      const rotateX = (0.5 - py) * 22;
-      zoomCrop.style.transform = `scale(1) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-    });
-    zoomStage.addEventListener('mouseleave', () => {
-      zoomCrop.style.transform = 'scale(1) rotateX(0deg) rotateY(0deg)';
-    });
-    zoomImg.addEventListener('click', (e) => e.stopPropagation());
-  })();
 </script>
-
-<div id="pin-overlay" aria-hidden="true">
-  <div class="pin-modal">
-    <h4>Accès protégé</h4>
-    <p>Saisis le code à 6 chiffres pour ouvrir ce document.</p>
-    <div class="pin-inputs" id="pin-inputs">
-      <input type="text" inputmode="numeric" maxlength="1" />
-      <input type="text" inputmode="numeric" maxlength="1" />
-      <input type="text" inputmode="numeric" maxlength="1" />
-      <input type="text" inputmode="numeric" maxlength="1" />
-      <input type="text" inputmode="numeric" maxlength="1" />
-      <input type="text" inputmode="numeric" maxlength="1" />
-    </div>
-    <div class="pin-error" id="pin-error"></div>
-    <div class="pin-actions">
-      <button class="pin-cancel" id="pin-cancel">Annuler</button>
-      <button class="pin-confirm" id="pin-confirm">Valider</button>
-    </div>
-  </div>
-</div>
 
 </body>
 </html>
